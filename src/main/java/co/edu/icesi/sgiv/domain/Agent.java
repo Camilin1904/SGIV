@@ -1,4 +1,4 @@
 package co.edu.icesi.sgiv.domain;
 
-public abstract class User{
+public class Agent extends User{
 }
