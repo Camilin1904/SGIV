@@ -1,10 +1,18 @@
-package co.edu.icesi.sgiv.domain;
+package co.edu.icesi.sgiv.domain.entitie;
 
+import co.edu.icesi.sgiv.domain.modification.ClientModification;
+import co.edu.icesi.sgiv.domain.status.ClientStatus;
+import co.edu.icesi.sgiv.domain.type.IdentificationType;
+import co.edu.icesi.sgiv.domain.type.UserType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
+import lombok.Data;
 import java.sql.Date;
+import java.util.List;
 
+@Data
 @Entity
+@Table(name = "client")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,4 +49,23 @@ public class Client {
     @Column(name = "creation_date", nullable = false)
     private Date creationDate;
 
+    @ManyToOne
+    @JoinColumn(name = "creator_user_id", nullable = false)
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "status_id", nullable = false)
+    private ClientStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "identification_type_id", nullable = false)
+    private IdentificationType identificationType;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<ClientModification> modifications;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Plan> requestedPlans;
 }
