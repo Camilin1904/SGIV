@@ -1,8 +1,7 @@
 package co.edu.icesi.sgiv.domain.modification;
 
-import co.edu.icesi.sgiv.domain.entitie.Client;
-import co.edu.icesi.sgiv.domain.entitie.PlanDetail;
-import co.edu.icesi.sgiv.domain.entitie.User;
+import co.edu.icesi.sgiv.domain.entity.PlanDetail;
+import co.edu.icesi.sgiv.domain.entity.User;
 import jakarta.persistence.*;
 import lombok.Data;
 

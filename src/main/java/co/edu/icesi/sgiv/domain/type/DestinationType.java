@@ -1,12 +1,10 @@
 package co.edu.icesi.sgiv.domain.type;
 
-import co.edu.icesi.sgiv.domain.entitie.Destination;
-import co.edu.icesi.sgiv.domain.modification.ClientModification;
+import co.edu.icesi.sgiv.domain.entity.Destination;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.sql.Date;
 import java.util.List;
 
 @Data

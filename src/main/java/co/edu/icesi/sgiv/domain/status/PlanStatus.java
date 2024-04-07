@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.domain.status;
 
-import co.edu.icesi.sgiv.domain.entitie.Client;
-import co.edu.icesi.sgiv.domain.entitie.Plan;
+import co.edu.icesi.sgiv.domain.entity.Plan;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;

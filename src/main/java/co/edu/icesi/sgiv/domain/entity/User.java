@@ -1,11 +1,10 @@
-package co.edu.icesi.sgiv.domain.entitie;
+package co.edu.icesi.sgiv.domain.entity;
 
 
 import co.edu.icesi.sgiv.domain.modification.ClientModification;
 import co.edu.icesi.sgiv.domain.modification.DestinationModification;
 import co.edu.icesi.sgiv.domain.modification.PlanDetailModification;
 import co.edu.icesi.sgiv.domain.modification.PlanModification;
-import co.edu.icesi.sgiv.domain.status.ClientStatus;
 import co.edu.icesi.sgiv.domain.status.UserStatus;
 import co.edu.icesi.sgiv.domain.type.UserType;
 import com.fasterxml.jackson.annotation.JsonIgnore;

@@ -1,8 +1,6 @@
-package co.edu.icesi.sgiv.domain.entitie;
+package co.edu.icesi.sgiv.domain.entity;
 
-import co.edu.icesi.sgiv.domain.modification.ClientModification;
 import co.edu.icesi.sgiv.domain.modification.PlanDetailModification;
-import co.edu.icesi.sgiv.domain.status.ClientStatus;
 import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
