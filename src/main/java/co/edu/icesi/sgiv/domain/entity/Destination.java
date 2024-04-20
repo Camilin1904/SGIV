@@ -45,5 +45,5 @@ public class Destination {
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<PlanDetail> planDetails;
+    private List<PlanDetailDestination> planDetailDestinations;
 }
