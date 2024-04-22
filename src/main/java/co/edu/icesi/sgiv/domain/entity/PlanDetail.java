@@ -50,10 +50,6 @@ public class PlanDetail {
     @JoinColumn(name = "status_id", nullable = false)
     private PlanDetailStatus status;
 
-    @ManyToOne
-    @JoinColumn(name = "destination_id", nullable = false)
-    private Destination destination;
-
     @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PlanDetailModification> modifications;
@@ -61,4 +57,8 @@ public class PlanDetail {
     @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Plan> plans;
+
+    @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<PlanDetailDestination> planDetailDestinations;
 }
