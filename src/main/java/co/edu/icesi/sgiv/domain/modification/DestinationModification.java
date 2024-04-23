@@ -4,11 +4,15 @@ import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.User;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Date;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "destination_modification")
 public class DestinationModification {
     @Id

@@ -6,11 +6,16 @@ import co.edu.icesi.sgiv.domain.type.IdentificationType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Date;
 import java.util.List;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "client")
 public class Client {
     @Id
@@ -67,4 +72,19 @@ public class Client {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Plan> requestedPlans;
+
+    public Client(String identificationNumber, String firstName, String lastName, String secondLastName, String phone1, String phone2, String email, String gender, Date birthDate, Date creationDate, User user, ClientStatus status) {
+        this.identificationNumber = identificationNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.secondLastName = secondLastName;
+        this.phone1 = phone1;
+        this.phone2 = phone2;
+        this.email = email;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.creationDate = creationDate;
+        this.user = user;
+        this.status = status;
+    }
 }

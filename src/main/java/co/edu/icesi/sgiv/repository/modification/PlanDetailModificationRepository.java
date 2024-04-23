@@ -13,8 +13,6 @@ public interface PlanDetailModificationRepository extends JpaRepository<PlanDeta
 
     public List<PlanDetailModification> findAll();
 
-    public Optional<PlanDetailModification> findById(Long id);
-
     @Query("select pdm from PlanDetailModification pdm join User u on pdm.user = u where u.id = (?1)")
     public List<PlanDetailModification> findByUser(Long uID);
 

@@ -4,11 +4,15 @@ import co.edu.icesi.sgiv.domain.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "user_status")
 public class UserStatus {
     @Id

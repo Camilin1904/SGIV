@@ -10,6 +10,4 @@ import java.util.Optional;
 public interface DestinationTypeRepository extends JpaRepository<DestinationType, Long> {
 
     public List<DestinationType> findAll();
-
-    public Optional<DestinationType> findById(Long id);
 }

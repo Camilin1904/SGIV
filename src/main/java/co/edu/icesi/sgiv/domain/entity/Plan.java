@@ -5,6 +5,8 @@ import co.edu.icesi.sgiv.domain.status.PlanStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Date;
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "plan")
+@Getter
+@Setter
 public class Plan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

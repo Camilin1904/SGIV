@@ -10,6 +10,4 @@ import java.util.Optional;
 public interface UserTypeRepository extends JpaRepository<UserType, Long> {
 
     public List<UserType> findAll();
-
-    public Optional<UserType> findById(Long id);
 }

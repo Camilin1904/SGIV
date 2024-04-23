@@ -10,6 +10,4 @@ import java.util.Optional;
 public interface IdentificationTypeRepository extends JpaRepository<IdentificationType, Long> {
 
     public List<IdentificationType> findAll();
-
-    public Optional<IdentificationType> findById(Long id);
 }

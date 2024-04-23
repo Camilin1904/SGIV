@@ -11,7 +11,6 @@ public interface ClientModificationRepository extends JpaRepository<ClientModifi
 
     public List<ClientModification> findAll();
 
-    public Optional<ClientModification> findById(Long id);
 
     @Query("select cm from ClientModification cm join User u on cm.user = u where u.id = (?1)")
     public List<ClientModification> findByUser(Long uID);

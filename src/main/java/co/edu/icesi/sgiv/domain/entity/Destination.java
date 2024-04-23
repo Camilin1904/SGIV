@@ -6,12 +6,16 @@ import co.edu.icesi.sgiv.domain.type.DestinationType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Date;
 import java.util.List;
 
 @Data
 @Entity
+@Getter
+@Setter
 public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,4 +50,13 @@ public class Destination {
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PlanDetailDestination> planDetailDestinations;
+
+    public Destination(String code, String name, Date creationDate, User user, DestinationStatus status, DestinationType type) {
+        this.code = code;
+        this.name = name;
+        this.creationDate = creationDate;
+        this.user = user;
+        this.status = status;
+        this.type = type;
+    }
 }
