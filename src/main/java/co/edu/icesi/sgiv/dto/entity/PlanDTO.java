@@ -33,11 +33,12 @@ public class PlanDTO {
     private PlanDetailDTO planDetail;
 
     private ClientDTO client;
+
     private PlanDetailStatusDTO status;
 
 
 
-    public PlanDTO(String code, String requestDescription, String name, Integer numberOfPeople, Date requestDate, Date startDate, Date endDate, Double totalValue, Date creationDate, String status, String planDetail, String client) {
+    public PlanDTO(String code, String requestDescription, String name, Integer numberOfPeople, Date requestDate, Date startDate, Date endDate, Double totalValue, Date creationDate, PlanDetailStatusDTO status, PlanDetailDTO planDetail, ClientDTO client) {
         this.code = code;
         this.requestDescription = requestDescription;
         this.name = name;

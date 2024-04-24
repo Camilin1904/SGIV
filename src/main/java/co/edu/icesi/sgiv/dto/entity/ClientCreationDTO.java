@@ -18,4 +18,16 @@ public class ClientCreationDTO {
     private Date birthDate;
     private UserDTO creator;
 
+    public ClientCreationDTO(String idNumber, String name, String firstLastName, String secondLastName, String phone1, String phone2, String email, String gender, Date birthDate, UserDTO creator) {
+        this.idNumber = idNumber;
+        this.name = name;
+        this.firstLastName = firstLastName;
+        this.secondLastName = secondLastName;
+        this.phone1 = phone1;
+        this.phone2 = phone2;
+        this.email = email;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.creator = creator;
+    }
 }

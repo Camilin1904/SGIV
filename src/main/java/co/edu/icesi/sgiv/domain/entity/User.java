@@ -49,11 +49,11 @@ public class User{
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Destination> createdClients;
+    private List<Client> createdClients;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Destination> createdPlanDetails;
+    private List<PlanDetail> createdPlanDetails;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore

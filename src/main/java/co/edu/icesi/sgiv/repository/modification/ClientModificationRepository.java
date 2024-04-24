@@ -12,7 +12,7 @@ public interface ClientModificationRepository extends JpaRepository<ClientModifi
     public List<ClientModification> findAll();
 
 
-    @Query("select cm from ClientModification cm join User u on cm.user = u where u.id = (?1)")
+    @Query("select cm from ClientModificationDTO cm join User u on cm.user = u where u.id = (?1)")
     public List<ClientModification> findByUser(Long uID);
 
 }

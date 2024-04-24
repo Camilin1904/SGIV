@@ -1,11 +1,12 @@
 package co.edu.icesi.sgiv.dto.entity;
 
+import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
 import lombok.Getter;
 
 import java.sql.Date;
 
 @Getter
-public class planCreationDTO {
+public class PlanCreationDTO {
 
     private String code;
 
@@ -25,14 +26,14 @@ public class planCreationDTO {
 
     private Date creationDate;
 
-    private planStatusDTO status;
+    private PlanStatusDTO status;
 
     private UserDTO creator;
 
     private PlanDetailDTO planDetail;
 
 
-    public planCreationDTO(String code, String requestDescription, String name, Integer numberOfPeople, Date requestDate, Date startDate, Date endDate, Double totalValue, Date creationDate, String status, String creator, String planDetail) {
+    public PlanCreationDTO(String code, String requestDescription, String name, Integer numberOfPeople, Date requestDate, Date startDate, Date endDate, Double totalValue, Date creationDate, PlanStatusDTO status, UserDTO creator, PlanDetailDTO planDetail) {
         this.code = code;
         this.requestDescription = requestDescription;
         this.name = name;

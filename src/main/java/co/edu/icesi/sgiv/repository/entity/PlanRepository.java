@@ -29,6 +29,6 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
     @Query("select d from Destination d join PlanDetailDestination join PlanDetail join Plan p where p.id = ?1")
     public List<Destination> getDestinations(Long pID);
 
-    @Query ("select ps from PlanStatus join Plan p where p.id = ?1")
+    @Query ("select ps from PlanStatusDTO join Plan p where p.id = ?1")
     public Optional<PlanStatus> getStatus(Long pID);
 }

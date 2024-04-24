@@ -1,5 +1,7 @@
 package co.edu.icesi.sgiv.dto.entity;
 
+import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
+import co.edu.icesi.sgiv.dto.type.DestinationTypeDTO;
 import lombok.Getter;
 
 import java.sql.Date;
@@ -19,7 +21,7 @@ public class DestinationCreationDTO {
     private DestinationTypeDTO type;
 
 
-    public DestinationCreationDTO(String code, String name, Date creationDate, String creator, String status, String type) {
+    public DestinationCreationDTO(String code, String name, Date creationDate, UserDTO creator, DestinationStatusDTO status, DestinationTypeDTO type) {
         this.code = code;
         this.name = name;
         this.creationDate = creationDate;

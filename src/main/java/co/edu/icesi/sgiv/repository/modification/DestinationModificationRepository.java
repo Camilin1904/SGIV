@@ -12,6 +12,6 @@ public interface DestinationModificationRepository extends JpaRepository<Destina
 
     public List<DestinationModification> findAll();
 
-    @Query("select dm from DestinationModification dm join User u on dm.user = u where u.id = (?1)")
+    @Query("select dm from DestinationModificationDTO dm join User u on dm.user = u where u.id = (?1)")
     public List<DestinationModification> findByUser(Long uID);
 }

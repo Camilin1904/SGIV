@@ -5,6 +5,8 @@ import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.domain.modification.DestinationModification;
 import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
+import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
+import co.edu.icesi.sgiv.dto.type.DestinationTypeDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -24,7 +26,7 @@ public class DestinationDTO {
     private DestinationTypeDTO type;
 
 
-    public DestinationDTO(String code, String name, Date creationDate, String status, String type) {
+    public DestinationDTO(String code, String name, Date creationDate, DestinationStatusDTO status, DestinationTypeDTO type) {
         this.code = code;
         this.name = name;
         this.creationDate = creationDate;

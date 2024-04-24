@@ -12,7 +12,7 @@ public interface PlanModificationRepository extends JpaRepository<PlanModificati
 
     public List<PlanModification> findAll();
 
-    @Query("select pm from PlanModification pm join User u on pm.user = u where u.id = (?1)")
+    @Query("select pm from PlanModificationDTO pm join User u on pm.user = u where u.id = (?1)")
     public List<PlanModification> findByUser(Long uID);
 
 }

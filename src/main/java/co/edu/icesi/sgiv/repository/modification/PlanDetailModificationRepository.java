@@ -13,7 +13,7 @@ public interface PlanDetailModificationRepository extends JpaRepository<PlanDeta
 
     public List<PlanDetailModification> findAll();
 
-    @Query("select pdm from PlanDetailModification pdm join User u on pdm.user = u where u.id = (?1)")
+    @Query("select pdm from PlanDetailModificationDTO pdm join User u on pdm.user = u where u.id = (?1)")
     public List<PlanDetailModification> findByUser(Long uID);
 
 }
