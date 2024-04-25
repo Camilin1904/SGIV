@@ -2,7 +2,6 @@ package co.edu.icesi.sgiv.dto.entity;
 
 import lombok.Getter;
 
-import java.security.PrivateKey;
 import java.sql.Date;
 
 @Getter

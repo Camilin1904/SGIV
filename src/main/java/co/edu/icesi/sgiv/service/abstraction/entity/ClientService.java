@@ -1,17 +1,9 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Client;
-import co.edu.icesi.sgiv.domain.entity.Plan;
-import co.edu.icesi.sgiv.domain.entity.User;
-import co.edu.icesi.sgiv.domain.modification.ClientModification;
 import co.edu.icesi.sgiv.domain.status.ClientStatus;
-import co.edu.icesi.sgiv.domain.type.IdentificationType;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import org.springframework.data.jpa.repository.Query;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 

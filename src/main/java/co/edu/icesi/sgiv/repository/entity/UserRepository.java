@@ -14,12 +14,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public List<User> findAll();
 
 
-    @Query("select u from User u join UserTypeDTO ut on u.type = ut where ut.id = (?1)")
+    @Query("select u from User u join UserType ut on u.type = ut where ut.id = (?1)")
     public List<User> findAllByType(Long type);
 
-    @Query("select us from UserStatusDTO us join User u where u.id = ?1")
+    @Query("select us from UserStatus us join User u where u.id = ?1")
     public Optional<UserStatus> getStatus(Long uID);
 
-    @Query("select u from User u join UserTypeDTO ut where ut = ?1")
+    @Query("select u from User u join UserType ut where ut = ?1")
     public List<User> getByUserType(UserType ut);
 }

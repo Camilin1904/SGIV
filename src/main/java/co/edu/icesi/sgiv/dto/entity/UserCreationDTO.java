@@ -1,6 +1,5 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.domain.type.UserType;
 import co.edu.icesi.sgiv.dto.status.UserStatusDTO;
 import co.edu.icesi.sgiv.dto.type.UserTypeDTO;
 

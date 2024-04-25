@@ -1,11 +1,6 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.domain.entity.User;
-import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
 import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 import java.sql.Date;
 

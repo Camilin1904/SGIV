@@ -1,17 +1,9 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.domain.entity.PlanDetailDestination;
-import co.edu.icesi.sgiv.domain.entity.User;
-import co.edu.icesi.sgiv.domain.modification.DestinationModification;
-import co.edu.icesi.sgiv.domain.status.DestinationStatus;
-import co.edu.icesi.sgiv.domain.type.DestinationType;
 import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.dto.type.DestinationTypeDTO;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 
 import java.sql.Date;
-import java.util.List;
 
 public class DestinationDTO {
 

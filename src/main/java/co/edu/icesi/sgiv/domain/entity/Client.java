@@ -6,16 +6,12 @@ import co.edu.icesi.sgiv.domain.type.IdentificationType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.sql.Date;
 import java.util.List;
 
 @Data
 @Entity
-@Getter
-@Setter
 @Table(name = "client")
 public class Client {
     @Id
@@ -87,4 +83,5 @@ public class Client {
         this.user = user;
         this.status = status;
     }
+
 }

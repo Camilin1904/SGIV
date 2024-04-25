@@ -1,11 +1,6 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.domain.entity.Client;
-import co.edu.icesi.sgiv.domain.entity.PlanDetail;
-import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
-import co.edu.icesi.sgiv.domain.status.PlanStatus;
 import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;
-import jakarta.persistence.Column;
 import lombok.Getter;
 
 import java.sql.Date;

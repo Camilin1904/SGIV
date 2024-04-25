@@ -3,13 +3,8 @@ package co.edu.icesi.sgiv.mapper.entity;
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.dto.entity.DestinationCreationDTO;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
-import co.edu.icesi.sgiv.repository.entity.UserRepository;
-import co.edu.icesi.sgiv.repository.status.DestinationStatusRepository;
-import co.edu.icesi.sgiv.repository.type.DestinationTypeRepository;
 import org.mapstruct.Mapper;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.sql.Date;
 import java.util.List;
 
 @Mapper
