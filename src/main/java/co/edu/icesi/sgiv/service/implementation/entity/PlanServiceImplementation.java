@@ -1,0 +1,149 @@
+package co.edu.icesi.sgiv.service.implementation.entity;
+
+import co.edu.icesi.sgiv.domain.entity.Client;
+import co.edu.icesi.sgiv.domain.entity.Destination;
+import co.edu.icesi.sgiv.domain.entity.Plan;
+import co.edu.icesi.sgiv.domain.entity.PlanDetail;
+import co.edu.icesi.sgiv.domain.status.PlanStatus;
+import co.edu.icesi.sgiv.dto.entity.ClientDTO;
+import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
+import co.edu.icesi.sgiv.dto.entity.PlanDTO;
+import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
+import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
+import co.edu.icesi.sgiv.mapper.entity.DestinationMapper;
+import co.edu.icesi.sgiv.mapper.entity.PlanMapper;
+import co.edu.icesi.sgiv.mapper.status.PlanStatusMapper;
+import co.edu.icesi.sgiv.repository.entity.ClientRepository;
+import co.edu.icesi.sgiv.repository.entity.DestinationRepository;
+import co.edu.icesi.sgiv.repository.entity.PlanDetailRepository;
+import co.edu.icesi.sgiv.repository.entity.PlanRepository;
+import co.edu.icesi.sgiv.service.abstraction.entity.ClientService;
+import co.edu.icesi.sgiv.service.abstraction.entity.PlanService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.sql.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class PlanServiceImplementation implements PlanService {
+    
+    @Autowired
+    PlanMapper planMapper;
+    @Autowired
+    PlanRepository planRepository;
+    @Autowired
+    ClientRepository clientRepository;
+    @Autowired
+    PlanDetailRepository planDetailRepository;
+    @Autowired
+    DestinationMapper destinationMapper;
+    @Autowired
+    PlanStatusMapper planStatusMapper;
+
+
+    @Override
+    public Optional<PlanDTO> findByID(Long aLong) {
+        Optional<Plan> plan = planRepository.findById(aLong);
+        if(plan.isPresent())
+            return Optional.of(planMapper.toDTO(plan.get()));
+        else
+            return Optional.empty();
+    }
+
+    @Override
+    public PlanDTO save(PlanDTO entity) throws Exception {
+        if (planRepository.findById(entity.getId()).isPresent())
+            throw new Exception("The entity already exists.");
+        else{
+            Plan plan = planMapper.toEntity(entity);
+            return planMapper.toDTO(planRepository.save(plan));
+        }
+
+    }
+
+    @Override
+    public PlanDTO update(PlanDTO entity) throws Exception {
+        if (planRepository.findById(entity.getId()).isEmpty())
+            throw new Exception("The entity does not exist.");
+        else{
+            Plan plan = planMapper.toEntity(entity);
+            return planMapper.toDTO(planRepository.save(plan));
+        }
+    }
+
+    @Override
+    public void delete(PlanDTO entity) throws Exception {
+        if (planRepository.findById(entity.getId()).isEmpty())
+            throw new Exception("The entity does not exist.");
+        else{
+            Plan plan = planMapper.toEntity(entity);
+            planRepository.delete(plan);
+        }
+    }
+
+    @Override
+    public void deleteById(Long aLong) throws Exception {
+        planRepository.delete(planRepository.findById(aLong).get());
+    }
+
+    @Override
+    public void validate(PlanDTO entity) throws Exception {
+
+    }
+
+    @Override
+    public long count() {
+        return planRepository.count();
+    }
+
+    @Override
+    public List<PlanDTO> findAll() {
+        List<Plan> dest = planRepository.findAll();
+        return dest.stream().map(planMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PlanDTO> findPlanByClient(ClientDTO clientDTO) {
+        Client client = clientRepository.findById(clientDTO.getId()).get();
+        List<Plan> dest = planRepository.findPlanByClient(client);
+        return dest.stream().map(planMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PlanDTO> findPlanByStartDateBetween(Date beginning, Date end) {
+        List<Plan> dest = planRepository.findPlanByStartDateBetween(beginning,end);
+        return dest.stream().map(planMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PlanDTO> findPlanByPlanDetail(PlanDetailDTO planDetailDTO) {
+        PlanDetail planDetail = planDetailRepository.findById(planDetailDTO.getId()).get();
+        List<Plan> dest = planRepository.findPlanByPlanDetail(planDetail);
+        return dest.stream().map(planMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PlanDTO> findByValue(Double value) {
+        List<Plan> dest = planRepository.findByValue(value);
+        return dest.stream().map(planMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<DestinationDTO> getDestinations(Long pID) {
+        List<Destination> dest = planRepository.getDestinations(pID);
+
+        return dest.stream().map(destinationMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<PlanStatusDTO> getStatus(Long pID) {
+        Optional<PlanStatus> planStatus = planRepository.getStatus(pID);
+        if (planStatus.isEmpty())
+            return Optional.empty();
+        else
+            return Optional.of(planStatusMapper.toDTO(planStatus.get()));
+
+    }
+
+}

@@ -2,28 +2,32 @@ package co.edu.icesi.sgiv.service.abstraction.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.domain.entity.Destination;
-import co.edu.icesi.sgiv.domain.entity.Plan;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
 import co.edu.icesi.sgiv.domain.status.PlanStatus;
+import co.edu.icesi.sgiv.dto.entity.ClientDTO;
+import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
+import co.edu.icesi.sgiv.dto.entity.PlanDTO;
+import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
+import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
 
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
-public interface PlanService extends GenericService<Plan, Long> {
+public interface PlanService extends GenericService<PlanDTO, Long> {
 
-    public List<Plan> findAll();
+    public List<PlanDTO> findAll();
 
-    public List<Plan> findPlanByClient(Client client);
+    public List<PlanDTO> findPlanByClient(ClientDTO clientSTO);
 
-    public List<Plan> findPlanByStartDateBetween(Date beginning, Date end);
+    public List<PlanDTO> findPlanByStartDateBetween(Date beginning, Date end);
 
-    public List<Plan> findPlanByPlanDetail(PlanDetail planDetail);
+    public List<PlanDTO> findPlanByPlanDetail(PlanDetailDTO planDetailDTO);
 
-    public List<Plan> findByValue(Double value);
+    public List<PlanDTO> findByValue(Double value);
 
-    public List<Destination> getDestinations(Long pID);
+    public List<DestinationDTO> getDestinations(Long pID);
 
-    public Optional<PlanStatus> getStatus(Long pID);
+    public Optional<PlanStatusDTO> getStatus(Long pID);
 }

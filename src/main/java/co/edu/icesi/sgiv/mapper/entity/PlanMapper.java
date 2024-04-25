@@ -1,17 +1,16 @@
 package co.edu.icesi.sgiv.mapper.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Plan;
-import co.edu.icesi.sgiv.dto.entity.PlanCreationDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDTO;
+import co.edu.icesi.sgiv.mapper.status.PlanStatusMapper;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-import java.util.List;
-
-@Mapper
+@Mapper(uses = {ClientMapper.class, PlanDetailMapper.class, PlanStatusMapper.class, UserMapper.class})
 public interface PlanMapper {
-    public Plan toEntity(PlanCreationDTO planCreationDTO);
+
+    PlanMapper INSTANCE = Mappers.getMapper(PlanMapper.class);
+    public Plan toEntity(PlanDTO planCreationDTO);
     public PlanDTO toDTO(Plan plan);
-    public List<Plan> toEntities(List<PlanCreationDTO> planCreationDTOs);
-    public List<PlanDTO> toDTOs(List<Plan> plans);
 
 }

@@ -2,11 +2,15 @@ package co.edu.icesi.sgiv.dto.entity;
 
 import co.edu.icesi.sgiv.dto.status.UserStatusDTO;
 import co.edu.icesi.sgiv.dto.type.UserTypeDTO;
+import lombok.Getter;
 
 import java.sql.Date;
 import java.util.List;
 
+@Getter
 public class UserDTO {
+
+    private Long id;
 
     private String username;
 

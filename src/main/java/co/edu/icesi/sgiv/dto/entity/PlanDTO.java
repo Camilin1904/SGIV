@@ -1,6 +1,8 @@
 package co.edu.icesi.sgiv.dto.entity;
 
+import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;
+import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
 import lombok.Getter;
 
 import java.sql.Date;
@@ -8,6 +10,7 @@ import java.sql.Date;
 @Getter
 public class PlanDTO {
 
+    private Long id;
     private String code;
 
     private String requestDescription;
@@ -30,11 +33,13 @@ public class PlanDTO {
 
     private ClientDTO client;
 
-    private PlanDetailStatusDTO status;
+    private UserDTO user;
+
+    private PlanStatusDTO status;
 
 
 
-    public PlanDTO(String code, String requestDescription, String name, Integer numberOfPeople, Date requestDate, Date startDate, Date endDate, Double totalValue, Date creationDate, PlanDetailStatusDTO status, PlanDetailDTO planDetail, ClientDTO client) {
+    public PlanDTO(String code, String requestDescription, String name, Integer numberOfPeople, Date requestDate, Date startDate, Date endDate, Double totalValue, Date creationDate, UserDTO user, PlanStatusDTO status, PlanDetailDTO planDetail, ClientDTO client) {
         this.code = code;
         this.requestDescription = requestDescription;
         this.name = name;
@@ -44,6 +49,7 @@ public class PlanDTO {
         this.endDate = endDate;
         this.totalValue = totalValue;
         this.creationDate = creationDate;
+        this.user = user;
         this.status = status;
         this.client = client;
         this.planDetail = planDetail;
