@@ -2,12 +2,16 @@ package co.edu.icesi.sgiv.dto.entity;
 
 import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Date;
 
 @Getter
+@Setter
+@NoArgsConstructor
 public class PlanDetailDTO {
-
+    @Getter
     private Long id;
     private String food;
 
@@ -29,16 +33,7 @@ public class PlanDetailDTO {
 
     private PlanDetailStatusDTO status;
 
-    public PlanDetailDTO(String food, String accommodation, String transportation, String transfers, Double value, Integer numberOfNights, Integer numberOfDays, Date creationDate, UserDTO user, PlanDetailStatusDTO status) {
-        this.food = food;
-        this.accommodation = accommodation;
-        this.transportation = transportation;
-        this.transfers = transfers;
-        this.value = value;
-        this.numberOfNights = numberOfNights;
-        this.numberOfDays = numberOfDays;
-        this.creationDate = creationDate;
-        this.user = user;
-        this.status = status;
+    public Long getId() {
+        return id;
     }
 }

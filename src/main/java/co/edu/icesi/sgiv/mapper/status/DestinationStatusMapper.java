@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper(uses = DestinationMapper.class)
 public interface DestinationStatusMapper {
 
-    DestinationMapper INSTANCE = Mappers.getMapper(DestinationMapper.class);
+    DestinationStatusMapper INSTANCE = Mappers.getMapper(DestinationStatusMapper.class);
 
     public DestinationStatusDTO toDTO(DestinationStatus destinationStatus);
 }

@@ -12,24 +12,22 @@ import co.edu.icesi.sgiv.mapper.status.PlanDetailStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.PlanDetailRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Service
 public class PlanDetailServicesImplementation implements PlanDetailService {
     
     @Autowired
     PlanDetailRepository planDetailRepository;
-    
-    @Autowired
-    PlanDetailMapper planDetailMapper;
 
-    @Autowired
-    DestinationMapper destinationMapper;
+    PlanDetailMapper planDetailMapper = PlanDetailMapper.INSTANCE;
 
-    @Autowired
-    PlanDetailStatusMapper planDetailStatusMapper;
+    DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
+
+    PlanDetailStatusMapper planDetailStatusMapper = PlanDetailStatusMapper.INSTANCE;
     
     
     @Override

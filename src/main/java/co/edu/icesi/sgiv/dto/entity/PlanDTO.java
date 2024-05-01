@@ -4,13 +4,18 @@ import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;
 import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Date;
 
 @Getter
+@Setter
+@NoArgsConstructor
 public class PlanDTO {
-
+    @Getter
     private Long id;
+
     private String code;
 
     private String requestDescription;
@@ -37,21 +42,8 @@ public class PlanDTO {
 
     private PlanStatusDTO status;
 
-
-
-    public PlanDTO(String code, String requestDescription, String name, Integer numberOfPeople, Date requestDate, Date startDate, Date endDate, Double totalValue, Date creationDate, UserDTO user, PlanStatusDTO status, PlanDetailDTO planDetail, ClientDTO client) {
-        this.code = code;
-        this.requestDescription = requestDescription;
-        this.name = name;
-        this.numberOfPeople = numberOfPeople;
-        this.requestDate = requestDate;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.totalValue = totalValue;
-        this.creationDate = creationDate;
-        this.user = user;
-        this.status = status;
-        this.client = client;
-        this.planDetail = planDetail;
+    public Long getId() {
+        return id;
     }
+
 }

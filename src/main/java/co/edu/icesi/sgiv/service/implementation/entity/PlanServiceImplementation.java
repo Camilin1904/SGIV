@@ -14,32 +14,31 @@ import co.edu.icesi.sgiv.mapper.entity.DestinationMapper;
 import co.edu.icesi.sgiv.mapper.entity.PlanMapper;
 import co.edu.icesi.sgiv.mapper.status.PlanStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.ClientRepository;
-import co.edu.icesi.sgiv.repository.entity.DestinationRepository;
 import co.edu.icesi.sgiv.repository.entity.PlanDetailRepository;
 import co.edu.icesi.sgiv.repository.entity.PlanRepository;
-import co.edu.icesi.sgiv.service.abstraction.entity.ClientService;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Service
 public class PlanServiceImplementation implements PlanService {
     
-    @Autowired
-    PlanMapper planMapper;
+
+    PlanMapper planMapper = PlanMapper.INSTANCE;
     @Autowired
     PlanRepository planRepository;
     @Autowired
     ClientRepository clientRepository;
     @Autowired
     PlanDetailRepository planDetailRepository;
-    @Autowired
-    DestinationMapper destinationMapper;
-    @Autowired
-    PlanStatusMapper planStatusMapper;
+
+    DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
+
+    PlanStatusMapper planStatusMapper = PlanStatusMapper.INSTANCE;
 
 
     @Override

@@ -5,6 +5,7 @@ import co.edu.icesi.sgiv.domain.entity.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
@@ -13,6 +14,7 @@ import java.sql.Date;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "plan_detail_modification")
 public class PlanDetailModification {
     @Id

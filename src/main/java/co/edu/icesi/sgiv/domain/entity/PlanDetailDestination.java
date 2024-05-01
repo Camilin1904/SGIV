@@ -3,12 +3,14 @@ package co.edu.icesi.sgiv.domain.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name="plan_detail_destination")
 public class PlanDetailDestination {
     @Id

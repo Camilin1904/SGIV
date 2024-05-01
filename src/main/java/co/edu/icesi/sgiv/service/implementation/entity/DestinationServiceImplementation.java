@@ -1,10 +1,9 @@
 package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Destination;
-import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
-import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
+import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.DestinationMapper;
@@ -12,21 +11,20 @@ import co.edu.icesi.sgiv.mapper.status.DestinationStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.DestinationRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Service
 public class DestinationServiceImplementation implements DestinationService {
 
     @Autowired
     private DestinationRepository destinationRepository;
 
-    @Autowired
-    private DestinationMapper destinationMapper;
+    private final DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
 
-    @Autowired
-    private DestinationStatusMapper destinationStatusMapper;
+    private final DestinationStatusMapper destinationStatusMapper = DestinationStatusMapper.INSTANCE;
 
     @Override
     public Optional<DestinationDTO> findByID(Long aLong) {

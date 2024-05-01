@@ -5,10 +5,11 @@ import co.edu.icesi.sgiv.domain.status.ClientStatus;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.status.ClientStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public interface ClientService extends GenericService<ClientDTO, Long> {
 
 

@@ -4,12 +4,16 @@ import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.dto.type.DestinationTypeDTO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Date;
 
 @Getter
+@Setter
+@NoArgsConstructor
 public class DestinationDTO {
-
+    @Getter
     private Long id;
     private String code;
 
@@ -23,12 +27,7 @@ public class DestinationDTO {
     private DestinationTypeDTO type;
 
 
-    public DestinationDTO(String code, String name, Date creationDate, UserDTO user, DestinationStatusDTO status, DestinationTypeDTO type) {
-        this.code = code;
-        this.name = name;
-        this.creationDate = creationDate;
-        this.user = user;
-        this.status = status;
-        this.type = type;
+    public Long getId() {
+        return id;
     }
 }

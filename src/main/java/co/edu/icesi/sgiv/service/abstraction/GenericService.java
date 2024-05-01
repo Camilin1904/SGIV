@@ -1,5 +1,7 @@
 package co.edu.icesi.sgiv.service.abstraction;
 
+import co.edu.icesi.sgiv.dto.entity.ClientDTO;
+
 import java.util.List;
 import java.util.Optional;
 

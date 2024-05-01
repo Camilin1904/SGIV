@@ -5,10 +5,11 @@ import co.edu.icesi.sgiv.domain.type.DestinationType;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public interface DestinationService extends GenericService<DestinationDTO, Long> {
     public List<DestinationDTO> findAll();
 

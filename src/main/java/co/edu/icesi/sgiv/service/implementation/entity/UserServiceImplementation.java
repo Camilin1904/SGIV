@@ -2,7 +2,6 @@ package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.domain.status.UserStatus;
-import co.edu.icesi.sgiv.domain.type.UserType;
 import co.edu.icesi.sgiv.dto.entity.UserDTO;
 import co.edu.icesi.sgiv.dto.status.UserStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.UserMapper;
@@ -10,19 +9,20 @@ import co.edu.icesi.sgiv.mapper.status.UserStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.UserRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+@Service
 public class UserServiceImplementation implements UserService {
 
-    @Autowired
-    UserMapper userMapper;
+
+    UserMapper userMapper = UserMapper.INSTANCE;
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    UserStatusMapper userStatusMapper;
+
+    UserStatusMapper userStatusMapper = UserStatusMapper.INSTANCE;
     
     @Override
     public Optional<UserDTO> findByID(Long aLong) {

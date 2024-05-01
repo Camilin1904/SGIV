@@ -13,13 +13,8 @@ import org.mapstruct.factory.Mappers;
 public interface ClientMapper {
 
     ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
-    @Mapping(target="name", source = ".", qualifiedByName = "getFullName")
-    public ClientDTO toDTO(Client client);
 
-    @Named("getFullName")
-    default String getFullName(Client client){
-        return client.getFirstName() + client.getLastName() + client.getSecondLastName();
-    }
+    public ClientDTO toDTO(Client client);
 
     public Client toEntity(ClientDTO creationDTO);
 

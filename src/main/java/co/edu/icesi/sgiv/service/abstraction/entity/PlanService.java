@@ -10,11 +10,12 @@ import co.edu.icesi.sgiv.dto.entity.PlanDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
+import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public interface PlanService extends GenericService<PlanDTO, Long> {
 
     public List<PlanDTO> findAll();
