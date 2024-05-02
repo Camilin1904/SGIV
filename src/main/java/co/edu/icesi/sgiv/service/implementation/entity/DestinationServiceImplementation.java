@@ -3,7 +3,6 @@ package co.edu.icesi.sgiv.service.implementation.entity;
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
-import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.DestinationMapper;

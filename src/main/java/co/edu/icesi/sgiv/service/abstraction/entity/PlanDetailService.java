@@ -1,7 +1,5 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
-import co.edu.icesi.sgiv.domain.entity.Destination;
-import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;

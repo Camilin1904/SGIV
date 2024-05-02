@@ -3,18 +3,10 @@ package co.edu.icesi.sgiv.domain.type;
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
-@Data
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @Table(name = "destination_type")
 public class DestinationType {
     @Id
@@ -31,4 +23,35 @@ public class DestinationType {
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Destination> destinations;
+
+    public DestinationType() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Destination> getDestinations() {
+        return destinations;
+    }
+
+    public void setDestinations(List<Destination> destinations) {
+        this.destinations = destinations;
+    }
 }

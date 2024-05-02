@@ -3,18 +3,11 @@ package co.edu.icesi.sgiv.domain.type;
 import co.edu.icesi.sgiv.domain.entity.Client;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
-@Data
+
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @Table(name = "identification_type")
 public class IdentificationType {
     @Id
@@ -31,4 +24,35 @@ public class IdentificationType {
     @OneToMany(mappedBy = "identificationType", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Client> clients;
+
+    public IdentificationType() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
 }

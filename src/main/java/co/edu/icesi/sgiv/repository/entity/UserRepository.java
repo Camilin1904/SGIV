@@ -12,8 +12,8 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     public List<User> findAll();
-
-
+    @Query("select u from User u where u.username = (?1)")
+    public Optional<User> findByUsername(String username);
     @Query("select u from User u join UserType ut on u.type = ut where ut.id = (?1)")
     public List<User> findAllByType(Long type);
 

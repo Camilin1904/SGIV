@@ -1,19 +1,11 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.dto.type.DestinationTypeDTO;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Date;
 
-@Getter
-@Setter
-@NoArgsConstructor
 public class DestinationDTO {
-    @Getter
     private Long id;
     private String code;
 
@@ -29,5 +21,29 @@ public class DestinationDTO {
 
     public Long getId() {
         return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public DestinationStatusDTO getStatus() {
+        return status;
+    }
+
+    public DestinationTypeDTO getType() {
+        return type;
     }
 }

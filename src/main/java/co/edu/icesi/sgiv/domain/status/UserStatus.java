@@ -3,18 +3,10 @@ package co.edu.icesi.sgiv.domain.status;
 import co.edu.icesi.sgiv.domain.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
-@Data
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @Table(name = "user_status")
 public class UserStatus {
     @Id
@@ -28,4 +20,28 @@ public class UserStatus {
     @OneToMany(mappedBy = "status", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<User> users;
+
+    public UserStatus() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }

@@ -5,19 +5,11 @@ import co.edu.icesi.sgiv.domain.status.ClientStatus;
 import co.edu.icesi.sgiv.domain.type.IdentificationType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Date;
 import java.util.List;
 
-@Data
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @Table(name = "client")
 public class Client {
     @Id
@@ -90,4 +82,132 @@ public class Client {
         this.status = status;
     }
 
+    public Client() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public String getIdentificationNumber() {
+        return identificationNumber;
+    }
+
+    public void setIdentificationNumber(String identificationNumber) {
+        this.identificationNumber = identificationNumber;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getSecondLastName() {
+        return secondLastName;
+    }
+
+    public void setSecondLastName(String secondLastName) {
+        this.secondLastName = secondLastName;
+    }
+
+    public String getPhone1() {
+        return phone1;
+    }
+
+    public void setPhone1(String phone1) {
+        this.phone1 = phone1;
+    }
+
+    public String getPhone2() {
+        return phone2;
+    }
+
+    public void setPhone2(String phone2) {
+        this.phone2 = phone2;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public ClientStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ClientStatus status) {
+        this.status = status;
+    }
+
+    public IdentificationType getIdentificationType() {
+        return identificationType;
+    }
+
+    public void setIdentificationType(IdentificationType identificationType) {
+        this.identificationType = identificationType;
+    }
+
+    public List<ClientModification> getModifications() {
+        return modifications;
+    }
+
+    public void setModifications(List<ClientModification> modifications) {
+        this.modifications = modifications;
+    }
+
+    public List<Plan> getRequestedPlans() {
+        return requestedPlans;
+    }
+
+    public void setRequestedPlans(List<Plan> requestedPlans) {
+        this.requestedPlans = requestedPlans;
+    }
 }

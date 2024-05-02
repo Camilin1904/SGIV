@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
-import co.edu.icesi.sgiv.domain.status.UserStatus;
-import co.edu.icesi.sgiv.domain.type.UserType;
+import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.dto.entity.UserDTO;
 import co.edu.icesi.sgiv.dto.status.UserStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
@@ -14,6 +13,8 @@ public interface UserService extends GenericService<UserDTO, Long> {
     public List<UserDTO> findAll();
 
     public List<UserDTO> findAllByType(Long type);
+
+    public Optional<User> findByUsername(String username);
 
     public Optional<UserStatusDTO> getStatus(Long uID);
 }

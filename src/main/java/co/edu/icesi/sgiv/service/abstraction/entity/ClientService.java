@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
 
-import co.edu.icesi.sgiv.domain.status.ClientStatus;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.status.ClientStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;

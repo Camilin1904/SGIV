@@ -1,16 +1,8 @@
 package co.edu.icesi.sgiv.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Data
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @Table(name="plan_detail_destination")
 public class PlanDetailDestination {
     @Id
@@ -27,4 +19,36 @@ public class PlanDetailDestination {
     @ManyToOne
     @JoinColumn(name = "destination_id", nullable = false)
     private Destination destination;
+
+    public PlanDetailDestination() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public PlanDetail getPlanDetail() {
+        return planDetail;
+    }
+
+    public void setPlanDetail(PlanDetail planDetail) {
+        this.planDetail = planDetail;
+    }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
 }

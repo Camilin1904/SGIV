@@ -4,19 +4,11 @@ import co.edu.icesi.sgiv.domain.modification.PlanDetailModification;
 import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Date;
 import java.util.List;
 
-@Data
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @Table(name="plan_detail")
 public class PlanDetail {
 
@@ -68,4 +60,116 @@ public class PlanDetail {
     @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PlanDetailDestination> planDetailDestinations;
+
+    public PlanDetail() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public String getFood() {
+        return food;
+    }
+
+    public void setFood(String food) {
+        this.food = food;
+    }
+
+    public String getAccommodation() {
+        return accommodation;
+    }
+
+    public void setAccommodation(String accommodation) {
+        this.accommodation = accommodation;
+    }
+
+    public String getTransportation() {
+        return transportation;
+    }
+
+    public void setTransportation(String transportation) {
+        this.transportation = transportation;
+    }
+
+    public String getTransfers() {
+        return transfers;
+    }
+
+    public void setTransfers(String transfers) {
+        this.transfers = transfers;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
+
+    public Integer getNumberOfNights() {
+        return numberOfNights;
+    }
+
+    public void setNumberOfNights(Integer numberOfNights) {
+        this.numberOfNights = numberOfNights;
+    }
+
+    public Integer getNumberOfDays() {
+        return numberOfDays;
+    }
+
+    public void setNumberOfDays(Integer numberOfDays) {
+        this.numberOfDays = numberOfDays;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public PlanDetailStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(PlanDetailStatus status) {
+        this.status = status;
+    }
+
+    public List<PlanDetailModification> getModifications() {
+        return modifications;
+    }
+
+    public void setModifications(List<PlanDetailModification> modifications) {
+        this.modifications = modifications;
+    }
+
+    public List<Plan> getPlans() {
+        return plans;
+    }
+
+    public void setPlans(List<Plan> plans) {
+        this.plans = plans;
+    }
+
+    public List<PlanDetailDestination> getPlanDetailDestinations() {
+        return planDetailDestinations;
+    }
+
+    public void setPlanDetailDestinations(List<PlanDetailDestination> planDetailDestinations) {
+        this.planDetailDestinations = planDetailDestinations;
+    }
 }

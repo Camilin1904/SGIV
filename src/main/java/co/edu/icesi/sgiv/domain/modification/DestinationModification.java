@@ -3,18 +3,11 @@ package co.edu.icesi.sgiv.domain.modification;
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.User;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Date;
 
-@Data
+
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @Table(name = "destination_modification")
 public class DestinationModification {
     @Id
@@ -32,4 +25,35 @@ public class DestinationModification {
     @ManyToOne
     @JoinColumn(name = "modified_destination_id", nullable = false)
     private Destination destination;
+
+    public DestinationModification() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
 }

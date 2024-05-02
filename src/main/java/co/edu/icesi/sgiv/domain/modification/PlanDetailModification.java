@@ -3,18 +3,10 @@ package co.edu.icesi.sgiv.domain.modification;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
 import co.edu.icesi.sgiv.domain.entity.User;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.sql.Date;
 
-@Data
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 @Table(name = "plan_detail_modification")
 public class PlanDetailModification {
     @Id
@@ -32,4 +24,35 @@ public class PlanDetailModification {
     @ManyToOne
     @JoinColumn(name = "modified_plan_detail_id", nullable = false)
     private PlanDetail planDetail;
+
+    public PlanDetailModification() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public PlanDetail getPlanDetail() {
+        return planDetail;
+    }
+
+    public void setPlanDetail(PlanDetail planDetail) {
+        this.planDetail = planDetail;
+    }
 }

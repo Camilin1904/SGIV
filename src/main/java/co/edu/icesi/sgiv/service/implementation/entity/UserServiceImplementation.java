@@ -92,6 +92,11 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
     public Optional<UserStatusDTO> getStatus(Long uID) {
         Optional<UserStatus> userStatus = userRepository.getStatus(uID);
         if (userStatus.isEmpty())
