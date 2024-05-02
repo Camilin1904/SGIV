@@ -27,7 +27,7 @@ public class UserController {
         if(oUser.isPresent()){
             User user = oUser.get();
             if(Objects.equals(user.getPassword(), password)){
-                return ResponseEntity.status(200).body(user.getId()+"");
+                return ResponseEntity.status(200).body(user.getUsername());
             }
             return ResponseEntity.status(400).body("Contraseña o nombre de usuario incorrectos");
         }
