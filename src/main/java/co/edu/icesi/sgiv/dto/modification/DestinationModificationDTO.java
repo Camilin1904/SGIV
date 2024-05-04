@@ -2,10 +2,11 @@ package co.edu.icesi.sgiv.dto.modification;
 
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.entity.UserDTO;
+import lombok.Getter;
 
 import java.sql.Date;
 
-
+@Getter
 public class DestinationModificationDTO {
 
 
@@ -15,15 +16,4 @@ public class DestinationModificationDTO {
 
     private DestinationDTO destination;
 
-    public Date getDate() {
-        return date;
-    }
-
-    public UserDTO getUser() {
-        return user;
-    }
-
-    public DestinationDTO getDestination() {
-        return destination;
-    }
 }

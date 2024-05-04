@@ -9,13 +9,24 @@ import co.edu.icesi.sgiv.domain.status.UserStatus;
 import co.edu.icesi.sgiv.domain.type.UserType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Date;
+import java.util.Collection;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "user")
-public class User{
+public class User implements UserDetails {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
@@ -73,122 +84,28 @@ public class User{
     @JsonIgnore
     private List<PlanDetailModification> planDetailModifications;
 
-    public User() {
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public String getUsername() {
-        return username;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public UserStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
-
-    public UserType getType() {
-        return type;
-    }
-
-    public void setType(UserType type) {
-        this.type = type;
-    }
-
-    public List<Client> getCreatedClients() {
-        return createdClients;
-    }
-
-    public void setCreatedClients(List<Client> createdClients) {
-        this.createdClients = createdClients;
-    }
-
-    public List<PlanDetail> getCreatedPlanDetails() {
-        return createdPlanDetails;
-    }
-
-    public void setCreatedPlanDetails(List<PlanDetail> createdPlanDetails) {
-        this.createdPlanDetails = createdPlanDetails;
-    }
-
-    public List<Destination> getCreatedDestinations() {
-        return createdDestinations;
-    }
-
-    public void setCreatedDestinations(List<Destination> createdDestinations) {
-        this.createdDestinations = createdDestinations;
-    }
-
-    public List<Plan> getCreatedPlans() {
-        return createdPlans;
-    }
-
-    public void setCreatedPlans(List<Plan> createdPlans) {
-        this.createdPlans = createdPlans;
-    }
-
-    public List<ClientModification> getClientModifications() {
-        return clientModifications;
-    }
-
-    public void setClientModifications(List<ClientModification> clientModifications) {
-        this.clientModifications = clientModifications;
-    }
-
-    public List<DestinationModification> getDestinationModifications() {
-        return destinationModifications;
-    }
-
-    public void setDestinationModifications(List<DestinationModification> destinationModifications) {
-        this.destinationModifications = destinationModifications;
-    }
-
-    public List<PlanModification> getPlanModifications() {
-        return planModifications;
-    }
-
-    public void setPlanModifications(List<PlanModification> planModifications) {
-        this.planModifications = planModifications;
-    }
-
-    public List<PlanDetailModification> getPlanDetailModifications() {
-        return planDetailModifications;
-    }
-
-    public void setPlanDetailModifications(List<PlanDetailModification> planDetailModifications) {
-        this.planDetailModifications = planDetailModifications;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

@@ -13,4 +13,5 @@ public interface UserStatusMapper {
 
     public abstract UserStatusDTO toDTO(UserStatus userStatus);
 
+
 }

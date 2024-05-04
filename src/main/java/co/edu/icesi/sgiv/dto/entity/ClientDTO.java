@@ -1,13 +1,13 @@
 package co.edu.icesi.sgiv.dto.entity;
 
 import co.edu.icesi.sgiv.dto.status.ClientStatusDTO;
+import lombok.Getter;
 
 import java.sql.Date;
 import java.util.List;
 
-
+@Getter
 public class ClientDTO {
-
     private Long id;
     private String identificationNumber;
     private String firstName;
@@ -21,56 +21,4 @@ public class ClientDTO {
     private UserDTO user;
     private ClientStatusDTO status;
     private List<PlanDTO> requestedPlans;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getIdentificationNumber() {
-        return identificationNumber;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getSecondLastName() {
-        return secondLastName;
-    }
-
-    public String getPhone1() {
-        return phone1;
-    }
-
-    public String getPhone2() {
-        return phone2;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public UserDTO getUser() {
-        return user;
-    }
-
-    public ClientStatusDTO getStatus() {
-        return status;
-    }
-
-    public List<PlanDTO> getRequestedPlans() {
-        return requestedPlans;
-    }
 }

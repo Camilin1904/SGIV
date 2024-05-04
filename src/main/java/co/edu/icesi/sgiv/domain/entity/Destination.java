@@ -5,13 +5,21 @@ import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-
+@Table(name = "destination")
 public class Destination {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
@@ -55,76 +63,4 @@ public class Destination {
         this.type = type;
     }
 
-    public Destination() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public DestinationStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(DestinationStatus status) {
-        this.status = status;
-    }
-
-    public DestinationType getType() {
-        return type;
-    }
-
-    public void setType(DestinationType type) {
-        this.type = type;
-    }
-
-    public List<DestinationModification> getModifications() {
-        return modifications;
-    }
-
-    public void setModifications(List<DestinationModification> modifications) {
-        this.modifications = modifications;
-    }
-
-    public List<PlanDetailDestination> getPlanDetailDestinations() {
-        return planDetailDestinations;
-    }
-
-    public void setPlanDetailDestinations(List<PlanDetailDestination> planDetailDestinations) {
-        this.planDetailDestinations = planDetailDestinations;
-    }
 }
