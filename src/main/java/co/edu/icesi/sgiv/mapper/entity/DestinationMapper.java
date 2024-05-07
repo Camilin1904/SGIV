@@ -7,7 +7,7 @@ import co.edu.icesi.sgiv.mapper.type.DestinationTypeMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {DestinationStatusMapper.class, DestinationTypeMapper.class, UserMapper.class})
+@Mapper(uses = {DestinationStatusMapper.class, DestinationTypeMapper.class, UserMapper.class, DestinationMapper.class})
 public interface DestinationMapper {
 
     DestinationMapper INSTANCE = Mappers.getMapper(DestinationMapper.class);

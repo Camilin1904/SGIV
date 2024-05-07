@@ -2,11 +2,15 @@ package co.edu.icesi.sgiv.dto.entity;
 
 import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.dto.type.DestinationTypeDTO;
-import lombok.Getter;
+import lombok.*;
 
 import java.sql.Date;
 
 @Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class DestinationDTO {
     private Long id;
     private String code;

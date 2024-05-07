@@ -2,12 +2,16 @@ package co.edu.icesi.sgiv.dto.entity;
 
 import co.edu.icesi.sgiv.dto.status.UserStatusDTO;
 import co.edu.icesi.sgiv.dto.type.UserTypeDTO;
-import lombok.Getter;
+import lombok.*;
 
 import java.sql.Date;
 import java.util.List;
 
 @Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
     private Long id;
 
@@ -21,12 +25,5 @@ public class UserDTO {
 
     private UserTypeDTO type;
 
-    private List<ClientDTO> createdClients;
-
-    private List<PlanDetailDTO> createdPlanDetails;
-
-    private List<DestinationDTO> createdDestinations;
-
-    private List<PlanDTO> createdPlans;
 
 }

@@ -1,9 +1,15 @@
 package co.edu.icesi.sgiv.dto.type;
 
-import lombok.Getter;
+import lombok.*;
 
 @Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class IdentificationTypeDTO {
+
+    private Long id;
 
     private String code;
 
