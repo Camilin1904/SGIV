@@ -1,11 +1,15 @@
 package co.edu.icesi.sgiv.dto.entity;
 
 import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
-import lombok.Getter;
+import lombok.*;
 
 import java.sql.Date;
 
 @Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class PlanDTO {
     private Long id;
 
