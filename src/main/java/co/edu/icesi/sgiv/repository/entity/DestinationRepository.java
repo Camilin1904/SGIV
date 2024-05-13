@@ -25,4 +25,5 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
     public List<Destination> findDestinationsByDestinationType(DestinationType dt);
 
 
+
 }

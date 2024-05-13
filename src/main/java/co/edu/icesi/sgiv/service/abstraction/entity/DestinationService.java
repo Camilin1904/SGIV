@@ -20,4 +20,5 @@ public interface DestinationService extends GenericService<DestinationDTO, Long>
     public Optional<DestinationStatusDTO> getStatus(Long DID);
 
     public List<DestinationDTO> findDestinationsByDestinationType(DestinationType dt);
+
 }

@@ -20,6 +20,8 @@ public class JwtService {
     private static final String SECRET_KEY="8DF7F8QHB375F3UFB43F4JD892DY82HDU3ND745NN923UDB2UND23UH2";
 
     public String getToken(UserDetails user) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("Authorities", user.getAuthorities());
         return getToken(new HashMap<>(), user);
     }
 

@@ -6,12 +6,16 @@
         http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd"
         version="2.2">
 
-    <entity class="co.edu.icesi.sgiv.domain.entity.PlanDetailDestination">
+    <entity class="co.edu.icesi.sgiv.domain.entity.Plan">
 
-        <named-native-query name="PlanDetailDestination.mostPopularDestination" result-set-mapping="mostPopularDestination">
+        <named-native-query name="Plan.mostPopularDestination" result-set-mapping="mostPopularDestination">
             <query>
 
-                select destination d join plan
+                select p.d from
+                (select d, count(d.id) as num_plans from plan p join plan_detail pd on p.plan_detail_id = pd.id
+                join plan_detail_destination pdd on pdd.plan_detail_id = pd.id
+                join destination d on pdd.destination_id = d.id
+                group by d.id order by num_plans desc limit 1) p;
 
             </query>
         </named-native-query>
