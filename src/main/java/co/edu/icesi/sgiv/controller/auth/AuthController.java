@@ -22,4 +22,11 @@ public class AuthController {
         return ResponseEntity.ok(authService.register(request));
     }
 
+    @PostMapping (value = "/verify", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<AuthResponse> verify(@RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(authService.register(request));
+    }
+
+
+
 }
