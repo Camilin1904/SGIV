@@ -22,12 +22,9 @@ public class TestPlanMapper{
         Plan plan = new Plan();
         plan.setId(1L);
         plan.setCode("ABC123");
-        plan.setRequestDescription("Request Description");
         plan.setName("Test Plan");
         plan.setNumberOfPeople(5);
-        plan.setRequest(true);
         Date currentDate = new Date(System.currentTimeMillis());
-        plan.setRequestDate(currentDate);
         plan.setStartDate(currentDate);
         plan.setEndDate(currentDate);
         plan.setTotalValue(100.0);

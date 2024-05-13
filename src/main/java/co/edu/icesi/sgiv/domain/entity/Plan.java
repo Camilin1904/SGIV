@@ -27,20 +27,12 @@ public class Plan {
     @Column(name = "code", nullable = false, length = 50)
     private String code;
 
-    @Column(name = "request_description", nullable = false, length = 100)
-    private String requestDescription;
-
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
     @Column(name = "number_of_people", nullable = false)
     private Integer numberOfPeople;
 
-    @Column(name = "requested", nullable = false)
-    private boolean request;
-
-    @Column(name = "request_date")
-    private Date requestDate;
 
     @Column(name = "start_date", nullable = false)
     private Date startDate;
