@@ -1,4 +1,4 @@
-package co.edu.icesi.sgiv.controller.auth;
+package co.edu.icesi.sgiv.auth;
 
 import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.jwt.JwtService;
@@ -25,6 +25,14 @@ public class AuthService {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
+
+    public AuthResponse renewToken(String username){
+        UserDetails user=userRepository.findByUsername(username).orElseThrow();
+        String token=jwtService.getToken(user);
+        return AuthResponse.builder()
+                .token(token)
+                .build();
+    }
 
     public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(),request.getPassword()));

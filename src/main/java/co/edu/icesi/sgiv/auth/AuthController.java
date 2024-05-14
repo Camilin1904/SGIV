@@ -1,4 +1,4 @@
-package co.edu.icesi.sgiv.controller.auth;
+package co.edu.icesi.sgiv.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
