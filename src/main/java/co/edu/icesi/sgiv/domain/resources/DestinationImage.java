@@ -19,7 +19,7 @@ public class DestinationImage {
     private Long id;
 
     @Column(name = "image", nullable = false)
-    private byte[] image;
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "destination", nullable = false)

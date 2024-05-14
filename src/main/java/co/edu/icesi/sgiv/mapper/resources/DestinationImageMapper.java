@@ -6,6 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface DestinationImageMapper {
     DestinationImageMapper INSTANCE = Mappers.getMapper(DestinationImageMapper.class);
@@ -15,4 +17,6 @@ public interface DestinationImageMapper {
     @Mapping(target = "id", source = "id")
     DestinationImage toEntity(DestinationImageDTO destinationImage);
 
+    @Mapping(target = "id", source = "id")
+    List<DestinationImageDTO> toDTO(List<DestinationImage> destinationImages);
 }

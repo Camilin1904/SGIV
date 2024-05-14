@@ -1,6 +1,7 @@
 package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Destination;
+import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
@@ -110,5 +111,10 @@ public class DestinationServiceImplementation implements DestinationService {
     @Override
     public List<DestinationDTO> findDestinationsByDestinationType(DestinationType dt) {
         List<Destination> dest = destinationRepository.findDestinationsByDestinationType(dt);
-        return dest.stream().map(destinationMapper::toDTO).collect(Collectors.toList());    }
+        return dest.stream().map(destinationMapper::toDTO).collect(Collectors.toList());
+    }
+
+    public List<DestinationImage> getImages(Long id){
+        return destinationRepository.getImages(id);
+    }
 }

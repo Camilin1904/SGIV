@@ -1,4 +1,4 @@
-package co.edu.icesi.sgiv.repository.entity;
+    package co.edu.icesi.sgiv.repository.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.domain.status.ClientStatus;
