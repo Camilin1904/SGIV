@@ -26,7 +26,7 @@ public class AdminStatController {
     public PlanService planService;
 
     @PreAuthorize("hasAuthority('Admin')")
-    @GetMapping(value = "/pop_dest", consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/pop_dest", produces = "application/json")
     public ResponseEntity<DestinationDTO> popDest() {
 
         Optional<Long> popDID = planService.getMostPopularDestination();

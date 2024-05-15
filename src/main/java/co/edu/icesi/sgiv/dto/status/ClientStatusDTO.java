@@ -16,6 +16,5 @@ public class ClientStatusDTO {
 
     private String name;
 
-    private List<ClientDTO> clients;
 
 }

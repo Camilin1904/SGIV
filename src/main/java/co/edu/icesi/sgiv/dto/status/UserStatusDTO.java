@@ -15,6 +15,4 @@ public class UserStatusDTO {
     private Long id;
 
     private String name;
-
-    private List<UserDTO> users;
 }

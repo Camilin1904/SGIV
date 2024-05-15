@@ -11,5 +11,5 @@ import lombok.*;
 public class DestinationImageDTO {
     private Long id;
 
-    private byte[] image;
+    private String image;
 }
