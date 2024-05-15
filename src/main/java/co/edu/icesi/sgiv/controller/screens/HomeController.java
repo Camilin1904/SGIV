@@ -1,7 +1,7 @@
 package co.edu.icesi.sgiv.controller.screens;
 
-import co.edu.icesi.sgiv.controller.auth.AuthResponse;
-import co.edu.icesi.sgiv.controller.auth.LoginRequest;
+import co.edu.icesi.sgiv.auth.AuthResponse;
+import co.edu.icesi.sgiv.auth.LoginRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

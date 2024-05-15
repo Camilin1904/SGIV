@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.controller.home;
 
-import co.edu.icesi.sgiv.controller.auth.AuthResponse;
-import co.edu.icesi.sgiv.controller.auth.LoginRequest;
+
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanService;
