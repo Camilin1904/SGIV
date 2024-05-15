@@ -11,6 +11,8 @@ import co.edu.icesi.sgiv.mapper.status.DestinationStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.DestinationRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -116,5 +118,10 @@ public class DestinationServiceImplementation implements DestinationService {
 
     public List<DestinationImage> getImages(Long id){
         return destinationRepository.getImages(id);
+    }
+
+
+    public Page<Destination> findAll(Pageable pageable) {
+        return destinationRepository.findAll(pageable);
     }
 }

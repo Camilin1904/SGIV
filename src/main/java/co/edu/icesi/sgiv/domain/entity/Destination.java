@@ -34,6 +34,9 @@ public class Destination {
     @Column(name = "creation_date", nullable = false)
     private Date creationDate;
 
+    @Column(name = "main_image", nullable = true)
+    private String mainImage;
+
     @ManyToOne
     @JoinColumn(name = "creator_user_id", nullable = false)
     private User user;
