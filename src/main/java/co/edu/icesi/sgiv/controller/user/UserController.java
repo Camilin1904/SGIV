@@ -1,7 +1,10 @@
 package co.edu.icesi.sgiv.controller.user;
 
 
+import co.edu.icesi.sgiv.auth.AuthService;
 import co.edu.icesi.sgiv.domain.entity.User;
+import co.edu.icesi.sgiv.request.GetUserTypeRequest;
+import co.edu.icesi.sgiv.response.GetUserTypeResponse;
 import co.edu.icesi.sgiv.service.implementation.entity.UserServiceImplementation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +18,22 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @CrossOrigin(maxAge = 3600)
 public class UserController {
+
     @Autowired
     UserServiceImplementation userServiceImplementation;
 
-    @GetMapping(value = "/type", consumes = "application/json")
-    public ResponseEntity<String> getUserType(@RequestBody UserRequest userRequest) {
-        Optional<User> oUser = userServiceImplementation.findByUsername(userRequest.getUsername());
+    @Autowired
+    AuthService authService;
+
+    @GetMapping(value = "/type", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> getUserType(@RequestBody GetUserTypeRequest getUserTypeRequest) {
+        Optional<User> oUser = userServiceImplementation.findByUsername(getUserTypeRequest.getUsername());
         if(oUser.isPresent()){
             User user = oUser.get();
-            return ResponseEntity.status(200).body(user.getType().getName());
+            GetUserTypeResponse response = new GetUserTypeResponse();
+            response.setUserType(user.getType().getName());
+            response.setNewToken(authService.renewToken(user.getUsername()).getToken());
+            return ResponseEntity.status(200).body(response);
         }
         return ResponseEntity.status(400).body("Contraseña o nombre de usuario incorrectos");
     }

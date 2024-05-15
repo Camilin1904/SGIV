@@ -1,4 +1,4 @@
-package co.edu.icesi.sgiv.controller.auth;
+package co.edu.icesi.sgiv.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
-    private String username;
-    private String password;
-    private String email;
+public class AuthResponse {
+    String token;
 }

@@ -1,4 +1,4 @@
-package co.edu.icesi.sgiv.controller.auth;
+package co.edu.icesi.sgiv.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthResponse {
-    String token;
+public class GetUserTypeResponse {
+    private String userType;
+    private String newToken;
 }
