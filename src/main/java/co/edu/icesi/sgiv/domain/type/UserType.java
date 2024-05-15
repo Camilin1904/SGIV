@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "user_type")
-public class UserType {
+public class UserType implements GrantedAuthority {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,4 +32,9 @@ public class UserType {
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<User> users;
+
+    @Override
+    public String getAuthority() {
+        return name;
+    }
 }

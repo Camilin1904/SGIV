@@ -1,8 +1,11 @@
 package co.edu.icesi.sgiv.repository.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Destination;
+import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -23,6 +26,11 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
     @Query("select d from Destination d join DestinationStatus dt where dt = ?1")
     public List<Destination> findDestinationsByDestinationType(DestinationType dt);
+
+
+    @Query("select i from Destination d join DestinationImage i where d.id = ?1")
+    public List<DestinationImage> getImages(Long id);
+
 
 
 }

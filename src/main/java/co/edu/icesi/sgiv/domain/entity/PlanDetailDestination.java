@@ -17,8 +17,8 @@ public class PlanDetailDestination {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "day", nullable = false)
-    private int day;
+    @Column(name = "days", nullable = false)
+    private String days;
 
     @ManyToOne
     @JoinColumn(name = "plan_detail_id", nullable = false)

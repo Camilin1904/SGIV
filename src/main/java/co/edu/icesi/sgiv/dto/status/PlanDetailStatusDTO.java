@@ -16,6 +16,4 @@ public class PlanDetailStatusDTO {
 
     private String name;
 
-    private List<PlanDetailDTO> planDetails;
-
 }

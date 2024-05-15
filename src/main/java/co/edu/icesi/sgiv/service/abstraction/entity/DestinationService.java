@@ -1,5 +1,6 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
+import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
@@ -20,4 +21,7 @@ public interface DestinationService extends GenericService<DestinationDTO, Long>
     public Optional<DestinationStatusDTO> getStatus(Long DID);
 
     public List<DestinationDTO> findDestinationsByDestinationType(DestinationType dt);
+
+    public List<DestinationImage> getImages(Long id);
+
 }

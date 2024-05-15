@@ -1,6 +1,7 @@
 package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Destination;
+import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
@@ -10,6 +11,8 @@ import co.edu.icesi.sgiv.mapper.status.DestinationStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.DestinationRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -110,5 +113,15 @@ public class DestinationServiceImplementation implements DestinationService {
     @Override
     public List<DestinationDTO> findDestinationsByDestinationType(DestinationType dt) {
         List<Destination> dest = destinationRepository.findDestinationsByDestinationType(dt);
-        return dest.stream().map(destinationMapper::toDTO).collect(Collectors.toList());    }
+        return dest.stream().map(destinationMapper::toDTO).collect(Collectors.toList());
+    }
+
+    public List<DestinationImage> getImages(Long id){
+        return destinationRepository.getImages(id);
+    }
+
+
+    public Page<Destination> findAll(Pageable pageable) {
+        return destinationRepository.findAll(pageable);
+    }
 }

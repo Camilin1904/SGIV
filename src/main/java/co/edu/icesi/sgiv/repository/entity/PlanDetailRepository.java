@@ -20,7 +20,5 @@ public interface PlanDetailRepository extends JpaRepository<PlanDetail, Long> {
     @Query("select pds from PlanDetailStatus pds join PlanDetail p where p.id = ?1")
     public Optional<PlanDetailStatus> getStatus(Long PlanDID);
 
-    @Query("select d from Destination d join PlanDetailDestination pdd group by pdd")
-    public Optional<Destination> getMostPopularDestination();
 
 }

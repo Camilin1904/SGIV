@@ -1,11 +1,14 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
+import co.edu.icesi.sgiv.domain.entity.Plan;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -27,4 +30,14 @@ public interface PlanService extends GenericService<PlanDTO, Long> {
     public List<DestinationDTO> getDestinations(Long pID);
 
     public Optional<PlanStatusDTO> getStatus(Long pID);
+
+    public Optional<Long> getMostPopularDestination();
+
+    public List<Plan> findByCreationDate(Date date);
+
+    public Long countByCreationDate(Date date);
+
+    public Optional<Long> getLeastPopularDestination();
+
+    public Optional<Long> getTotalEarnings();
 }

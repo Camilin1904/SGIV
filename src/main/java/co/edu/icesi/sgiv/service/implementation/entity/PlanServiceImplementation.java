@@ -145,4 +145,24 @@ public class PlanServiceImplementation implements PlanService {
 
     }
 
+    public Optional<Long> getMostPopularDestination(){
+        return planRepository.getMostPopularDestination();
+    };
+
+    public List<Plan> findByCreationDate(Date date){
+        return planRepository.findByCreationDate(date);
+    }
+
+    public Long countByCreationDate(Date date){
+        return planRepository.countByCreationDate(date);
+    }
+
+    public Optional<Long> getLeastPopularDestination(){
+        return planRepository.getLeastPopularDestination();
+    }
+
+    public Optional<Long> getTotalEarnings(){
+        return planRepository.getTotalEarnings();
+    }
+
 }

@@ -1,6 +1,7 @@
 package co.edu.icesi.sgiv.domain.entity;
 
 import co.edu.icesi.sgiv.domain.modification.DestinationModification;
+import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -33,6 +34,9 @@ public class Destination {
     @Column(name = "creation_date", nullable = false)
     private Date creationDate;
 
+    @Column(name = "main_image", nullable = true)
+    private String mainImage;
+
     @ManyToOne
     @JoinColumn(name = "creator_user_id", nullable = false)
     private User user;
@@ -52,6 +56,10 @@ public class Destination {
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PlanDetailDestination> planDetailDestinations;
+
+    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<DestinationImage> images;
 
     public Destination(String code, String name, Date creationDate, User user, DestinationStatus status, DestinationType type) {
         this.code = code;
