@@ -51,7 +51,7 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setEmail(request.getEmail());
         user.setCreationDate(new Date(new java.util.Date().getTime()));
-        user.setType(userTypeRepository.findByName("Viewer").get());
+        user.setType(userTypeRepository.findByName("ADMIN").get());
         user.setStatus(userStatusRepository.findById(1L).get());
         userRepository.save(user);
 
