@@ -16,6 +16,4 @@ public class DestinationStatusDTO {
 
     private String name;
 
-    private List<DestinationDTO> destinations;
-
 }
