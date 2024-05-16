@@ -40,4 +40,6 @@ public interface PlanService extends GenericService<PlanDTO, Long> {
     public Optional<Long> getLeastPopularDestination();
 
     public Optional<Long> getTotalEarnings();
+
+    public Optional<Long> getMostPopularPlanDetail();
 }

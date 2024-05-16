@@ -165,4 +165,9 @@ public class PlanServiceImplementation implements PlanService {
         return planRepository.getTotalEarnings();
     }
 
+    @Override
+    public Optional<Long> getMostPopularPlanDetail() {
+        return planRepository.getMostPopularPlanDetail();
+    }
+
 }

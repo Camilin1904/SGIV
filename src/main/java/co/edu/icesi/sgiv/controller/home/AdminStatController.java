@@ -1,10 +1,14 @@
 package co.edu.icesi.sgiv.controller.home;
 
+import co.edu.icesi.sgiv.domain.entity.PlanDetail;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
+import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
+import co.edu.icesi.sgiv.service.abstraction.entity.PlanDetailService;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +26,9 @@ public class AdminStatController {
     public DestinationService destinationService;
     @Autowired
     public PlanService planService;
+    @Qualifier("planDetailService")
+    @Autowired
+    private PlanDetailService planDetailService;
 
     @PreAuthorize("hasAuthority('Admin')")
     @GetMapping(value = "/pop_dest", produces = "application/json")
@@ -55,7 +62,18 @@ public class AdminStatController {
     @GetMapping(value = "/tot_earn", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Long> totEarn() {
 
-        return  ResponseEntity.ok(planService.getTotalEarnings().get()  );
+        return  ResponseEntity.ok(planService.getTotalEarnings().get());
+
+    }
+
+
+    @PreAuthorize("hasAuthority('Admin')")
+    @GetMapping(value = "/pop_plan", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<PlanDetailDTO> pop_plan() {
+
+        Optional<Long> popPlan = planService.getMostPopularPlanDetail();
+
+        return popPlan.map(aLong -> ResponseEntity.ok(planDetailService.findByID(aLong).get())).orElseGet(() -> ResponseEntity.notFound().build());
 
     }
 

@@ -56,4 +56,7 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
     @Query(value = "select sum(p.total_value)from plan p", nativeQuery = true)
     public Optional<Long> getTotalEarnings();
 
+    @Query(value = "select pd.id from (select d.id, count(d.id) as num from plan p join plan_detail d on p.plan_detail_id = d.id group by d.id order by num desc limit 1) pd"
+    , nativeQuery = true)
+    public Optional<Long> getMostPopularPlanDetail();
 }
