@@ -24,6 +24,9 @@ public class    PlanDetail {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
+
     @Column(name = "food", nullable = false, length = 100)
     private String food;
 

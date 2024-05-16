@@ -22,7 +22,6 @@ public class TestPlanMapper{
         Plan plan = new Plan();
         plan.setId(1L);
         plan.setCode("ABC123");
-        plan.setName("Test Plan");
         plan.setNumberOfPeople(5);
         Date currentDate = new Date(System.currentTimeMillis());
         plan.setStartDate(currentDate);
