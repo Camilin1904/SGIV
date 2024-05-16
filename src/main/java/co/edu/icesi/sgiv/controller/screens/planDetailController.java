@@ -20,7 +20,7 @@ public class planDetailController {
     @Autowired
     private final PlanDetailService planDetailService;
 
-    @GetMapping
+    @GetMapping(value = "/get_all")
     public List<PlanDetailDTO> getAll() {
         return planDetailService.findAll();
     }

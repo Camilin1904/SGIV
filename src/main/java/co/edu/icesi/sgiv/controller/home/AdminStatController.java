@@ -32,8 +32,8 @@ public class AdminStatController {
 
     @PreAuthorize("hasAuthority('Admin')")
     @GetMapping(value = "/pop_dest", produces = "application/json")
-    public ResponseEntity<DestinationDTO> popDest() {
-
+    public ResponseEntity<?> popDest() {
+        System.out.println("HOLAAAA");
         Optional<Long> popDID = planService.getMostPopularDestination();
 
         return popDID.map(aLong -> ResponseEntity.ok(destinationService.findByID(aLong).get())).orElseGet(() -> ResponseEntity.notFound().build());
@@ -41,7 +41,7 @@ public class AdminStatController {
     }
 
     @PreAuthorize("hasAuthority('Admin')")
-    @GetMapping(value = "/sale_now", consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/sale_now", produces = "application/json")
     public ResponseEntity<Long> saleNow() {
 
         return  ResponseEntity.ok(planService.countByCreationDate(new Date(System.currentTimeMillis())));
@@ -68,8 +68,8 @@ public class AdminStatController {
 
 
     @PreAuthorize("hasAuthority('Admin')")
-    @GetMapping(value = "/pop_plan", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<PlanDetailDTO> pop_plan() {
+    @GetMapping(value = "/pop_plan", produces = "application/json")
+    public ResponseEntity<?> pop_plan() {
 
         Optional<Long> popPlan = planService.getMostPopularPlanDetail();
 

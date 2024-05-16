@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -27,6 +30,13 @@ public class SecurityConfig {
                 .csrf(csrf ->
                         csrf
                                 .disable())
+                .cors(cors ->
+                        cors
+                                .configurationSource(request -> {
+                                    final CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
+                                    corsConfiguration.setAllowedMethods(List.of("HEAD","GET","POST","PUT","DELETE","PATCH","OPTIONS"));
+                                    return corsConfiguration;
+                        }))
                 .authorizeHttpRequests(authRequest ->
                         authRequest
                                 .requestMatchers("/auth/login").permitAll()
