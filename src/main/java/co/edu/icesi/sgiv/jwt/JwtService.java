@@ -22,7 +22,7 @@ public class JwtService {
     public String getToken(UserDetails user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("Authorities", user.getAuthorities());
-        return getToken(new HashMap<>(), user);
+        return getToken(claims, user);
     }
 
     private String getToken(Map<String,Object> extraClaims, UserDetails user) {

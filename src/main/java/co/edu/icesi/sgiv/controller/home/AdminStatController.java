@@ -26,7 +26,7 @@ public class AdminStatController {
     public DestinationService destinationService;
     @Autowired
     public PlanService planService;
-    @Qualifier("planDetailService")
+
     @Autowired
     private PlanDetailService planDetailService;
 
