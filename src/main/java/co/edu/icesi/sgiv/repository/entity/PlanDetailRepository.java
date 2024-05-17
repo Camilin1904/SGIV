@@ -3,6 +3,8 @@ package co.edu.icesi.sgiv.repository.entity;
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
 import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -19,6 +21,11 @@ public interface PlanDetailRepository extends JpaRepository<PlanDetail, Long> {
 
     @Query("select pds from PlanDetailStatus pds join PlanDetail p where p.id = ?1")
     public Optional<PlanDetailStatus> getStatus(Long PlanDID);
+
+
+    public Page<PlanDetail> findAll(Pageable pageable);
+
+    public Long countAll();
 
 
 }

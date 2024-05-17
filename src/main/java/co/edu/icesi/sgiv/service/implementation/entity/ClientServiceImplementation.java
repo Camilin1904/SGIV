@@ -10,6 +10,8 @@ import co.edu.icesi.sgiv.mapper.status.ClientStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.ClientRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -118,9 +120,17 @@ public class ClientServiceImplementation implements ClientService {
     @Override
     public Optional<ClientStatusDTO> getStatus(Long cID) {
         Optional<ClientStatus> clientStatus = clientRepository.getStatus(cID);
-        if (clientStatus.isEmpty())
-            return Optional.empty();
-        else
-            return Optional.of(clientStatusMapper.toDTO(clientStatus.get()));
+        return clientStatus.map(clientStatusMapper::toDTO);
     }
+
+    public Page<ClientDTO> findAll(Pageable pageable){
+
+        Page<Client> clients =  clientRepository.findAll(pageable);
+        return clients.map(clientMapper::toDTO);
+    }
+
+    public Long countAll(){
+        return clientRepository.count();
+    }
+
 }

@@ -1,9 +1,12 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
 
+import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.status.ClientStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,4 +26,9 @@ public interface ClientService extends GenericService<ClientDTO, Long> {
     public List<ClientDTO> findClientsByFirstAndLastName(String name, String surname);
 
     public Optional<ClientStatusDTO> getStatus(Long cID);
+
+    public Page<ClientDTO> findAll(Pageable pageable);
+
+    public Long countAll();
+
 }

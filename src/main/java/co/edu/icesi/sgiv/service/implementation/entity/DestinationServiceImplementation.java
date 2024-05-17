@@ -121,7 +121,19 @@ public class DestinationServiceImplementation implements DestinationService {
     }
 
 
-    public Page<Destination> findAll(Pageable pageable) {
-        return destinationRepository.findAll(pageable);
+    public Page<DestinationDTO> findAll(Pageable pageable) {
+
+        Page<Destination> dest = destinationRepository.findAll(pageable);
+
+
+        return dest.map(destinationMapper::toDTO);
     }
+
+    public Long countAll(){
+        return destinationRepository.count();
+    }
+
+
+
+
 }

@@ -18,6 +18,8 @@ import co.edu.icesi.sgiv.repository.entity.PlanDetailRepository;
 import co.edu.icesi.sgiv.repository.entity.PlanRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -168,6 +170,15 @@ public class PlanServiceImplementation implements PlanService {
     @Override
     public Optional<Long> getMostPopularPlanDetail() {
         return planRepository.getMostPopularPlanDetail();
+    }
+
+    public Page<PlanDTO> findAll(Pageable pageable){
+        Page<Plan> planPage = planRepository.findAll(pageable);
+        return planPage.map(planMapper::toDTO);
+    }
+
+    public Long countAll(){
+        return planRepository.count();
     }
 
 }

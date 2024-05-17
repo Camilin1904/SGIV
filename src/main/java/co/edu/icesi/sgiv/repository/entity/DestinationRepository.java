@@ -32,5 +32,9 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
     public List<DestinationImage> getImages(Long id);
 
 
+    public Page<Destination> findAll(Pageable pageable);
+
+    public Long countAll();
+
 
 }

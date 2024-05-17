@@ -8,7 +8,11 @@ import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanService;
 import co.edu.icesi.sgiv.service.abstraction.resources.DestinationImageService;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -57,6 +61,19 @@ public class DestinationController {
 
         return ResponseEntity.ok(image);
 
+    }
+
+    @PostMapping(value = "/page_dest", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Page<DestinationDTO>> page_dest(@RequestParam int page, @RequestParam int size) {
+        Pageable pageable = PageRequest.of(page,size);
+        Page<DestinationDTO> destinations = destinationService.findAll(pageable);
+        return ResponseEntity.ok(destinations);
+    }
+
+
+    @GetMapping(value = "/dest_count", produces = "application/json")
+    public ResponseEntity<Long> dest_count() {
+        return ResponseEntity.ok(destinationService.count());
     }
 
 

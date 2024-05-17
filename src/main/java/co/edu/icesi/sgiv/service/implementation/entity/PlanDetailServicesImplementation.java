@@ -12,6 +12,8 @@ import co.edu.icesi.sgiv.mapper.status.PlanDetailStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.PlanDetailRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,10 +36,7 @@ public class PlanDetailServicesImplementation implements PlanDetailService {
     @Override
     public Optional<PlanDetailDTO> findByID(Long aLong) {
         Optional<PlanDetail> planDetail = planDetailRepository.findById(aLong);
-        if(planDetail.isPresent())
-            return Optional.of(planDetailMapper.toDTO(planDetail.get()));
-        else
-            return Optional.empty();
+        return planDetail.map(detail -> planDetailMapper.toDTO(detail));
     }
 
     @Override
@@ -101,10 +100,16 @@ public class PlanDetailServicesImplementation implements PlanDetailService {
     @Override
     public Optional<PlanDetailStatusDTO> getStatus(Long PlanDID) {
         Optional<PlanDetailStatus> dest = planDetailRepository.getStatus(PlanDID);
-        if (dest.isEmpty())
-            return Optional.empty();
-        else
-            return Optional.of(planDetailStatusMapper.toDTO(dest.get()));
+        return dest.map(planDetailStatus -> planDetailStatusMapper.toDTO(planDetailStatus));
+    }
+
+    public Page<PlanDetailDTO> findAll(Pageable pageable){
+        Page<PlanDetail> planDetails = planDetailRepository.findAll(pageable);
+        return planDetails.map(planDetailMapper::toDTO);
+    }
+
+    public Long countAll(){
+        return planDetailRepository.count();
     }
 
 }

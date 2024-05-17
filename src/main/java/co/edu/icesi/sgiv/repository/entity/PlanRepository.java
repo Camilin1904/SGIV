@@ -5,6 +5,8 @@ import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.Plan;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
 import co.edu.icesi.sgiv.domain.status.PlanStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -59,4 +61,10 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
     @Query(value = "select pd.id from (select d.id, count(d.id) as num from plan p join plan_detail d on p.plan_detail_id = d.id group by d.id order by num desc limit 1) pd"
     , nativeQuery = true)
     public Optional<Long> getMostPopularPlanDetail();
+
+
+    public Page<Plan> findAll(Pageable pageable);
+
+    public Long countAll();
+
 }

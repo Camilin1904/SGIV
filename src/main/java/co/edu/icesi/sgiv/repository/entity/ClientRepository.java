@@ -2,6 +2,8 @@
 
 import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.domain.status.ClientStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -25,5 +27,9 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
     @Query("select cs from ClientStatus cs join Client c where c.id = ?1")
     public Optional<ClientStatus> getStatus(Long cID);
+
+    public Page<Client> findAll(Pageable pageable);
+
+    public Long countAll();
 
 }
