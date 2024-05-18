@@ -108,8 +108,5 @@ public class PlanDetailServicesImplementation implements PlanDetailService {
         return planDetails.map(planDetailMapper::toDTO);
     }
 
-    public Long countAll(){
-        return planDetailRepository.count();
-    }
 
 }

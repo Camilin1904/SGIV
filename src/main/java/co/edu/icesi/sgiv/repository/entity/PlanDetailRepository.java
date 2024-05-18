@@ -25,7 +25,5 @@ public interface PlanDetailRepository extends JpaRepository<PlanDetail, Long> {
 
     public Page<PlanDetail> findAll(Pageable pageable);
 
-    public Long countAll();
-
 
 }

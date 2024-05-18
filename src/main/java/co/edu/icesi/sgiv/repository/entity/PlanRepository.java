@@ -65,6 +65,6 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
 
     public Page<Plan> findAll(Pageable pageable);
 
-    public Long countAll();
+
 
 }

@@ -29,6 +29,4 @@ public interface ClientService extends GenericService<ClientDTO, Long> {
 
     public Page<ClientDTO> findAll(Pageable pageable);
 
-    public Long countAll();
-
 }

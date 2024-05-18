@@ -177,8 +177,4 @@ public class PlanServiceImplementation implements PlanService {
         return planPage.map(planMapper::toDTO);
     }
 
-    public Long countAll(){
-        return planRepository.count();
-    }
-
 }

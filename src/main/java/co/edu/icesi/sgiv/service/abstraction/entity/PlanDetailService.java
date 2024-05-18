@@ -22,6 +22,4 @@ public interface PlanDetailService extends GenericService<PlanDetailDTO, Long> {
 
     public Page<PlanDetailDTO> findAll(Pageable pageable);
 
-    public Long countAll();
-
 }

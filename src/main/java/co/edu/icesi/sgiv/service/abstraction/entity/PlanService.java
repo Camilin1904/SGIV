@@ -47,7 +47,5 @@ public interface PlanService extends GenericService<PlanDTO, Long> {
 
     public Page<PlanDTO> findAll(Pageable pageable);
 
-    public Long countAll();
-
 
 }

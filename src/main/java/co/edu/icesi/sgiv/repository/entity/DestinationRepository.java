@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +35,18 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
     public Page<Destination> findAll(Pageable pageable);
 
-    public Long countAll();
+    public long count();
+
+    public Page<Destination> findByStatus(DestinationStatus status, Pageable pageable);
+
+
+    @Query(value = "SELECT * FROM DESTINATION D WHERE"+
+                   "(:name IS NULL OR D.name LIKE :name) AND" +
+                   "(:code IS NULL OR D.CODE LIKE :name) AND" +
+                   "(:status IS NULL OR D.status_id = :status) AND" +
+                   "(:type IS NULL OR D.type_id = :type) ORDER BY D.NAME DESC", nativeQuery = true)
+    public Page<Destination> findByFilter(@Param("name")String name, @Param("code") String code, @Param("status") Long status, @Param("type") Long type, Pageable pageable);
+
 
 
 }

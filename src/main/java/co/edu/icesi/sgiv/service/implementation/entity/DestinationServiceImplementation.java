@@ -31,10 +31,7 @@ public class DestinationServiceImplementation implements DestinationService {
     @Override
     public Optional<DestinationDTO> findByID(Long aLong) {
         Optional<Destination> destination = destinationRepository.findById(aLong);
-        if(destination.isPresent())
-            return Optional.of(destinationMapper.toDTO(destination.get()));
-        else
-            return Optional.empty();
+        return destination.map(destinationMapper::toDTO);
     }
 
     @Override
@@ -104,10 +101,7 @@ public class DestinationServiceImplementation implements DestinationService {
     @Override
     public Optional<DestinationStatusDTO> getStatus(Long DID) {
         Optional<DestinationStatus> ds = destinationRepository.getStatus(DID);
-        if (ds.isEmpty())
-            return Optional.empty();
-        else
-            return Optional.of(destinationStatusMapper.toDTO(ds.get()));
+        return ds.map(destinationStatusMapper::toDTO);
     }
 
     @Override
@@ -129,8 +123,9 @@ public class DestinationServiceImplementation implements DestinationService {
         return dest.map(destinationMapper::toDTO);
     }
 
-    public Long countAll(){
-        return destinationRepository.count();
+    public Page<DestinationDTO> findByFilter(String name, String code, Long status, Long type, Pageable pageable){
+        Page<Destination> dest = destinationRepository.findByFilter(name, code, status, type, pageable);
+        return dest.map(destinationMapper::toDTO);
     }
 
 

@@ -29,7 +29,4 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     public Optional<ClientStatus> getStatus(Long cID);
 
     public Page<Client> findAll(Pageable pageable);
-
-    public Long countAll();
-
 }

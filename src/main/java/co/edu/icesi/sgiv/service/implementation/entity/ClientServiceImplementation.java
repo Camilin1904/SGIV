@@ -128,9 +128,4 @@ public class ClientServiceImplementation implements ClientService {
         Page<Client> clients =  clientRepository.findAll(pageable);
         return clients.map(clientMapper::toDTO);
     }
-
-    public Long countAll(){
-        return clientRepository.count();
-    }
-
 }
