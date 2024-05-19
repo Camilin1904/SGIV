@@ -31,8 +31,6 @@ public interface PlanService extends GenericService<PlanDTO, Long> {
 
     public List<DestinationDTO> getDestinations(Long pID);
 
-    public Optional<PlanStatusDTO> getStatus(Long pID);
-
     public Optional<Long> getMostPopularDestination();
 
     public List<Plan> findByCreationDate(Date date);
@@ -47,5 +45,8 @@ public interface PlanService extends GenericService<PlanDTO, Long> {
 
     public Page<PlanDTO> findAll(Pageable pageable);
 
+    public Page<PlanDTO> findByFilter(String code,Double tvm,
+                                      Double tvl, String clientName,
+                                      String status, Pageable pageable);
 
 }

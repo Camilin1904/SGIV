@@ -18,8 +18,6 @@ public interface PlanDetailService extends GenericService<PlanDetailDTO, Long> {
 
     public List<DestinationDTO> getDestinations(Long planDID);
 
-    public Optional<PlanDetailStatusDTO> getStatus(Long PlanDID);
-
     public Page<PlanDetailDTO> findAll(Pageable pageable);
 
 }

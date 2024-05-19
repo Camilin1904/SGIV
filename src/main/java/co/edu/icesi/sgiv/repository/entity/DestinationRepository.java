@@ -2,7 +2,6 @@ package co.edu.icesi.sgiv.repository.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
-import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,9 +21,6 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
     public List<Destination> findDestinationsByCode(String code);
 
-    @Query("select ds from DestinationStatus ds join Destination d where d.id = ?1")
-    public Optional<DestinationStatus> getStatus(Long DID);
-
     @Query("select d from Destination d join DestinationStatus dt where dt = ?1")
     public List<Destination> findDestinationsByDestinationType(DestinationType dt);
 
@@ -37,15 +33,13 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
     public long count();
 
-    public Page<Destination> findByStatus(DestinationStatus status, Pageable pageable);
-
 
     @Query(value = "SELECT * FROM DESTINATION D WHERE"+
                    "(:name IS NULL OR D.name LIKE :name) AND" +
                    "(:code IS NULL OR D.CODE LIKE :name) AND" +
-                   "(:status IS NULL OR D.status_id = :status) AND" +
+                   "(:status IS NULL OR D.status = :status) AND" +
                    "(:type IS NULL OR D.type_id = :type) ORDER BY D.NAME DESC", nativeQuery = true)
-    public Page<Destination> findByFilter(@Param("name")String name, @Param("code") String code, @Param("status") Long status, @Param("type") Long type, Pageable pageable);
+    public Page<Destination> findByFilter(@Param("name")String name, @Param("code") String code, @Param("status") String status, @Param("type") Long type, Pageable pageable);
 
 
 

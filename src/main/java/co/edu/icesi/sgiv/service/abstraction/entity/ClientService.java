@@ -25,8 +25,6 @@ public interface ClientService extends GenericService<ClientDTO, Long> {
 
     public List<ClientDTO> findClientsByFirstAndLastName(String name, String surname);
 
-    public Optional<ClientStatusDTO> getStatus(Long cID);
-
     public Page<ClientDTO> findAll(Pageable pageable);
 
 }

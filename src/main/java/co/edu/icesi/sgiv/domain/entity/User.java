@@ -5,7 +5,6 @@ import co.edu.icesi.sgiv.domain.modification.ClientModification;
 import co.edu.icesi.sgiv.domain.modification.DestinationModification;
 import co.edu.icesi.sgiv.domain.modification.PlanDetailModification;
 import co.edu.icesi.sgiv.domain.modification.PlanModification;
-import co.edu.icesi.sgiv.domain.status.UserStatus;
 import co.edu.icesi.sgiv.domain.type.UserType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -14,7 +13,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Date;
@@ -30,7 +28,7 @@ import java.util.List;
 public class User implements UserDetails {
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
@@ -46,9 +44,8 @@ public class User implements UserDetails {
     @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id", nullable = false)
-    private UserStatus status;
+    @Column(name = "status", nullable = false)
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "type_id", nullable = false)

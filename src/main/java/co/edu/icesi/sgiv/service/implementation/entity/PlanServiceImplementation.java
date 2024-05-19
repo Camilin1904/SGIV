@@ -4,7 +4,6 @@ import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.Plan;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
-import co.edu.icesi.sgiv.domain.status.PlanStatus;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDTO;
@@ -137,16 +136,6 @@ public class PlanServiceImplementation implements PlanService {
         return dest.stream().map(destinationMapper::toDTO).collect(Collectors.toList());
     }
 
-    @Override
-    public Optional<PlanStatusDTO> getStatus(Long pID) {
-        Optional<PlanStatus> planStatus = planRepository.getStatus(pID);
-        if (planStatus.isEmpty())
-            return Optional.empty();
-        else
-            return Optional.of(planStatusMapper.toDTO(planStatus.get()));
-
-    }
-
     public Optional<Long> getMostPopularDestination(){
         return planRepository.getMostPopularDestination();
     };
@@ -176,5 +165,11 @@ public class PlanServiceImplementation implements PlanService {
         Page<Plan> planPage = planRepository.findAll(pageable);
         return planPage.map(planMapper::toDTO);
     }
+
+    public Page<PlanDTO> findByFilter(String code,Double tvm, Double tvl, String clientName, String status, Pageable pageable){
+        Page<Plan> planResult = planRepository.findByFilter(code,tvm,tvl,clientName,status,pageable);
+        return planResult.map(planMapper::toDTO);
+    }
+
 
 }

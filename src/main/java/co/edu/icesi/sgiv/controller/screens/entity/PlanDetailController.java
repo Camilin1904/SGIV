@@ -1,4 +1,4 @@
-package co.edu.icesi.sgiv.controller.screens;
+package co.edu.icesi.sgiv.controller.screens.entity;
 
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanDetailService;

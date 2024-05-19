@@ -1,4 +1,4 @@
-package co.edu.icesi.sgiv.controller.screens;
+package co.edu.icesi.sgiv.controller.screens.entity;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.User;
-import co.edu.icesi.sgiv.domain.status.UserStatus;
 import co.edu.icesi.sgiv.dto.entity.UserDTO;
 import co.edu.icesi.sgiv.dto.status.UserStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.UserMapper;
@@ -27,10 +26,7 @@ public class UserServiceImplementation implements UserService {
     @Override
     public Optional<UserDTO> findByID(Long aLong) {
         Optional<User> user = userRepository.findById(aLong);
-        if(user.isPresent())
-            return Optional.of(userMapper.toDTO(user.get()));
-        else
-            return Optional.empty();
+        return user.map(value -> userMapper.toDTO(value));
     }
 
     @Override
@@ -94,15 +90,6 @@ public class UserServiceImplementation implements UserService {
     @Override
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
-    }
-
-    @Override
-    public Optional<UserStatusDTO> getStatus(Long uID) {
-        Optional<UserStatus> userStatus = userRepository.getStatus(uID);
-        if (userStatus.isEmpty())
-            return Optional.empty();
-        else
-            return Optional.of(userStatusMapper.toDTO(userStatus.get()));
     }
 
 }

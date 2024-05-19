@@ -2,7 +2,6 @@ package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
-import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;
@@ -95,12 +94,6 @@ public class PlanDetailServicesImplementation implements PlanDetailService {
     public List<DestinationDTO> getDestinations(Long planDID) {
         List<Destination> dest = planDetailRepository.getDestinations(planDID);
         return dest.stream().map(destinationMapper::toDTO).collect(Collectors.toList());
-    }
-
-    @Override
-    public Optional<PlanDetailStatusDTO> getStatus(Long PlanDID) {
-        Optional<PlanDetailStatus> dest = planDetailRepository.getStatus(PlanDID);
-        return dest.map(planDetailStatus -> planDetailStatusMapper.toDTO(planDetailStatus));
     }
 
     public Page<PlanDetailDTO> findAll(Pageable pageable){

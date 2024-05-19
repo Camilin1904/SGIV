@@ -3,7 +3,6 @@ package co.edu.icesi.sgiv.auth;
 import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.jwt.JwtService;
 import co.edu.icesi.sgiv.repository.entity.UserRepository;
-import co.edu.icesi.sgiv.repository.status.UserStatusRepository;
 import co.edu.icesi.sgiv.repository.type.UserTypeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

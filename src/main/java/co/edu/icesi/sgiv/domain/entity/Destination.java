@@ -2,7 +2,6 @@ package co.edu.icesi.sgiv.domain.entity;
 
 import co.edu.icesi.sgiv.domain.modification.DestinationModification;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
-import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -21,7 +20,7 @@ import java.util.List;
 public class Destination {
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
@@ -34,16 +33,13 @@ public class Destination {
     @Column(name = "creation_date", nullable = false)
     private Date creationDate;
 
-    @Column(name = "main_image", nullable = true)
-    private String mainImage;
-
     @ManyToOne
     @JoinColumn(name = "creator_user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id", nullable = false)
-    private DestinationStatus status;
+    @Column(name = "status", nullable = false)
+    private String status;
+
 
     @ManyToOne
     @JoinColumn(name = "type_id", nullable = false)
@@ -53,21 +49,12 @@ public class Destination {
     @JsonIgnore
     private List<DestinationModification> modifications;
 
-    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "destination_id", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<PlanDetailDestination> planDetailDestinations;
+    private List<PlanDetail> planDetails;
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<DestinationImage> images;
-
-    public Destination(String code, String name, Date creationDate, User user, DestinationStatus status, DestinationType type) {
-        this.code = code;
-        this.name = name;
-        this.creationDate = creationDate;
-        this.user = user;
-        this.status = status;
-        this.type = type;
-    }
 
 }

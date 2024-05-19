@@ -2,7 +2,6 @@ package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
-import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
@@ -99,12 +98,6 @@ public class DestinationServiceImplementation implements DestinationService {
     }
 
     @Override
-    public Optional<DestinationStatusDTO> getStatus(Long DID) {
-        Optional<DestinationStatus> ds = destinationRepository.getStatus(DID);
-        return ds.map(destinationStatusMapper::toDTO);
-    }
-
-    @Override
     public List<DestinationDTO> findDestinationsByDestinationType(DestinationType dt) {
         List<Destination> dest = destinationRepository.findDestinationsByDestinationType(dt);
         return dest.stream().map(destinationMapper::toDTO).collect(Collectors.toList());
@@ -123,7 +116,7 @@ public class DestinationServiceImplementation implements DestinationService {
         return dest.map(destinationMapper::toDTO);
     }
 
-    public Page<DestinationDTO> findByFilter(String name, String code, Long status, Long type, Pageable pageable){
+    public Page<DestinationDTO> findByFilter(String name, String code, String status, Long type, Pageable pageable){
         Page<Destination> dest = destinationRepository.findByFilter(name, code, status, type, pageable);
         return dest.map(destinationMapper::toDTO);
     }

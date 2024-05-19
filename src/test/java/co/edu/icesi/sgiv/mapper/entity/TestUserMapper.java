@@ -1,17 +1,11 @@
 package co.edu.icesi.sgiv.mapper.entity;
-import co.edu.icesi.sgiv.domain.entity.Client;
-import co.edu.icesi.sgiv.domain.entity.Destination;
-import co.edu.icesi.sgiv.domain.entity.Plan;
 import co.edu.icesi.sgiv.domain.entity.User;
-import co.edu.icesi.sgiv.domain.status.UserStatus;
 import co.edu.icesi.sgiv.domain.type.UserType;
 import co.edu.icesi.sgiv.dto.entity.UserDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 

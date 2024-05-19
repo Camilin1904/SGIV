@@ -2,7 +2,6 @@ package co.edu.icesi.sgiv.service.implementation.entity;
 
 
 import co.edu.icesi.sgiv.domain.entity.Client;
-import co.edu.icesi.sgiv.domain.status.ClientStatus;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.status.ClientStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.ClientMapper;
@@ -30,10 +29,7 @@ public class ClientServiceImplementation implements ClientService {
     @Override
     public Optional<ClientDTO> findByID(Long aLong) {
         Optional<Client> client = clientRepository.findById(aLong);
-        if(client.isPresent())
-            return Optional.of(clientMapper.toDTO(client.get()));
-        else
-            return Optional.empty();
+        return client.map(clientMapper::toDTO);
     }
 
     @Override
@@ -115,12 +111,6 @@ public class ClientServiceImplementation implements ClientService {
         List<Client> lClient = clientRepository.findClientsByFirstAndLastName(name, surname);
 
         return lClient.stream().map(clientMapper::toDTO).collect(Collectors.toList());
-    }
-
-    @Override
-    public Optional<ClientStatusDTO> getStatus(Long cID) {
-        Optional<ClientStatus> clientStatus = clientRepository.getStatus(cID);
-        return clientStatus.map(clientStatusMapper::toDTO);
     }
 
     public Page<ClientDTO> findAll(Pageable pageable){

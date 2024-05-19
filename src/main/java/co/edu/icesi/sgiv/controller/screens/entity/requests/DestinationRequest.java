@@ -1,4 +1,4 @@
-package co.edu.icesi.sgiv.controller.screens.requests;
+package co.edu.icesi.sgiv.controller.screens.entity.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ public class DestinationRequest {
 
     private String name;
     private String code;
-    private Long status;
+    private String status;
     private Long type;
     int page;
     int size;

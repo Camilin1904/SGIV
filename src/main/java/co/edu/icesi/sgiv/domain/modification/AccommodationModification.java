@@ -1,6 +1,7 @@
 package co.edu.icesi.sgiv.domain.modification;
 
-import co.edu.icesi.sgiv.domain.entity.Destination;
+import co.edu.icesi.sgiv.domain.entity.Accommodation;
+import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.domain.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,13 +11,12 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "destination_modification")
-public class DestinationModification {
+@Table(name = "accommodation_modification")
+public class AccommodationModification {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -31,6 +31,7 @@ public class DestinationModification {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "modified_destination_id", nullable = false)
-    private Destination destination;
+    @JoinColumn(name = "modified_accomodation_id", nullable = false)
+    private Accommodation accommodation;
+
 }

@@ -22,8 +22,6 @@ public interface DestinationService extends GenericService<DestinationDTO, Long>
 
     public List<DestinationDTO> findDestinationsByCode(String code);
 
-    public Optional<DestinationStatusDTO> getStatus(Long DID);
-
     public List<DestinationDTO> findDestinationsByDestinationType(DestinationType dt);
 
     public List<DestinationImage> getImages(Long id);
@@ -32,6 +30,6 @@ public interface DestinationService extends GenericService<DestinationDTO, Long>
 
     public long count();
 
-    public Page<DestinationDTO> findByFilter(String name, String code, Long status, Long type, Pageable pageable);
+    public Page<DestinationDTO> findByFilter(String name, String code, String status, Long type, Pageable pageable);
 
 }

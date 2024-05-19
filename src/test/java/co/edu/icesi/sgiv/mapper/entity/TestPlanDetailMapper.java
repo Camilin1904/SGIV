@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.mapper.entity;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
 import co.edu.icesi.sgiv.domain.entity.User;
-import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

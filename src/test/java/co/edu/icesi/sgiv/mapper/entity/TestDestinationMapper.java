@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.mapper.entity;
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.User;
-import co.edu.icesi.sgiv.domain.status.DestinationStatus;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import org.junit.jupiter.api.Test;

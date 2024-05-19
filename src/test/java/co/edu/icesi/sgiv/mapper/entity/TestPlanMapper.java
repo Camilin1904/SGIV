@@ -3,7 +3,6 @@ import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.domain.entity.Plan;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
 import co.edu.icesi.sgiv.domain.entity.User;
-import co.edu.icesi.sgiv.domain.status.PlanStatus;
 import co.edu.icesi.sgiv.dto.entity.PlanDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

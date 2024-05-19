@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.domain.entity;
 
 import co.edu.icesi.sgiv.domain.modification.PlanModification;
-import co.edu.icesi.sgiv.domain.status.PlanStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,7 +19,7 @@ import java.util.List;
 public class Plan {
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
@@ -47,9 +46,8 @@ public class Plan {
     @JoinColumn(name = "creator_user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id", nullable = false)
-    private PlanStatus status;
+    @Column(name = "status", nullable = false)
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "plan_detail_id", nullable = false)
@@ -62,6 +60,10 @@ public class Plan {
     @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PlanModification> modifications;
+
+    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<PlanToPlanDetail> planDetails;
 
 
 }

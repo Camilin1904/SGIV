@@ -1,6 +1,6 @@
-package co.edu.icesi.sgiv.controller.screens;
+package co.edu.icesi.sgiv.controller.screens.entity;
 
-import co.edu.icesi.sgiv.controller.screens.requests.DestinationRequest;
+import co.edu.icesi.sgiv.controller.screens.entity.requests.DestinationRequest;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.dto.DestTypeStatusDTO;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
@@ -10,7 +10,6 @@ import co.edu.icesi.sgiv.dto.type.DestinationTypeDTO;
 import co.edu.icesi.sgiv.mapper.resources.DestinationImageMapper;
 import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
 import co.edu.icesi.sgiv.service.abstraction.resources.DestinationImageService;
-import co.edu.icesi.sgiv.service.abstraction.status.DestinationStatusService;
 import co.edu.icesi.sgiv.service.abstraction.type.DestinationTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +37,6 @@ public class DestinationController {
 
     @Autowired
     private DestinationTypeService destinationTypeService;
-
-    @Autowired
-    private DestinationStatusService destinationStatusService;
 
 
 
@@ -91,15 +87,10 @@ public class DestinationController {
 
 
     @GetMapping(value = "/getInfo", produces = "application/json")
-    public ResponseEntity<DestTypeStatusDTO> getInfo() {
-        DestTypeStatusDTO dto = new DestTypeStatusDTO();
+    public ResponseEntity<List<DestinationTypeDTO>> getInfo() {
         List<DestinationTypeDTO> types = destinationTypeService.findAll();
-        List<DestinationStatusDTO> statuses = destinationStatusService.findAll();
 
-        dto.setDestinationStatus(statuses);
-        dto.setDestinationType(types);
-
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(types);
     }
 
 }

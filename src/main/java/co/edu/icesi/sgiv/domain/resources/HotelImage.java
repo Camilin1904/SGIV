@@ -10,9 +10,8 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "destination_image")
-public class DestinationImage {
-
+@Table(name = "hotel_image")
+public class HotelImage {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
@@ -22,8 +21,6 @@ public class DestinationImage {
     private String image;
 
     @ManyToOne
-    @JoinColumn(name = "destination", nullable = false)
-    private Destination destination;
-
-
+    @JoinColumn(name = "hotel", nullable = false)
+    private Destination Hotel;
 }

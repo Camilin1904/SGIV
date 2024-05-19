@@ -4,7 +4,6 @@ import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.Plan;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
-import co.edu.icesi.sgiv.domain.status.PlanStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,11 +28,8 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
     @Query("select p from Plan p inner join PlanDetail pd on p.planDetail = pd where pd.value = (?1) ")
     public List<Plan> findByValue(Double value);
 
-    @Query("select d from Destination d join PlanDetailDestination join PlanDetail join Plan p where p.id = ?1")
+    @Query("select d from Destination d join PlanToPlanDetail join PlanDetail join Plan p where p.id = ?1")
     public List<Destination> getDestinations(Long pID);
-
-    @Query ("select ps from PlanStatus ps join Plan p where p.id = ?1")
-    public Optional<PlanStatus> getStatus(Long pID);
 
     @Query(value = "select p.id from (select d.id, count(d.id) as num_plans from plan p join plan_detail pd on p.plan_detail_id = pd.id" +
             "                join plan_detail_destination pdd on pdd.plan_detail_id = pd.id" +
@@ -63,8 +59,14 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
     public Optional<Long> getMostPopularPlanDetail();
 
 
-    public Page<Plan> findAll(Pageable pageable);
-
-
+    @Query(value = "SELECT P FROM PLAN P JOIN CLIENT C ON P.CLIENT_ID = C.ID WHERE" +
+                   "(:code IS NULL OR P.CODE LIKE :code) AND" +
+                   "(:totalValueM IS NULL OR P.TOTAL_VALUE <= :totalValueM) AND" +
+                   "(:totalValueL IS NULL OR P.TOTAL_VALUE >= :totalValueL) AND" +
+                   "(:clientName IS NULL OR C.NAME LIKE :clientName) AND" +
+                   "(:status IS NULL OR P.STATUS = :status)", nativeQuery = true)
+    public Page<Plan> findByFilter(@Param("code") String code, @Param("totalValueM") Double tvm,
+                                   @Param("totalValueL") Double tvl, @Param("clientName") String clientName,
+                                   @Param("status") String status, Pageable pageable);
 
 }

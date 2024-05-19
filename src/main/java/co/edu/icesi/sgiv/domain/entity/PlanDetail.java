@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.domain.entity;
 
 import co.edu.icesi.sgiv.domain.modification.PlanDetailModification;
-import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,24 +19,25 @@ import java.util.List;
 public class    PlanDetail {
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @Column(name = "food", nullable = false, length = 100)
-    private String food;
+    @ManyToOne
+    @JoinColumn(name = "meals_configuration_id", nullable = false)
+    private MealsConfiguration mealsConfiguration;
 
+    @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     @Column(name = "accommodation", nullable = false, length = 100)
-    private String accommodation;
+    private List<Accommodation> accommodation;
 
-    @Column(name = "transportation", nullable = false, length = 100)
-    private String transportation;
-
-    @Column(name = "transfers", nullable = false, length = 100)
-    private String transfers;
+    @ManyToOne
+    @JoinColumn(name = "transportation_configuration_id", nullable = false)
+    private TransportationConfiguration transportationConfiguration;
 
     @Column(name = "value", nullable = false)
     private Double value;
@@ -55,20 +55,19 @@ public class    PlanDetail {
     @JoinColumn(name = "creator_user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id", nullable = false)
-    private PlanDetailStatus status;
+    @Column(name = "status", nullable = false)
+    private String status;
 
     @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PlanDetailModification> modifications;
 
-    @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Plan> plans;
+    @ManyToOne
+    @JoinColumn(name = "destination", nullable = false)
+    private Destination destination;
 
     @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<PlanDetailDestination> planDetailDestinations;
+    private List<PlanToPlanDetail> plans;
 
 }

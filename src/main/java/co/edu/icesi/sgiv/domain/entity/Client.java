@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.domain.entity;
 
 import co.edu.icesi.sgiv.domain.modification.ClientModification;
-import co.edu.icesi.sgiv.domain.status.ClientStatus;
 import co.edu.icesi.sgiv.domain.type.IdentificationType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -20,7 +19,7 @@ import java.util.List;
 public class Client {
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
@@ -58,9 +57,8 @@ public class Client {
     @JoinColumn(name = "creator_user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "status_id", nullable = false)
-    private ClientStatus status;
+    @Column(name = "status", nullable = false)
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "identification_type_id", nullable = false)
@@ -74,18 +72,4 @@ public class Client {
     @JsonIgnore
     private List<Plan> requestedPlans;
 
-    public Client(String identificationNumber, String firstName, String lastName, String secondLastName, String phone1, String phone2, String email, String gender, Date birthDate, Date creationDate, User user, ClientStatus status) {
-        this.identificationNumber = identificationNumber;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.secondLastName = secondLastName;
-        this.phone1 = phone1;
-        this.phone2 = phone2;
-        this.email = email;
-        this.gender = gender;
-        this.birthDate = birthDate;
-        this.creationDate = creationDate;
-        this.user = user;
-        this.status = status;
-    }
 }

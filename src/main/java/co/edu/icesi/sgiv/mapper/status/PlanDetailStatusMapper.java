@@ -1,6 +1,5 @@
 package co.edu.icesi.sgiv.mapper.status;
 
-import co.edu.icesi.sgiv.domain.status.PlanDetailStatus;
 import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.PlanDetailMapper;
 import org.mapstruct.Mapper;

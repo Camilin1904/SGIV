@@ -15,6 +15,4 @@ public interface UserService extends GenericService<UserDTO, Long> {
     public List<UserDTO> findAllByType(Long type);
 
     public Optional<User> findByUsername(String username);
-
-    public Optional<UserStatusDTO> getStatus(Long uID);
 }
