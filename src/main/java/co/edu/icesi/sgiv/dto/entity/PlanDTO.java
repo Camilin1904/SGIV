@@ -30,12 +30,12 @@ public class PlanDTO {
 
     private Date creationDate;
 
-    private PlanDetailDTO planDetail;
-
     private ClientDTO client;
 
     private UserDTO user;
 
     private String status;
+
+
 
 }

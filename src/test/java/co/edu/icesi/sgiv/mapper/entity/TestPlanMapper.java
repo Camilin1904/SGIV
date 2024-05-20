@@ -31,7 +31,6 @@ public class TestPlanMapper{
         plan.setUser(user);
         plan.setStatus("Active");
         PlanDetail planDetail = new PlanDetail(); // You may need to initialize PlanDetail properly
-        plan.setPlanDetail(planDetail);
         Client client = new Client(); // You may need to initialize Client properly
         plan.setClient(client);
 
@@ -51,7 +50,6 @@ public class TestPlanMapper{
         assertNotNull(planDTO.getCreationDate());
         assertNotNull(planDTO.getUser());
         assertNotNull(planDTO.getStatus());
-        assertNotNull(planDTO.getPlanDetail());
         assertNotNull(planDTO.getClient());
     }
 }
