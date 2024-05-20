@@ -19,10 +19,6 @@ public class TestPlanDetailMapper {
         // Create a PlanDetail object
         PlanDetail planDetail = new PlanDetail();
         planDetail.setId(1L);
-        planDetail.setFood("Food");
-        planDetail.setAccommodation("Accommodation");
-        planDetail.setTransportation("Transportation");
-        planDetail.setTransfers("Transfers");
         planDetail.setValue(100.0);
         planDetail.setNumberOfNights(5);
         planDetail.setNumberOfDays(7);
@@ -30,8 +26,7 @@ public class TestPlanDetailMapper {
         planDetail.setCreationDate(currentDate);
         User user = new User(); // You may need to initialize User properly
         planDetail.setUser(user);
-        PlanDetailStatus status = new PlanDetailStatus(); // You may need to initialize PlanDetailStatus properly
-        planDetail.setStatus(status);
+        planDetail.setStatus("Active");
 
         // Get PlanDetailDTO using a mapper, assuming you have one
         PlanDetailDTO planDetailDTO = planDetailMapper.toDTO(planDetail);
@@ -39,9 +34,7 @@ public class TestPlanDetailMapper {
         // Assertions
         assertNotNull(planDetailDTO.getId());
         assertNotNull(planDetailDTO.getFood());
-        assertNotNull(planDetailDTO.getAccommodation());
         assertNotNull(planDetailDTO.getTransportation());
-        assertNotNull(planDetailDTO.getTransfers());
         assertNotNull(planDetailDTO.getValue());
         assertNotNull(planDetailDTO.getNumberOfNights());
         assertNotNull(planDetailDTO.getNumberOfDays());

@@ -4,9 +4,7 @@ import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
-import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.DestinationMapper;
-import co.edu.icesi.sgiv.mapper.status.DestinationStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.DestinationRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +22,6 @@ public class DestinationServiceImplementation implements DestinationService {
     private DestinationRepository destinationRepository;
 
     private final DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
-
-    private final DestinationStatusMapper destinationStatusMapper = DestinationStatusMapper.INSTANCE;
 
     @Override
     public Optional<DestinationDTO> findByID(Long aLong) {

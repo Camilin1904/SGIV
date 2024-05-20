@@ -1,13 +1,8 @@
 package co.edu.icesi.sgiv.service.implementation.resources;
 
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
-import co.edu.icesi.sgiv.domain.type.DestinationType;
-import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.resources.DestinationImageDTO;
-import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
-import co.edu.icesi.sgiv.repository.entity.DestinationRepository;
 import co.edu.icesi.sgiv.repository.resources.DestinationImageRepository;
-import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
 import co.edu.icesi.sgiv.service.abstraction.resources.DestinationImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

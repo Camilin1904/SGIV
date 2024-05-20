@@ -2,10 +2,8 @@ package co.edu.icesi.sgiv.controller.screens.entity;
 
 import co.edu.icesi.sgiv.controller.screens.entity.requests.DestinationRequest;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
-import co.edu.icesi.sgiv.dto.DestTypeStatusDTO;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.resources.DestinationImageDTO;
-import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.dto.type.DestinationTypeDTO;
 import co.edu.icesi.sgiv.mapper.resources.DestinationImageMapper;
 import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;

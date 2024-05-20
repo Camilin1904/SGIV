@@ -2,7 +2,7 @@ package co.edu.icesi.sgiv.domain.modification;
 
 import co.edu.icesi.sgiv.domain.entity.Accommodation;
 import co.edu.icesi.sgiv.domain.entity.Client;
-import co.edu.icesi.sgiv.domain.entity.TransportationConfiguration;
+import co.edu.icesi.sgiv.domain.entity.Transportation;
 import co.edu.icesi.sgiv.domain.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,8 +16,8 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "transportation_configutation_modification")
-public class TransportationConfigurationModification {
+@Table(name = "transportation_modification")
+public class TransportationModification {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -32,7 +32,7 @@ public class TransportationConfigurationModification {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "modified_transportation_configutation_id", nullable = false)
-    private TransportationConfiguration transportationConfiguration;
+    @JoinColumn(name = "modified_transportation_id", nullable = false)
+    private Transportation transportation;
 
 }

@@ -18,7 +18,6 @@ import java.sql.Date;
 public class AuthService {
 
     private final UserTypeRepository userTypeRepository;
-    private final UserStatusRepository userStatusRepository;
     private final UserRepository userRepository;
 
     private final JwtService jwtService;
@@ -51,7 +50,7 @@ public class AuthService {
         user.setEmail(request.getEmail());
         user.setCreationDate(new Date(new java.util.Date().getTime()));
         user.setType(userTypeRepository.findById(request.getType()).get());
-        user.setStatus(userStatusRepository.findById(1L).get());
+        user.setStatus("Active");
         userRepository.save(user);
 
         return AuthResponse.builder()

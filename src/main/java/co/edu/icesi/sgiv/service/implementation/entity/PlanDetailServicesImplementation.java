@@ -4,10 +4,8 @@ import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.PlanDetail;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
-import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.DestinationMapper;
 import co.edu.icesi.sgiv.mapper.entity.PlanDetailMapper;
-import co.edu.icesi.sgiv.mapper.status.PlanDetailStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.PlanDetailRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +26,6 @@ public class PlanDetailServicesImplementation implements PlanDetailService {
     PlanDetailMapper planDetailMapper = PlanDetailMapper.INSTANCE;
 
     DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
-
-    PlanDetailStatusMapper planDetailStatusMapper = PlanDetailStatusMapper.INSTANCE;
-    
     
     @Override
     public Optional<PlanDetailDTO> findByID(Long aLong) {

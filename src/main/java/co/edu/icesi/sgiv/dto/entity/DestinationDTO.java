@@ -1,6 +1,5 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.dto.status.DestinationStatusDTO;
 import co.edu.icesi.sgiv.dto.type.DestinationTypeDTO;
 import lombok.*;
 
@@ -20,7 +19,7 @@ public class DestinationDTO {
     private Date creationDate;
 
     private UserDTO user;
-    private DestinationStatusDTO status;
+    private String status;
 
     private DestinationTypeDTO type;
 

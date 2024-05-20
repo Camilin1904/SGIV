@@ -11,8 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="meals_configuration")
-public class MealsConfiguration {
+@Table(name="transportation")
+public class Transportation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,11 +25,12 @@ public class MealsConfiguration {
     @Column(name = "description", nullable = false, length = 1000)
     private String description;
 
-    @OneToMany(mappedBy = "mealsConfigutration", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "transportationConfiguration", cascade = CascadeType.ALL)
     private List<PlanDetail> planDetails;
 
     @Column(name = "status", nullable = false)
     private String status;
+
 
 
 }

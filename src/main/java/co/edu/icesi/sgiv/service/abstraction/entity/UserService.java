@@ -2,7 +2,6 @@ package co.edu.icesi.sgiv.service.abstraction.entity;
 
 import co.edu.icesi.sgiv.domain.entity.User;
 import co.edu.icesi.sgiv.dto.entity.UserDTO;
-import co.edu.icesi.sgiv.dto.status.UserStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
 import org.springframework.stereotype.Service;
 

@@ -1,11 +1,9 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.dto.status.ClientStatusDTO;
 import co.edu.icesi.sgiv.dto.type.IdentificationTypeDTO;
 import lombok.*;
 
 import java.sql.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -24,6 +22,6 @@ public class ClientDTO {
     private Date birthDate;
     private String gender;
     private UserDTO user;
-    private ClientStatusDTO status;
+    private String status;
     private IdentificationTypeDTO identificationType;
 }

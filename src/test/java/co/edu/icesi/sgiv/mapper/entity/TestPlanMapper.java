@@ -29,8 +29,7 @@ public class TestPlanMapper{
         plan.setCreationDate(currentDate);
         User user = new User(); // You may need to initialize User properly
         plan.setUser(user);
-        PlanStatus status = new PlanStatus(); // You may need to initialize PlanStatus properly
-        plan.setStatus(status);
+        plan.setStatus("Active");
         PlanDetail planDetail = new PlanDetail(); // You may need to initialize PlanDetail properly
         plan.setPlanDetail(planDetail);
         Client client = new Client(); // You may need to initialize Client properly

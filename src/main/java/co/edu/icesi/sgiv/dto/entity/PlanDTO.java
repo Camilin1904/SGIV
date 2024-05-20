@@ -1,6 +1,5 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
 import lombok.*;
 
 import java.sql.Date;
@@ -37,6 +36,6 @@ public class PlanDTO {
 
     private UserDTO user;
 
-    private PlanStatusDTO status;
+    private String status;
 
 }

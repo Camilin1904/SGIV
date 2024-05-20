@@ -27,8 +27,8 @@ public class    PlanDetail {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "meals_configuration_id", nullable = false)
-    private MealsConfiguration mealsConfiguration;
+    @JoinColumn(name = "meals_id", nullable = false)
+    private Meals meals;
 
     @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
@@ -36,8 +36,8 @@ public class    PlanDetail {
     private List<Accommodation> accommodation;
 
     @ManyToOne
-    @JoinColumn(name = "transportation_configuration_id", nullable = false)
-    private TransportationConfiguration transportationConfiguration;
+    @JoinColumn(name = "transportation_id", nullable = false)
+    private Transportation transportation;
 
     @Column(name = "value", nullable = false)
     private Double value;

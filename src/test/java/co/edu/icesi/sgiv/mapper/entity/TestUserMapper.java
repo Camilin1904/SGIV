@@ -24,8 +24,7 @@ public class TestUserMapper {
         Date currentDate = new Date(System.currentTimeMillis());
         user.setCreationDate(currentDate);
         user.setEmail("user@example.com");
-        UserStatus status = new UserStatus(); // You may need to initialize UserStatus properly
-        user.setStatus(status);
+        user.setStatus("Active");
         UserType type = new UserType(); // You may need to initialize UserType properly
         user.setType(type);
 

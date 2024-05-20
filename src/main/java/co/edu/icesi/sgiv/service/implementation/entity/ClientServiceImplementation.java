@@ -3,9 +3,7 @@ package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
-import co.edu.icesi.sgiv.dto.status.ClientStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.ClientMapper;
-import co.edu.icesi.sgiv.mapper.status.ClientStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.ClientRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,6 @@ public class ClientServiceImplementation implements ClientService {
 
     private final ClientMapper clientMapper = ClientMapper.INSTANCE;
 
-    private final ClientStatusMapper clientStatusMapper = ClientStatusMapper.INSTANCE;
 
     @Override
     public Optional<ClientDTO> findByID(Long aLong) {

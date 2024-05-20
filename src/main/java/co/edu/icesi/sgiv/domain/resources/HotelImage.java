@@ -21,6 +21,6 @@ public class HotelImage {
     private String image;
 
     @ManyToOne
-    @JoinColumn(name = "hotel", nullable = false)
+    @JoinColumn(name = "hotel", nullable = false) 
     private Destination Hotel;
 }

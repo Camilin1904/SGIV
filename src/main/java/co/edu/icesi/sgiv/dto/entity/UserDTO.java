@@ -1,11 +1,9 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.dto.status.UserStatusDTO;
 import co.edu.icesi.sgiv.dto.type.UserTypeDTO;
 import lombok.*;
 
 import java.sql.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -21,7 +19,7 @@ public class UserDTO {
 
     private String email;
 
-    private UserStatusDTO status;
+    private String status;
 
     private UserTypeDTO type;
 

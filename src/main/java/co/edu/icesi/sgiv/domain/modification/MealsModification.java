@@ -1,7 +1,7 @@
 package co.edu.icesi.sgiv.domain.modification;
 
 import co.edu.icesi.sgiv.domain.entity.Client;
-import co.edu.icesi.sgiv.domain.entity.MealsConfiguration;
+import co.edu.icesi.sgiv.domain.entity.Meals;
 import co.edu.icesi.sgiv.domain.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,8 +15,8 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "meals_configuration_modification")
-public class MealsConfigurationModification {
+@Table(name = "meals_modification")
+public class MealsModification {
     @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -31,7 +31,7 @@ public class MealsConfigurationModification {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "modified_meals_configuration_id", nullable = false)
-    private MealsConfiguration mealsConfiguration;
+    @JoinColumn(name = "modified_meals_id", nullable = false)
+    private Meals meals;
 
 }

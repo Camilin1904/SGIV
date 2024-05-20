@@ -8,10 +8,8 @@ import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
-import co.edu.icesi.sgiv.dto.status.PlanStatusDTO;
 import co.edu.icesi.sgiv.mapper.entity.DestinationMapper;
 import co.edu.icesi.sgiv.mapper.entity.PlanMapper;
-import co.edu.icesi.sgiv.mapper.status.PlanStatusMapper;
 import co.edu.icesi.sgiv.repository.entity.ClientRepository;
 import co.edu.icesi.sgiv.repository.entity.PlanDetailRepository;
 import co.edu.icesi.sgiv.repository.entity.PlanRepository;
@@ -38,9 +36,6 @@ public class PlanServiceImplementation implements PlanService {
     PlanDetailRepository planDetailRepository;
 
     DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
-
-    PlanStatusMapper planStatusMapper = PlanStatusMapper.INSTANCE;
-
 
     @Override
     public Optional<PlanDTO> findByID(Long aLong) {

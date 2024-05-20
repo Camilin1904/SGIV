@@ -1,6 +1,6 @@
 package co.edu.icesi.sgiv.dto.entity;
 
-import co.edu.icesi.sgiv.dto.status.PlanDetailStatusDTO;
+import co.edu.icesi.sgiv.domain.entity.Meals;
 import lombok.*;
 
 import java.sql.Date;
@@ -14,11 +14,9 @@ public class PlanDetailDTO {
     private Long id;
     private String food;
 
-    private String accommodation;
+    private TransportationDTO transportation;
 
-    private String transportation;
-
-    private String transfers;
+    private MealsDTO meals;
 
     private Double value;
 
@@ -30,6 +28,6 @@ public class PlanDetailDTO {
 
     private UserDTO user;
 
-    private PlanDetailStatusDTO status;
+    private String status;
 
 }

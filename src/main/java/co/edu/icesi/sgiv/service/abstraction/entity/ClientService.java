@@ -1,16 +1,14 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
 
-import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
-import co.edu.icesi.sgiv.dto.status.ClientStatusDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 @Service
 public interface ClientService extends GenericService<ClientDTO, Long> {
 
