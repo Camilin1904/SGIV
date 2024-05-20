@@ -20,7 +20,7 @@ import java.util.List;
 public class Destination {
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
@@ -49,7 +49,7 @@ public class Destination {
     @JsonIgnore
     private List<DestinationModification> modifications;
 
-    @OneToMany(mappedBy = "destination_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PlanDetail> planDetails;
 

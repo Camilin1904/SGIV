@@ -112,19 +112,6 @@ public class PlanServiceImplementation implements PlanService {
     }
 
     @Override
-    public List<PlanDTO> findPlanByPlanDetail(PlanDetailDTO planDetailDTO) {
-        PlanDetail planDetail = planDetailRepository.findById(planDetailDTO.getId()).get();
-        List<Plan> dest = planRepository.findPlanByPlanDetail(planDetail);
-        return dest.stream().map(planMapper::toDTO).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<PlanDTO> findByValue(Double value) {
-        List<Plan> dest = planRepository.findByValue(value);
-        return dest.stream().map(planMapper::toDTO).collect(Collectors.toList());
-    }
-
-    @Override
     public List<DestinationDTO> getDestinations(Long pID) {
         List<Destination> dest = planRepository.getDestinations(pID);
 

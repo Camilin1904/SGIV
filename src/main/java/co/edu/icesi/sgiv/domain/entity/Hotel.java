@@ -12,11 +12,11 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "destination")
+@Table(name = "hotel")
 public class Hotel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
@@ -35,8 +35,9 @@ public class Hotel {
     @Column(name = "website_url", nullable = false, length = 500)
     private String websiteUrl;
 
-    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
-    private List<Destination> destinations;
+    @ManyToOne
+    @JoinColumn(name = "destination", nullable = false)
+    private Destination destinations;
 
     @Column(name = "status", nullable = false)
     private String status;

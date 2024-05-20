@@ -9,11 +9,11 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "accomodation")
+@Table(name = "accommodation")
 public class Accommodation {
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "amount_of_people", nullable = false)

@@ -15,7 +15,7 @@ import java.util.List;
 public class Meals{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
@@ -25,7 +25,7 @@ public class Meals{
     @Column(name = "description", nullable = false, length = 1000)
     private String description;
 
-    @OneToMany(mappedBy = "mealsConfigutration", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "meals", cascade = CascadeType.ALL)
     private List<PlanDetail> planDetails;
 
     @Column(name = "status", nullable = false)

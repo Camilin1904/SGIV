@@ -19,7 +19,7 @@ import java.util.List;
 public class Plan {
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
@@ -50,10 +50,6 @@ public class Plan {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "plan_detail_id", nullable = false)
-    private PlanDetail planDetail;
-
-    @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
@@ -63,7 +59,7 @@ public class Plan {
 
     @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<PlanToPlanDetail> planDetails;
+    private List<PlanToPlanDetail> planDetail;
 
 
 }

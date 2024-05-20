@@ -16,7 +16,7 @@ import java.sql.Date;
 public class PlanToPlanDetail {
     @Getter
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "startDate", nullable = false)
@@ -31,7 +31,7 @@ public class PlanToPlanDetail {
 
     @ManyToOne
     @JoinColumn(name = "plan_id", nullable = false)
-    private Destination plan;
+    private Plan plan;
 
     @Column(name = "status", nullable = false)
     private String status;

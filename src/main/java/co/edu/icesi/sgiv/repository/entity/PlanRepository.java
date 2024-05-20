@@ -23,10 +23,6 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
 
     public List<Plan> findPlanByStartDateBetween(Date beginning, Date end);
 
-    public List<Plan> findPlanByPlanDetail(PlanDetail planDetail);
-
-    @Query("select p from Plan p inner join PlanDetail pd on p.planDetail = pd where pd.value = (?1) ")
-    public List<Plan> findByValue(Double value);
 
     @Query("select d from Destination d join PlanToPlanDetail join PlanDetail join Plan p where p.id = ?1")
     public List<Destination> getDestinations(Long pID);

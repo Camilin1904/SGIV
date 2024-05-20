@@ -22,10 +22,6 @@ public interface PlanService extends GenericService<PlanDTO, Long> {
 
     public List<PlanDTO> findPlanByStartDateBetween(Date beginning, Date end);
 
-    public List<PlanDTO> findPlanByPlanDetail(PlanDetailDTO planDetailDTO);
-
-    public List<PlanDTO> findByValue(Double value);
-
     public List<DestinationDTO> getDestinations(Long pID);
 
     public Optional<Long> getMostPopularDestination();

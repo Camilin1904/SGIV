@@ -21,7 +21,7 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
     public List<Destination> findDestinationsByCode(String code);
 
-    @Query("select d from Destination d join DestinationStatus dt where dt = ?1")
+    @Query("select d from Destination d join DestinationType dt where dt = ?1")
     public List<Destination> findDestinationsByDestinationType(DestinationType dt);
 
 

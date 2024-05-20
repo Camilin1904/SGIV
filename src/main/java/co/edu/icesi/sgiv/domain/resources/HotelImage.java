@@ -13,7 +13,7 @@ import lombok.*;
 @Table(name = "hotel_image")
 public class HotelImage {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
