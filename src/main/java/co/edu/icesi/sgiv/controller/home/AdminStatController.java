@@ -68,9 +68,11 @@ public class AdminStatController {
 
     @PreAuthorize("hasAuthority('Admin')")
     @GetMapping(value = "/pop_plan", produces = "application/json")
-    public ResponseEntity<?> pop_plan() {
+    public ResponseEntity<PlanDetailDTO> pop_plan() {
 
         Optional<Long> popPlan = planService.getMostPopularPlanDetail();
+
+        System.out.println(popPlan.isPresent());
 
         return popPlan.map(aLong -> ResponseEntity.ok(planDetailService.findByID(aLong).get())).orElseGet(() -> ResponseEntity.notFound().build());
 
