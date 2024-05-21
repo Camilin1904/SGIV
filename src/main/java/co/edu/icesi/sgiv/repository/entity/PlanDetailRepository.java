@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,7 @@ public interface PlanDetailRepository extends JpaRepository<PlanDetail, Long> {
 
 
     public Page<PlanDetail> findAll(Pageable pageable);
-/*
+
     @Query(value = "SELECT * FROM plan_detail PD WHERE" +
                    "(:name IS NULL OR PD.name LIKE :name) AND" +
                    "(:days_upper IS NULL OR PD.number_of_days <= :days_upper) AND" +
@@ -30,7 +31,8 @@ public interface PlanDetailRepository extends JpaRepository<PlanDetail, Long> {
                    "(:nights_lower IS NULL OR PD.number_of_nights >= :nights_lower) AND" +
                    "(:value_upper IS NULL OR PD.value <= :value_upper) AND" +
                    "(:value_lower IS NULL OR PD.value >= :value_lower) AND" +
-                   "(:status IS NULL OR )", nativeQuery = true)*/
+                   "(:status IS NULL OR pd.status = :status)", nativeQuery = true)
+    public Page<PlanDetail> findByFilter(@Param("name") String name,@Param("days_upper") Integer daysUpper, @Param("days_lower") Integer daysLower,@Param("nights_upper") Integer nightsUpper, @Param("nights_lower") Integer nightsLower, @Param("value_upper") Double valueUpper, @Param("value_lower") Double valueLower, @Param("status") String status, Pageable pageable);
 
 
 }

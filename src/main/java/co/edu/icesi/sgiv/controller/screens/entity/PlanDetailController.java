@@ -1,5 +1,6 @@
 package co.edu.icesi.sgiv.controller.screens.entity;
 
+import co.edu.icesi.sgiv.controller.screens.entity.requests.PlanDetailRequest;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanDetailService;
 import lombok.RequiredArgsConstructor;
@@ -26,10 +27,13 @@ public class PlanDetailController {
     }
 
     @PostMapping(value = "page_plan_detail", produces = "application/json")
-    public ResponseEntity<Page<PlanDetailDTO>> pagePlandetail(@RequestParam int page, @RequestParam int size) {
-        Pageable pageable = PageRequest.of(page,size);
+    public ResponseEntity<List<PlanDetailDTO>> pagePlanDetail(@RequestBody PlanDetailRequest planDetailRequest) {
+        Pageable pageable = PageRequest.of(planDetailRequest.getPage(),planDetailRequest.getSize());
 
-        return ResponseEntity.ok(planDetailService.findAll(pageable));
+        return ResponseEntity.ok(planDetailService.findByFilter(planDetailRequest.getName(), planDetailRequest.getDaysUpper(),
+                                                                planDetailRequest.getDaysLower(), planDetailRequest.getNightsUpper(),
+                                                                planDetailRequest.getNightsLower(),planDetailRequest.getValueUpper(),
+                                                                planDetailRequest.getValueLower(), planDetailRequest.getStatus(), pageable).toList());
     }
 
     @GetMapping(value = "count", produces = "application/json")

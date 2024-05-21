@@ -96,5 +96,11 @@ public class PlanDetailServicesImplementation implements PlanDetailService {
         return planDetails.map(planDetailMapper::toDTO);
     }
 
+    @Override
+    public Page<PlanDetailDTO> findByFilter(String name, Integer daysUpper, Integer daysLower, Integer nightsUpper, Integer nightsLower, Double valueUpper, Double valueLower, String status, Pageable pageable) {
+        Page<PlanDetail> planDetails = planDetailRepository.findByFilter(name,daysUpper,daysLower,nightsUpper,nightsLower,valueUpper,valueLower,status,pageable);
+        return planDetails.map(planDetailMapper::toDTO);
+    }
+
 
 }

@@ -1,6 +1,9 @@
 package co.edu.icesi.sgiv.dto.entity;
 
+import co.edu.icesi.sgiv.dto.resources.HotelImageDTO;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,4 +25,6 @@ public class HotelDTO {
     private String websiteUrl;
 
     private String status;
+
+    private List<HotelImageDTO> images;
 }

@@ -68,13 +68,13 @@ public class DestinationController {
     }
 
     @PostMapping(value = "/page_dest", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Page<DestinationDTO>> page_dest(@RequestBody DestinationRequest destinationRequest) {
+    public ResponseEntity<List<DestinationDTO>> page_dest(@RequestBody DestinationRequest destinationRequest) {
         Pageable pageable = PageRequest.of(destinationRequest.getPage(),destinationRequest.getSize());
 
         Page<DestinationDTO> destinations = destinationService.findByFilter(destinationRequest.getName(), destinationRequest.getCode(),
                                                                             destinationRequest.getStatus(), destinationRequest.getType(),
                                                                             pageable);
-        return ResponseEntity.ok(destinations);
+        return ResponseEntity.ok(destinations.toList());
     }
 
 

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -115,4 +116,10 @@ public class ClientServiceImplementation implements ClientService {
         Page<Client> clients =  clientRepository.findAll(pageable);
         return clients.map(clientMapper::toDTO);
     }
+
+    public Page<ClientDTO> findByFilter(String idNum, Date bDateLower, Date bDateUpper, String status, Pageable pageable){
+        Page<Client> clients =  clientRepository.findByFilter(idNum, bDateLower, bDateUpper, status, pageable);
+        return clients.map(clientMapper::toDTO);
+    }
+
 }

@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/plan")
 @RequiredArgsConstructor
@@ -24,11 +26,11 @@ public class PlanController {
 
 
     @PostMapping(value = "/page_plan", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Page<PlanDTO>> pagePlan(@RequestBody PlanRequest planRequest) {
+    public ResponseEntity<List<PlanDTO>> pagePlan(@RequestBody PlanRequest planRequest) {
         Pageable pageable = PageRequest.of(planRequest.getPage(), planRequest.getSize());
         return ResponseEntity.ok(planService.findByFilter(planRequest.getCode(), planRequest.getTvm(),
                                                           planRequest.getTvl(), planRequest.getClientName(),
-                                                          planRequest.getStatus(), pageable));
+                                                          planRequest.getStatus(), pageable).toList());
     }
 
     @GetMapping(value = "/count", produces = "application/json")

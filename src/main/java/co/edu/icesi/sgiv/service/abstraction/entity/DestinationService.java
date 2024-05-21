@@ -1,13 +1,16 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
+import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.domain.type.DestinationType;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -28,5 +31,6 @@ public interface DestinationService extends GenericService<DestinationDTO, Long>
     public long count();
 
     public Page<DestinationDTO> findByFilter(String name, String code, String status, Long type, Pageable pageable);
+
 
 }

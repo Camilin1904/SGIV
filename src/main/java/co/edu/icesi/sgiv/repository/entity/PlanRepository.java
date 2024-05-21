@@ -27,9 +27,8 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
     @Query("select d from Destination d join PlanToPlanDetail join PlanDetail join Plan p where p.id = ?1")
     public List<Destination> getDestinations(Long pID);
 
-    @Query(value = "select p.id from (select d.id, count(d.id) as num_plans from plan p join plan_detail pd on p.plan_detail_id = pd.id" +
-            "                join plan_detail_destination pdd on pdd.plan_detail_id = pd.id" +
-            "                join destination d on pdd.destination_id = d.id" +
+    @Query(value = "select p.id from (select d.id, count(d.id) as num_plans from plan p join plan_to_plan_detail ptpd on p.id = ptpd.plan_id join plan_detail pd on ptpd.plan_detail_id = pd.id" +
+            "                join destination d on pd.destination = d.id" +
             "                group by d.id order by num_plans desc limit 1) p",
     nativeQuery = true)
     public Optional<Long> getMostPopularDestination();
@@ -50,7 +49,7 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
     @Query(value = "select sum(p.total_value)from plan p", nativeQuery = true)
     public Optional<Long> getTotalEarnings();
 
-    @Query(value = "select pd.id from (select d.id, count(d.id) as num from plan p join plan_detail d on p.plan_detail_id = d.id group by d.id order by num desc limit 1) pd"
+    @Query(value = "select pd.id from (select d.id, count(d.id) as num from plan p join plan_to_plan_detail ptpd on p.id = ptpd.plan_id join plan_detail d on ptpd.plan_detail_id = d.id group by d.id order by num desc limit 1) pd"
     , nativeQuery = true)
     public Optional<Long> getMostPopularPlanDetail();
 

@@ -1,8 +1,8 @@
 package co.edu.icesi.sgiv.mapper.entity;
 
-import co.edu.icesi.sgiv.domain.entity.Hotel;
+
 import co.edu.icesi.sgiv.domain.entity.PlanToPlanDetail;
-import co.edu.icesi.sgiv.dto.entity.HotelDTO;
+
 import co.edu.icesi.sgiv.dto.entity.PlanToPlanDetailDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,8 +14,8 @@ public interface PlanToPlanDetailMapper {
     PlanToPlanDetailMapper INSTANCE = Mappers.getMapper(PlanToPlanDetailMapper.class);
 
     @Mapping(target = "id", source = "id")
-    public PlanToPlanDetailDTO toDTO(PlanToPlanDetail hotel);
+    public PlanToPlanDetailDTO toDTO(PlanToPlanDetail planToPlanDetail);
 
     @Mapping(target = "id", source = "id")
-    public PlanToPlanDetail toEntity(PlanToPlanDetailDTO hotelDTO);
+    public PlanToPlanDetail toEntity(PlanToPlanDetailDTO plantToPlanDetailDTO);
 }
