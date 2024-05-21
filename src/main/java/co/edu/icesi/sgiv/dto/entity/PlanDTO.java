@@ -14,13 +14,7 @@ public class PlanDTO {
 
     private String code;
 
-    private String requestDescription;
-
-    private String name;
-
     private Integer numberOfPeople;
-
-    private Date requestDate;
 
     private Date startDate;
 
