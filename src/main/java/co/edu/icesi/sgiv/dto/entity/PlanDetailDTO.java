@@ -12,7 +12,8 @@ import java.sql.Date;
 @NoArgsConstructor
 public class PlanDetailDTO {
     private Long id;
-    private String food;
+
+    private String name;
 
     private TransportationDTO transportation;
 

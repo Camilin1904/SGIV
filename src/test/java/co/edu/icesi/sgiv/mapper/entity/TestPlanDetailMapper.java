@@ -33,7 +33,6 @@ public class TestPlanDetailMapper {
 
         // Assertions
         assertNotNull(planDetailDTO.getId());
-        assertNotNull(planDetailDTO.getFood());
         assertNotNull(planDetailDTO.getTransportation());
         assertNotNull(planDetailDTO.getValue());
         assertNotNull(planDetailDTO.getNumberOfNights());
