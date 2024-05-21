@@ -39,7 +39,7 @@ public interface PlanService extends GenericService<PlanDTO, Long> {
     public Page<PlanDTO> findAll(Pageable pageable);
 
     public Page<PlanDTO> findByFilter(String code,Double tvm,
-                                      Double tvl, String clientName,
+                                      Double tvl,
                                       String status, Pageable pageable);
 
 }

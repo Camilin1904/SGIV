@@ -1,6 +1,6 @@
 package co.edu.icesi.sgiv.controller.screens.entity;
 
-import co.edu.icesi.sgiv.controller.screens.entity.requests.DestinationRequest;
+import co.edu.icesi.sgiv.request.DestinationRequest;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.resources.DestinationImageDTO;

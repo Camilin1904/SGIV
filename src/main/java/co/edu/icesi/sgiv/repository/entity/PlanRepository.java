@@ -55,14 +55,13 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
 
 
 
-    @Query(value = "SELECT P FROM PLAN P JOIN CLIENT C ON P.CLIENT_ID = C.ID WHERE" +
+    @Query(value = "SELECT * FROM PLAN P WHERE" +
                    "(:code IS NULL OR P.CODE LIKE :code) AND" +
                    "(:totalValueM IS NULL OR P.TOTAL_VALUE <= :totalValueM) AND" +
                    "(:totalValueL IS NULL OR P.TOTAL_VALUE >= :totalValueL) AND" +
-                   "(:clientName IS NULL OR C.first_name LIKE :clientName) AND" +
                    "(:status IS NULL OR P.STATUS = :status)", nativeQuery = true)
     public Page<Plan> findByFilter(@Param("code") String code, @Param("totalValueM") Double tvm,
-                                   @Param("totalValueL") Double tvl, @Param("clientName") String clientName,
+                                   @Param("totalValueL") Double tvl,
                                    @Param("status") String status, Pageable pageable);
 
 }

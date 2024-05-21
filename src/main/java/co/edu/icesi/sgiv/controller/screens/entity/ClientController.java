@@ -1,13 +1,11 @@
 package co.edu.icesi.sgiv.controller.screens.entity;
 
 
-import co.edu.icesi.sgiv.controller.screens.entity.requests.ClientRequest;
-import co.edu.icesi.sgiv.domain.entity.Client;
+import co.edu.icesi.sgiv.request.ClientRequest;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.service.abstraction.entity.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

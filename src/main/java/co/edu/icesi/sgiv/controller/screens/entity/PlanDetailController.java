@@ -1,11 +1,10 @@
 package co.edu.icesi.sgiv.controller.screens.entity;
 
-import co.edu.icesi.sgiv.controller.screens.entity.requests.PlanDetailRequest;
+import co.edu.icesi.sgiv.request.PlanDetailRequest;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package co.edu.icesi.sgiv.controller.screens.entity.requests;
+package co.edu.icesi.sgiv.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

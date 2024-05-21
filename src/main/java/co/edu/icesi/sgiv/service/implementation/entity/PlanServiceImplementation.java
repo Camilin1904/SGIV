@@ -148,9 +148,13 @@ public class PlanServiceImplementation implements PlanService {
         return planPage.map(planMapper::toDTO);
     }
 
-    public Page<PlanDTO> findByFilter(String code,Double tvm, Double tvl, String clientName, String status, Pageable pageable){
-        Page<Plan> planResult = planRepository.findByFilter(code,tvm,tvl,clientName,status,pageable);
-        return planResult.map(planMapper::toDTO);
+    public Page<PlanDTO> findByFilter(String code,Double tvm, Double tvl, String status, Pageable pageable){
+        try{
+            Page<Plan> planResult = planRepository.findByFilter(code,tvm,tvl,status,pageable);
+            return planResult.map(planMapper::toDTO);
+        } catch(Exception e){
+            return null;
+        }
     }
 
 
