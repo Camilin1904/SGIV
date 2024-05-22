@@ -5,6 +5,7 @@ import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -26,13 +27,17 @@ public class PlanDetailController {
     }
 
     @PostMapping(value = "page_plan_detail", produces = "application/json")
-    public ResponseEntity<List<PlanDetailDTO>> pagePlanDetail(@RequestBody PlanDetailRequest planDetailRequest) {
+    public ResponseEntity<Page<PlanDetailDTO>> pagePlanDetail(@RequestBody PlanDetailRequest planDetailRequest) {
         Pageable pageable = PageRequest.of(planDetailRequest.getPage(),planDetailRequest.getSize());
+        System.out.println(planDetailService.findByFilter(planDetailRequest.getName(), planDetailRequest.getDaysUpper(),
+                planDetailRequest.getDaysLower(), planDetailRequest.getNightsUpper(),
+                planDetailRequest.getNightsLower(),planDetailRequest.getValueUpper(),
+                planDetailRequest.getValueLower(), planDetailRequest.getStatus(), pageable));
 
         return ResponseEntity.ok(planDetailService.findByFilter(planDetailRequest.getName(), planDetailRequest.getDaysUpper(),
                                                                 planDetailRequest.getDaysLower(), planDetailRequest.getNightsUpper(),
                                                                 planDetailRequest.getNightsLower(),planDetailRequest.getValueUpper(),
-                                                                planDetailRequest.getValueLower(), planDetailRequest.getStatus(), pageable).toList());
+                                                                planDetailRequest.getValueLower(), planDetailRequest.getStatus(), pageable));
     }
 
     @GetMapping(value = "count", produces = "application/json")

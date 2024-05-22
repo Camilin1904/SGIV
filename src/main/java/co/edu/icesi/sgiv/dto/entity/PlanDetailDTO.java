@@ -21,6 +21,8 @@ public class PlanDetailDTO {
 
     private Double value;
 
+    private DestinationDTO destination;
+
     private Integer numberOfNights;
 
     private Integer numberOfDays;
