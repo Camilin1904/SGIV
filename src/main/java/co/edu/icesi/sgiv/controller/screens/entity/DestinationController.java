@@ -1,5 +1,7 @@
 package co.edu.icesi.sgiv.controller.screens.entity;
 
+import co.edu.icesi.sgiv.domain.entity.Destination;
+import co.edu.icesi.sgiv.mapper.entity.DestinationMapper;
 import co.edu.icesi.sgiv.request.DestinationRequest;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
@@ -9,6 +11,7 @@ import co.edu.icesi.sgiv.mapper.resources.DestinationImageMapper;
 import co.edu.icesi.sgiv.service.abstraction.entity.DestinationService;
 import co.edu.icesi.sgiv.service.abstraction.resources.DestinationImageService;
 import co.edu.icesi.sgiv.service.abstraction.type.DestinationTypeService;
+import co.edu.icesi.sgiv.service.implementation.resources.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,8 +20,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/destination")
@@ -36,9 +41,13 @@ public class DestinationController {
     @Autowired
     private DestinationTypeService destinationTypeService;
 
+    @Autowired
+    private ImageService imageService;
+
 
 
     private DestinationImageMapper destinationImageMapper = DestinationImageMapper.INSTANCE;
+    private DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
 
     @PreAuthorize("hasAuthority('Admin')||hasAuthority('Advisor')")
     @GetMapping(value = "/dest_img", consumes = "application/json", produces = "application/json")
@@ -89,6 +98,22 @@ public class DestinationController {
         List<DestinationTypeDTO> types = destinationTypeService.findAll();
 
         return ResponseEntity.ok(types);
+    }
+
+    @PreAuthorize("hasAuthority('Admin')||hasAuthority('Advisor')")
+    @PostMapping(value = "/upload_image", produces = "application/json")
+    public ResponseEntity<?> upload(@RequestParam Long destinationId, @RequestParam MultipartFile image) throws Exception {
+        String imageURL = imageService.upload(image);
+        Optional<DestinationDTO> destinationDTO = destinationService.findByID(destinationId);
+        if(destinationDTO.isPresent()){
+            Destination destination = destinationMapper.toEntity(destinationDTO.get());
+            DestinationImage destinationImage = new DestinationImage();
+            destinationImage.setDestination(destination);
+            destinationImage.setImage(imageURL);
+            destinationImageService.save(destinationImage);
+            return ResponseEntity.ok(imageURL);
+        }
+        return ResponseEntity.status(401).body("The destination does not exists");
     }
 
 }
