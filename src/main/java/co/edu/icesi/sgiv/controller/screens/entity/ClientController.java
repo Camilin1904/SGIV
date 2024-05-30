@@ -40,7 +40,6 @@ public class ClientController {
 
     @RequestMapping(value = "/create", consumes = "application/json")
     public ResponseEntity<?> createClient(@RequestBody ClientDTO client) {
-        System.out.println("bbbbbbbbbbbbbbbbbbbbbb");
         client.setCreationDate(LocalDateTime.now());
         try{
             clientService.save(client);
@@ -50,7 +49,5 @@ public class ClientController {
             System.out.println(e);
             return ResponseEntity.badRequest().body(null);
         }
-
     }
-
 }
