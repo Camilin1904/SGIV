@@ -54,7 +54,6 @@ public class UserController {
     }
     @GetMapping(value = "/get", produces = "application/json")
     public ResponseEntity<UserDTO> getUser() {
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<UserDTO> userDTOOptional = userService.findByID(user.getId());
         return userDTOOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());

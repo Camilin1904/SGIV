@@ -33,7 +33,7 @@ public class Client {
     @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
-    @Column(name = "second_last_name", nullable = false, length = 100)
+    @Column(name = "second_last_name", length = 100)
     private String secondLastName;
 
     @Column(name = "phone_1", nullable = false, length = 20)
