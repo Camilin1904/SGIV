@@ -1,6 +1,7 @@
     package co.edu.icesi.sgiv.repository.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Client;
+import co.edu.icesi.sgiv.domain.type.IdentificationType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,4 +34,7 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
                    "(:bDateLower IS NULL OR C.birth_date >= :bDateLower) AND" +
                    "(:status IS NULL OR C.status = :status)", nativeQuery = true)
     public Page<Client> findByFilter(@Param("idNum") String idNum, @Param("bDateLower") Date bDateLower, @Param("bDateUpper") Date bDateUpper, @Param("status") String status,  Pageable pageable);
+
+
+
 }

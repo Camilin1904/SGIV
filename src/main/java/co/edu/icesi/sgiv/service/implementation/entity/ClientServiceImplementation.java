@@ -32,12 +32,10 @@ public class ClientServiceImplementation implements ClientService {
 
     @Override
     public ClientDTO save(ClientDTO entity) throws Exception {
-        if (clientRepository.findById(entity.getId()).isPresent())
-            throw new Exception("The entity already exists.");
-        else{
-            Client client = clientMapper.toEntity(entity);
-            return clientMapper.toDTO(clientRepository.save(client));
-        }
+        System.out.println(entity);
+        Client client = clientMapper.toEntity(entity);
+        System.out.println(client);
+        return clientMapper.toDTO(clientRepository.save(client));
 
     }
 

@@ -29,7 +29,6 @@ public class TestClientMapper {
         client.setBirthDate(new Date(System.currentTimeMillis()));
         client.setId((long)123456789);
         client.setGender("Male");
-        client.setCreationDate(new Date(System.currentTimeMillis()));
         client.setIdentificationNumber("123456789");
         IdentificationType identificationType = new IdentificationType();
         client.setIdentificationType(identificationType);

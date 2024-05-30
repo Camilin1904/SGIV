@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -50,8 +51,9 @@ public class Client {
     @Column(name = "birth_date", nullable = false)
     private Date birthDate;
 
-    @Column(name = "creation_date", nullable = false)
-    private Date creationDate;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "creation_date", nullable = false, updatable = false)
+    private LocalDateTime creationDate;
 
     @ManyToOne
     @JoinColumn(name = "creator_user_id", nullable = false)

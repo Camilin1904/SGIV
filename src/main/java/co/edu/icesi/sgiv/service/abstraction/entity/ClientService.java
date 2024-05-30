@@ -1,7 +1,6 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
 
-import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
 import org.springframework.data.domain.Page;
@@ -12,7 +11,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Service
-public interface ClientService extends GenericService<ClientDTO, Long> {
+public interface ClientService extends GenericService<ClientDTO, Long>{
 
 
     public List<ClientDTO> findClientsByIdentificationNumber(String id_num);

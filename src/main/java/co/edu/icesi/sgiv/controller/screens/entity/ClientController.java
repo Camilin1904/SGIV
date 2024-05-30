@@ -35,5 +35,18 @@ public class ClientController {
         return ResponseEntity.ok(clientService.count());
     }
 
+    @RequestMapping(value = "/create", consumes = "application/json")
+    public ResponseEntity<?> createClient(@RequestBody ClientDTO client) {
+        System.out.println("bbbbbbbbbbbbbbbbbbbbbb");
+        try{
+            clientService.save(client);
+            return ResponseEntity.ok(null);
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return ResponseEntity.badRequest().body(null);
+        }
+
+    }
 
 }

@@ -8,4 +8,5 @@ import java.util.List;
 public interface IdentificationTypeRepository extends JpaRepository<IdentificationType, Long> {
 
     public List<IdentificationType> findAll();
+
 }

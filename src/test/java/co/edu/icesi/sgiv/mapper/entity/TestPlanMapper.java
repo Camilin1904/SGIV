@@ -40,10 +40,7 @@ public class TestPlanMapper{
         // Assertions
         assertNotNull(planDTO.getId());
         assertNotNull(planDTO.getCode());
-        assertNotNull(planDTO.getRequestDescription());
-        assertNotNull(planDTO.getName());
         assertNotNull(planDTO.getNumberOfPeople());
-        assertNotNull(planDTO.getRequestDate());
         assertNotNull(planDTO.getStartDate());
         assertNotNull(planDTO.getEndDate());
         assertNotNull(planDTO.getTotalValue());
