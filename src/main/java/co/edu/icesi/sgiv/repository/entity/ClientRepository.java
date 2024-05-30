@@ -29,8 +29,8 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
     @Query(value = "SELECT * FROM client C WHERE" +
                    "(:idNum IS NULL OR C.identification_number = :idNum) AND" +
-                   "(:bDateUpper IS NULL OR C.birth_date <= :bdateUpper) AND" +
-                   "(:bDateLower IS NULL OR C.birth_date >= :bDatelower) AND" +
+                   "(:bDateUpper IS NULL OR C.birth_date <= :bDateUpper) AND" +
+                   "(:bDateLower IS NULL OR C.birth_date >= :bDateLower) AND" +
                    "(:status IS NULL OR C.status = :status)", nativeQuery = true)
     public Page<Client> findByFilter(@Param("idNum") String idNum, @Param("bDateLower") Date bDateLower, @Param("bDateUpper") Date bDateUpper, @Param("status") String status,  Pageable pageable);
 }
