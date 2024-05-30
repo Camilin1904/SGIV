@@ -4,6 +4,7 @@ import co.edu.icesi.sgiv.dto.type.IdentificationTypeDTO;
 import lombok.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -20,6 +21,7 @@ public class ClientDTO {
     private String phone2;
     private String email;
     private Date birthDate;
+    private LocalDateTime creationDate;
     private String gender;
     private UserDTO user;
     private String status;

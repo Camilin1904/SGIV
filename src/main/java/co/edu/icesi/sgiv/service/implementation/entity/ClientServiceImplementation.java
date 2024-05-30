@@ -36,7 +36,6 @@ public class ClientServiceImplementation implements ClientService {
         Client client = clientMapper.toEntity(entity);
         System.out.println(client);
         return clientMapper.toDTO(clientRepository.save(client));
-
     }
 
     @Override
