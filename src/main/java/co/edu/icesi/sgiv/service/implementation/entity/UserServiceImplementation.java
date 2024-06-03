@@ -6,6 +6,8 @@ import co.edu.icesi.sgiv.mapper.entity.UserMapper;
 import co.edu.icesi.sgiv.repository.entity.UserRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -87,5 +89,10 @@ public class UserServiceImplementation implements UserService {
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    public Page<UserDTO> findByFilter(String name, Long type, String status, Pageable page){
+        return userRepository.findByFilter(name,type,status,page).map(userMapper::toDTO);
+    }
+
 
 }
