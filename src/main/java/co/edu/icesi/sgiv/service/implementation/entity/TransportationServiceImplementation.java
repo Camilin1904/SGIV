@@ -1,5 +1,6 @@
 package co.edu.icesi.sgiv.service.implementation.entity;
 
+import co.edu.icesi.sgiv.domain.entity.Meals;
 import co.edu.icesi.sgiv.domain.entity.Transportation;
 import co.edu.icesi.sgiv.dto.entity.TransportationDTO;
 import co.edu.icesi.sgiv.mapper.entity.TransportationMapper;
@@ -43,10 +44,10 @@ public class TransportationServiceImplementation implements TransportationServic
 
     @Override
     public TransportationDTO save(TransportationDTO entity) throws Exception {
-        if(!transportationRepository.existsById(entity.getId()))
-            return transportationMapper.toDTO(transportationRepository.findById(entity.getId()).get());
-        else
-            throw new Exception("The transportation already exists");
+        System.out.println(entity);
+        Transportation transportation = transportationMapper.toEntity(entity);
+        System.out.println(transportation);
+        return transportationMapper.toDTO(transportationRepository.save(transportation));
     }
 
     @Override

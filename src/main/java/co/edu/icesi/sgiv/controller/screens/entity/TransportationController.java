@@ -37,6 +37,17 @@ public class TransportationController {
         return ResponseEntity.ok(transportation.toList());
     }
 
+    @PostMapping(value = "/create", consumes = "application/json")
+    public ResponseEntity<?> createTransportation(@RequestBody TransportationDTO transportation) {
+        try {
+            transportationService.save(transportation);
+            return ResponseEntity.ok(null);
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/transportation_count", produces = "application/json")
     public ResponseEntity<Long> transportation_count() {
         return ResponseEntity.ok(transportationService.count());
