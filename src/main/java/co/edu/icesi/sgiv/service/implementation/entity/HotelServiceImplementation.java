@@ -2,9 +2,13 @@ package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Accommodation;
 import co.edu.icesi.sgiv.domain.entity.Hotel;
+import co.edu.icesi.sgiv.domain.resources.DestinationImage;
+import co.edu.icesi.sgiv.domain.resources.HotelImage;
 import co.edu.icesi.sgiv.dto.entity.AccommodationDTO;
 import co.edu.icesi.sgiv.dto.entity.HotelDTO;
+import co.edu.icesi.sgiv.dto.resources.HotelImageDTO;
 import co.edu.icesi.sgiv.mapper.entity.HotelMapper;
+import co.edu.icesi.sgiv.mapper.resources.HotelImageMapper;
 import co.edu.icesi.sgiv.repository.entity.AccommodationRepository;
 import co.edu.icesi.sgiv.repository.entity.HotelRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.HotelService;
@@ -24,11 +28,22 @@ public class HotelServiceImplementation implements HotelService {
     private HotelRepository hotelRepository;
 
     private final HotelMapper hotelMapper = HotelMapper.INSTANCE;
+    private final HotelImageMapper hotelImageMapper = HotelImageMapper.INSTANCE;
 
     @Override
     public Page<HotelDTO> findAll(Pageable page) {
         Page<Hotel> hotels = hotelRepository.findAll(page);
         return hotels.map(hotelMapper::toDTO);
+    }
+
+    @Override
+    public List<HotelImageDTO> getImages(Long id) {
+        return hotelRepository.getImages(id).stream().map(hotelImageMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<HotelDTO> findByFilter(Pageable pageable, String name, String address, String status) {
+        return hotelRepository.findByFilter(pageable, name, address, status).map(hotelMapper::toDTO);
     }
 
     @Override

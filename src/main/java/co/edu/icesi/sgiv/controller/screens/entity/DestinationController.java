@@ -46,12 +46,13 @@ public class DestinationController {
 
 
 
-    private DestinationImageMapper destinationImageMapper = DestinationImageMapper.INSTANCE;
-    private DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
+    private final DestinationImageMapper destinationImageMapper = DestinationImageMapper.INSTANCE;
+    private final DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
 
-    @PreAuthorize("hasAuthority('Admin')||hasAuthority('Advisor')")
-    @GetMapping(value = "/dest_img", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<List<DestinationImageDTO>> destiImg(@RequestBody FetchRequest request) {
+
+    //@PreAuthorize("hasAuthority('Admin')||hasAuthority('Advisor')")
+    @PostMapping(value = "/dest_img", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<List<DestinationImageDTO>> destImg(@RequestBody FetchRequest request) {
 
         Long destID = request.getId();
 
@@ -83,6 +84,8 @@ public class DestinationController {
         Page<DestinationDTO> destinations = destinationService.findByFilter(destinationRequest.getName(), destinationRequest.getCode(),
                                                                             destinationRequest.getStatus(), destinationRequest.getType(),
                                                                             pageable);
+
+        System.out.println(destinations);
         return ResponseEntity.ok(destinations.toList());
     }
 

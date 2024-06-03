@@ -1,6 +1,7 @@
 package co.edu.icesi.sgiv.domain.resources;
 
 import co.edu.icesi.sgiv.domain.entity.Destination;
+import co.edu.icesi.sgiv.domain.entity.Hotel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,5 +23,5 @@ public class HotelImage {
 
     @ManyToOne
     @JoinColumn(name = "hotel", nullable = false) 
-    private Destination Hotel;
+    private Hotel hotel;
 }
