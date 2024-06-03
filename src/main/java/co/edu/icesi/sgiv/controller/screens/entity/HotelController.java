@@ -48,7 +48,7 @@ public class HotelController {
     }
 
     @PostMapping(value = "/page_hotel", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<List<HotelDTO>> page_dest(@RequestBody HotelRequest hotelRequest) {
+    public ResponseEntity<List<HotelDTO>> page_hotel(@RequestBody HotelRequest hotelRequest) {
         Pageable pageable = PageRequest.of(hotelRequest.getPage(),hotelRequest.getSize());
 
         Page<HotelDTO> hotels = hotelService.findByFilter(pageable, hotelRequest.getName(), hotelRequest.getAddress(),

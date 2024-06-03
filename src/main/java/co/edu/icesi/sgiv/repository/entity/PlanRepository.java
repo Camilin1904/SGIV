@@ -56,7 +56,7 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
 
 
     @Query(value = "SELECT * FROM PLAN P WHERE" +
-                   "(:code IS NULL OR P.CODE LIKE :code) AND" +
+                   "(:code IS NULL OR LOWER(P.CODE) LIKE '%'||LOWER(:code)||'%') AND" +
                    "(:totalValueM IS NULL OR P.TOTAL_VALUE <= :totalValueM) AND" +
                    "(:totalValueL IS NULL OR P.TOTAL_VALUE >= :totalValueL) AND" +
                    "(:status IS NULL OR P.STATUS = :status)", nativeQuery = true)

@@ -35,8 +35,8 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
 
 
     @Query(value = "SELECT * FROM DESTINATION D WHERE"+
-                   "(:name IS NULL OR D.name LIKE :name) AND" +
-                   "(:code IS NULL OR D.CODE LIKE :name) AND" +
+                   "(:name IS NULL OR LOWER(D.name) LIKE '%'||LOWER(:name)||'%') AND" +
+                   "(:code IS NULL OR LOWER(D.CODE) LIKE '%'||:code||'%') AND" +
                    "(:status IS NULL OR D.status = :status) AND" +
                    "(:type IS NULL OR D.type_id = :type) ORDER BY D.NAME DESC", nativeQuery = true)
     public Page<Destination> findByFilter(@Param("name")String name, @Param("code") String code, @Param("status") String status, @Param("type") Long type, Pageable pageable);

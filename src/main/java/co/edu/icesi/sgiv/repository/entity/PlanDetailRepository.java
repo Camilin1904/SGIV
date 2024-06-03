@@ -24,7 +24,7 @@ public interface PlanDetailRepository extends JpaRepository<PlanDetail, Long> {
     public Page<PlanDetail> findAll(Pageable pageable);
 
     @Query(value = "SELECT * FROM plan_detail PD WHERE" +
-                   "(:name IS NULL OR PD.name LIKE :name) AND" +
+                   "(:name IS NULL OR LOWER(PD.name) LIKE '%'||LOWER(:name)||'%') AND" +
                    "(:days_upper IS NULL OR PD.number_of_days <= :days_upper) AND" +
                    "(:days_lower IS NULL OR PD.number_of_days >= :days_lower) AND" +
                    "(:nights_upper IS NULL OR PD.number_of_nights <= :nights_upper) AND" +

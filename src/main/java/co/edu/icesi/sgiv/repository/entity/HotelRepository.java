@@ -16,8 +16,8 @@ public interface HotelRepository extends JpaRepository<Hotel, Long> {
     public List<HotelImage> getImages(Long id);
 
     @Query(value = "SELECT * FROM Hotel H WHERE " +
-            "(:name IS NULL OR H.NAME LIKE :name) AND" +
-            "(:address IS NULL OR H.ADDRESS LIKE :address) AND" +
+            "(:name IS NULL OR LOWER(H.NAME) LIKE '%'||LOWER(:name)||'%') AND" +
+            "(:address IS NULL OR LOWER(H.ADDRESS) LIKE '%'||LOWER(:address)||'%') AND" +
             "(:status IS NULL OR H.STATUS = :status)", nativeQuery = true)
     public Page<Hotel> findByFilter(Pageable pageable, @Param("name") String name, @Param("address") String address, @Param("status") String status);
 }
