@@ -38,6 +38,17 @@ public class MealsController {
         return ResponseEntity.ok(meals.toList());
     }
 
+    @PostMapping(value = "/create", consumes = "application/json")
+    public ResponseEntity<?> createMeal(@RequestBody MealsDTO meal) {
+        try {
+            mealsService.save(meal);
+            return ResponseEntity.ok(null);
+        } catch (Exception e) {
+            System.out.println(e);
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @GetMapping(value = "/meals_count", produces = "application/json")
     public ResponseEntity<Long> meals_count() {
         return ResponseEntity.ok(mealsService.count());

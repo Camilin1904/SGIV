@@ -1,5 +1,6 @@
 package co.edu.icesi.sgiv.service.implementation.entity;
 
+import co.edu.icesi.sgiv.domain.entity.Client;
 import co.edu.icesi.sgiv.domain.entity.Meals;
 import co.edu.icesi.sgiv.dto.entity.MealsDTO;
 import co.edu.icesi.sgiv.dto.entity.MealsDTO;
@@ -43,10 +44,10 @@ public class MealsServiceImplementation implements MealsService {
 
     @Override
     public MealsDTO save(MealsDTO entity) throws Exception {
-        if(!mealsRepository.existsById(entity.getId()))
-            return mealsMapper.toDTO(mealsRepository.findById(entity.getId()).get());
-        else
-            throw new Exception("Meals already exists");
+        System.out.println(entity);
+        Meals meal = mealsMapper.toEntity(entity);
+        System.out.println(meal);
+        return mealsMapper.toDTO(mealsRepository.save(meal));
     }
 
     @Override
