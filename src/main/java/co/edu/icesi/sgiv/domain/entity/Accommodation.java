@@ -19,9 +19,6 @@ public class Accommodation {
     @Column(name = "amount_of_people", nullable = false)
     private Integer amountOfPeople;
 
-    @ManyToOne
-    @JoinColumn(name = "plan_detail_id", nullable = false)
-    private PlanDetail planDetail;
 
     @ManyToOne
     @JoinColumn(name = "hotel_id", nullable = false)

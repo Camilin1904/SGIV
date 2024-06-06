@@ -6,7 +6,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {UserMapper.class, DestinationMapper.class})
+import java.time.LocalDateTime;
+import java.util.Date;
+
+@Mapper(uses = {UserMapper.class, DestinationMapper.class, AccommodationMapper.class})
 public interface PlanDetailMapper {
 
     PlanDetailMapper INSTANCE = Mappers.getMapper(PlanDetailMapper.class);

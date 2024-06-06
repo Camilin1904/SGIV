@@ -1,5 +1,6 @@
 package co.edu.icesi.sgiv.service.abstraction.entity;
 
+import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.Hotel;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.domain.resources.HotelImage;
@@ -22,8 +23,6 @@ public interface HotelService extends GenericService<HotelDTO, Long> {
 
     public List<HotelImageDTO> getImages(Long id);
 
-    public Page<HotelDTO> findByFilter(Pageable pageable, @Param("name") String name, @Param("address") String address, @Param("status") String status);
-
-
+    public Page<HotelDTO> findByFilter(Pageable pageable,String name, String address, String status, Long dID);
 
 }

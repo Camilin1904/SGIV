@@ -3,6 +3,7 @@ package co.edu.icesi.sgiv.dto.entity;
 import co.edu.icesi.sgiv.dto.resources.HotelImageDTO;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter

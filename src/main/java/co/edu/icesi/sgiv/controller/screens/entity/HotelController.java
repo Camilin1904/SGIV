@@ -1,10 +1,7 @@
 package co.edu.icesi.sgiv.controller.screens.entity;
 
-import co.edu.icesi.sgiv.domain.entity.Hotel;
-import co.edu.icesi.sgiv.domain.resources.HotelImage;
-import co.edu.icesi.sgiv.domain.resources.HotelImage;
+import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.entity.HotelDTO;
-import co.edu.icesi.sgiv.dto.resources.HotelImageDTO;
 import co.edu.icesi.sgiv.dto.resources.HotelImageDTO;
 import co.edu.icesi.sgiv.mapper.entity.HotelMapper;
 import co.edu.icesi.sgiv.mapper.resources.HotelImageMapper;
@@ -16,12 +13,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/hotel")
@@ -52,7 +47,7 @@ public class HotelController {
         Pageable pageable = PageRequest.of(hotelRequest.getPage(),hotelRequest.getSize());
 
         Page<HotelDTO> hotels = hotelService.findByFilter(pageable, hotelRequest.getName(), hotelRequest.getAddress(),
-                hotelRequest.getStatus());
+                hotelRequest.getStatus(), hotelRequest.getDID());
 
         System.out.println(hotels);
         return ResponseEntity.ok(hotels.toList());
@@ -62,6 +57,18 @@ public class HotelController {
     @GetMapping(value = "/hotel_count", produces = "application/json")
     public ResponseEntity<Long> hotel_count() {
         return ResponseEntity.ok(hotelService.count());
+    }
+
+    @RequestMapping(value = "/create", consumes = "application/json")
+    public ResponseEntity<?> createClient(@RequestBody HotelDTO hotelDTO) {
+        try{
+            hotelService.save(hotelDTO);
+            return ResponseEntity.ok(null);
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return ResponseEntity.badRequest().body(null);
+        }
     }
 
 

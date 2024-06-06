@@ -4,6 +4,7 @@ import co.edu.icesi.sgiv.domain.entity.Meals;
 import lombok.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -27,10 +28,12 @@ public class PlanDetailDTO {
 
     private Integer numberOfDays;
 
-    private Date creationDate;
+    private LocalDateTime creationDate;
 
     private UserDTO user;
 
     private String status;
+
+    private AccommodationDTO accommodation;
 
 }

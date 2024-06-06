@@ -13,6 +13,7 @@ public class HotelRequest {
     private String name;
     private String address;
     private String status;
+    private Long dID;
     int page;
     int size;
 }
