@@ -2,9 +2,12 @@ package co.edu.icesi.sgiv.controller.screens.entity;
 
 
 import co.edu.icesi.sgiv.domain.entity.Client;
+import co.edu.icesi.sgiv.dto.type.IdentificationTypeDTO;
+import co.edu.icesi.sgiv.repository.entity.ClientRepository;
 import co.edu.icesi.sgiv.request.ClientRequest;
 import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.service.abstraction.entity.ClientService;
+import co.edu.icesi.sgiv.service.abstraction.type.IdentificationTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +27,9 @@ public class ClientController {
 
     @Autowired
     private final ClientService clientService;
+
+    @Autowired
+    private final IdentificationTypeService identificationTypeService;
 
     @PostMapping(value = "/page_client", consumes = "application/json", produces = "application/json")
     public ResponseEntity<List<ClientDTO>> pageClient(@RequestBody ClientRequest request) {
@@ -49,5 +55,10 @@ public class ClientController {
             System.out.println(e);
             return ResponseEntity.badRequest().body(null);
         }
+    }
+
+    @GetMapping(value = "/idTypes", produces = "application/json")
+    public ResponseEntity<List<IdentificationTypeDTO>> idTypesClient() {
+        return ResponseEntity.ok(identificationTypeService.findAll());
     }
 }
