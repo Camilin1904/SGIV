@@ -68,6 +68,7 @@ public class UserController {
 
     @GetMapping(value = "/types", produces = "application/json")
     public ResponseEntity<List<UserTypeDTO>> getTypes(){
+        //Find all
         return ResponseEntity.ok(userTypeService.findAll());
     }
 
