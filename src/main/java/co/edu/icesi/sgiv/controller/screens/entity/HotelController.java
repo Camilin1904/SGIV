@@ -53,6 +53,17 @@ public class HotelController {
         return ResponseEntity.ok(hotels.toList());
     }
 
+    @PostMapping(value = "/countFilter", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> countFilter(@RequestBody HotelRequest hotelRequest) {
+        Pageable pageable = PageRequest.of(hotelRequest.getPage(),hotelRequest.getSize());
+
+        Page<HotelDTO> hotels = hotelService.findByFilter(pageable, hotelRequest.getName(), hotelRequest.getAddress(),
+                hotelRequest.getStatus(), hotelRequest.getDID());
+
+        System.out.println(hotels);
+        return ResponseEntity.ok(hotels.getTotalPages());
+    }
+
 
     @GetMapping(value = "/hotel_count", produces = "application/json")
     public ResponseEntity<Long> hotel_count() {

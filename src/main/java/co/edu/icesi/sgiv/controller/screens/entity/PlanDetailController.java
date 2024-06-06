@@ -46,6 +46,16 @@ public class PlanDetailController {
                                                                 planDetailRequest.getValueLower(), planDetailRequest.getStatus(), pageable));
     }
 
+    @PostMapping(value = "countFilter", produces = "application/json")
+    public ResponseEntity<?> countFilter(@RequestBody PlanDetailRequest planDetailRequest) {
+        Pageable pageable = PageRequest.of(planDetailRequest.getPage(),planDetailRequest.getSize());
+
+        return ResponseEntity.ok(planDetailService.findByFilter(planDetailRequest.getName(), planDetailRequest.getDaysUpper(),
+                planDetailRequest.getDaysLower(), planDetailRequest.getNightsUpper(),
+                planDetailRequest.getNightsLower(),planDetailRequest.getValueUpper(),
+                planDetailRequest.getValueLower(), planDetailRequest.getStatus(), pageable).getTotalPages());
+    }
+
     @GetMapping(value = "count", produces = "application/json")
     public Long count() {
         return planDetailService.count();

@@ -37,6 +37,16 @@ public class TransportationController {
         return ResponseEntity.ok(transportation.toList());
     }
 
+    @PostMapping(value = "/countFilter", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> countFilter(@RequestBody TransportationRequest transportationRequest) {
+        Pageable pageable = PageRequest.of(transportationRequest.getPage(),transportationRequest.getSize());
+
+        Page<TransportationDTO> transportation = transportationService.findByFilter(transportationRequest.getName(),
+                transportationRequest.getStatus(), pageable);
+
+        return ResponseEntity.ok(transportation.getTotalPages());
+    }
+
     @PostMapping(value = "/create", consumes = "application/json")
     public ResponseEntity<?> createTransportation(@RequestBody TransportationDTO transportation) {
         try {

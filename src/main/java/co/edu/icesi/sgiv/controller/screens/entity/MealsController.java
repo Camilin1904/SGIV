@@ -38,6 +38,17 @@ public class MealsController {
         return ResponseEntity.ok(meals.toList());
     }
 
+    @PostMapping(value = "/countFilter", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> countFilter(@RequestBody MealRequest mealRequest) {
+        Pageable pageable = PageRequest.of(mealRequest.getPage(),mealRequest.getSize());
+
+        Page<MealsDTO> meals = mealsService.findByFilter(mealRequest.getName(),
+                mealRequest.getStatus(), pageable);
+        System.out.println(meals);
+
+        return ResponseEntity.ok(meals.getTotalPages());
+    }
+
     @PostMapping(value = "/create", consumes = "application/json")
     public ResponseEntity<?> createMeal(@RequestBody MealsDTO meal) {
         try {

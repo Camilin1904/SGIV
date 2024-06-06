@@ -29,6 +29,14 @@ public class PlanController {
                                                           planRequest.getStatus(), pageable));
     }
 
+    @PostMapping(value = "/countFilter", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> countFilter(@RequestBody PlanRequest planRequest) {
+        Pageable pageable = PageRequest.of(planRequest.getPage(), planRequest.getSize());
+        return ResponseEntity.ok(planService.findByFilter(planRequest.getCode(), planRequest.getTvm(),
+                planRequest.getTvl(),
+                planRequest.getStatus(), pageable).getTotalPages());
+    }
+
     @GetMapping(value = "/count", produces = "application/json")
     public ResponseEntity<Long> count() {
         return ResponseEntity.ok(planService.count());

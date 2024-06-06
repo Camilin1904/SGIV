@@ -115,4 +115,16 @@ public class DestinationController {
         return ResponseEntity.status(401).body("The destination does not exists");
     }
 
+    @PostMapping(value = "/countFilter", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> countFilter(@RequestBody DestinationRequest destinationRequest) {
+        Pageable pageable = PageRequest.of(destinationRequest.getPage(),destinationRequest.getSize());
+
+        Page<DestinationDTO> destinations = destinationService.findByFilter(destinationRequest.getName(), destinationRequest.getCode(),
+                destinationRequest.getStatus(), destinationRequest.getType(),
+                pageable);
+
+        System.out.println(destinations);
+        return ResponseEntity.ok(destinations.getTotalPages());
+    }
+
 }

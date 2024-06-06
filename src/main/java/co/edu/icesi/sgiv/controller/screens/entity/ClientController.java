@@ -10,6 +10,7 @@ import co.edu.icesi.sgiv.service.abstraction.entity.ClientService;
 import co.edu.icesi.sgiv.service.abstraction.type.IdentificationTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,8 @@ public class ClientController {
     @PostMapping(value = "/page_client", consumes = "application/json", produces = "application/json")
     public ResponseEntity<List<ClientDTO>> pageClient(@RequestBody ClientRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
-
+        System.out.println(clientService.findByFilter(request.getIdNum(), request.getBDateLower(),
+                request.getBDateUpper(), request.getStatus(), pageable).toList());
         return ResponseEntity.ok(clientService.findByFilter(request.getIdNum(), request.getBDateLower(),
                                                             request.getBDateUpper(), request.getStatus(), pageable).toList());
     }
@@ -42,6 +44,15 @@ public class ClientController {
     @GetMapping(value = "/count", produces = "application/json")
     public ResponseEntity<Long> countClient() {
         return ResponseEntity.ok(clientService.count());
+    }
+
+    @PostMapping(value = "/countFilter", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> countFilter(@RequestBody ClientRequest request) {
+        Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
+        System.out.println(clientService.findByFilter(request.getIdNum(), request.getBDateLower(),
+                request.getBDateUpper(), request.getStatus(), pageable).toList());
+        return ResponseEntity.ok(clientService.findByFilter(request.getIdNum(), request.getBDateLower(),
+                request.getBDateUpper(), request.getStatus(), pageable).getTotalPages());
     }
 
     @RequestMapping(value = "/create", consumes = "application/json")
