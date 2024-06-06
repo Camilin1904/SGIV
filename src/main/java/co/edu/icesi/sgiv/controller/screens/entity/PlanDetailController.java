@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -52,6 +53,8 @@ public class PlanDetailController {
 
     @RequestMapping(value = "/create", consumes = "application/json")
     public ResponseEntity<?> createPD(@RequestBody PlanDetailDTO planDetailDTO) {
+        planDetailDTO.setCreationDate(LocalDateTime.now());
+        System.out.println(planDetailDTO);
         try{
             planDetailService.save(planDetailDTO);
             return ResponseEntity.ok(null);

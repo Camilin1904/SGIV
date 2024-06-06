@@ -35,12 +35,8 @@ public class PlanDetailServicesImplementation implements PlanDetailService {
 
     @Override
     public PlanDetailDTO save(PlanDetailDTO entity) throws Exception {
-        if (planDetailRepository.findById(entity.getId()).isPresent())
-            throw new Exception("The entity already exists.");
-        else{
             PlanDetail planDetail = planDetailMapper.toEntity(entity);
             return planDetailMapper.toDTO(planDetailRepository.save(planDetail));
-        }
 
     }
 

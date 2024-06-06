@@ -42,16 +42,13 @@ public class AccommodationServiceImplementation implements AccommodationService 
 
     @Override
     public AccommodationDTO save(AccommodationDTO entity) throws Exception {
-        if(!accommodationRepository.existsById(entity.getId()))
-            return accommodationMapper.toDTO(accommodationRepository.findById(entity.getId()).get());
-        else
-            throw new Exception("The accommodation already exists");
+            return accommodationMapper.toDTO(accommodationRepository.save(accommodationMapper.toEntity(entity)));
     }
 
     @Override
     public AccommodationDTO update(AccommodationDTO entity) throws Exception {
         if(accommodationRepository.existsById(entity.getId()))
-            return accommodationMapper.toDTO(accommodationRepository.findById(entity.getId()).get());
+            return accommodationMapper.toDTO(accommodationRepository.save(accommodationMapper.toEntity(entity)));
         else
             throw new Exception("The accommodation does not exists");
     }
@@ -59,7 +56,7 @@ public class AccommodationServiceImplementation implements AccommodationService 
     @Override
     public void delete(AccommodationDTO entity) throws Exception {
         if(accommodationRepository.existsById(entity.getId()))
-            accommodationRepository.delete(accommodationRepository.findById(entity.getId()).get());
+            accommodationRepository.delete(accommodationMapper.toEntity(entity));
         else
             throw new Exception("The accommodation does not exists");
     }
