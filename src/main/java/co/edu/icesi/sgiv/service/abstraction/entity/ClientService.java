@@ -25,4 +25,5 @@ public interface ClientService extends GenericService<ClientDTO, Long>{
 
     public Page<ClientDTO> findByFilter(String idNum, Date bDateLower, Date bDateUpper, String status, Pageable pageable);
 
+    public List<ClientDTO> getTop5ClientsWithMostReservations();
 }

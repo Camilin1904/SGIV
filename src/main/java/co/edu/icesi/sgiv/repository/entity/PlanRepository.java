@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,5 +64,13 @@ public interface PlanRepository  extends JpaRepository<Plan, Long> {
     public Page<Plan> findByFilter(@Param("code") String code, @Param("totalValueM") Double tvm,
                                    @Param("totalValueL") Double tvl,
                                    @Param("status") String status, Pageable pageable);
+
+
+    @Query("SELECT p.creationDate, COUNT(p) " +
+            "FROM Plan p " +
+            "WHERE p.creationDate BETWEEN :startDate AND :endDate " +
+            "GROUP BY p.creationDate " +
+            "ORDER BY p.creationDate")
+    List<Object[]> findPlansCountByDateBetween(LocalDate startDate, LocalDate endDate);
 
 }

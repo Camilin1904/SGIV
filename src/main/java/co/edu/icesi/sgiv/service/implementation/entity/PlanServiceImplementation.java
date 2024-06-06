@@ -20,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -155,6 +156,13 @@ public class PlanServiceImplementation implements PlanService {
         } catch(Exception e){
             return null;
         }
+    }
+
+    @Override
+    public List<Object[]> getPlansCountByDateLast30Days() {
+        LocalDate endDate = LocalDate.now();
+        LocalDate startDate = endDate.minusDays(30);
+        return planRepository.findPlansCountByDateBetween(startDate, endDate);
     }
 
 

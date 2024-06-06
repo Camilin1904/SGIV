@@ -34,5 +34,12 @@ public interface PlanDetailRepository extends JpaRepository<PlanDetail, Long> {
                    "(:status IS NULL OR pd.status = :status)", nativeQuery = true)
     public Page<PlanDetail> findByFilter(@Param("name") String name,@Param("days_upper") Integer daysUpper, @Param("days_lower") Integer daysLower,@Param("nights_upper") Integer nightsUpper, @Param("nights_lower") Integer nightsLower, @Param("value_upper") Double valueUpper, @Param("value_lower") Double valueLower, @Param("status") String status, Pageable pageable);
 
+    @Query("SELECT pd " +
+            "FROM PlanDetail pd " +
+            "JOIN pd.plans p " +
+            "GROUP BY pd " +
+            "ORDER BY COUNT(p) DESC " +
+            "LIMIT 1")
+    PlanDetail findMostReservedPlanDetail();
 
 }

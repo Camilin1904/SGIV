@@ -102,5 +102,10 @@ public class PlanDetailServicesImplementation implements PlanDetailService {
         return planDetails.map(planDetailMapper::toDTO);
     }
 
+    @Override
+    public PlanDetailDTO getMostReservedPlanDetail() {
+        return planDetailMapper.toDTO(planDetailRepository.findMostReservedPlanDetail());
+    }
+
 
 }
