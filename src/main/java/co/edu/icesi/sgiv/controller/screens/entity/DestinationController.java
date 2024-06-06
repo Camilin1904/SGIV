@@ -62,19 +62,15 @@ public class DestinationController {
 
     }
 
-    @PreAuthorize("hasAuthority('Viewer')||hasAuthority('Advisor')")
-    @GetMapping(value = "/rand_image", consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/rand_image", produces = "application/json")
     public ResponseEntity<DestinationImageDTO> rand_image() {
-
         List<DestinationImage> destinationImages = destinationImageService.findAll();
-        
-        int imageIndex = (int) (Math.random() * destinationImages.size());
 
+        int imageIndex = (int) (Math.random() * destinationImages.size());
 
         DestinationImageDTO image = destinationImageMapper.toDTO(destinationImages.get(imageIndex));
 
         return ResponseEntity.ok(image);
-
     }
 
     @PostMapping(value = "/page_dest", consumes = "application/json", produces = "application/json")
