@@ -119,4 +119,9 @@ public class ClientServiceImplementation implements ClientService {
         return clients.map(clientMapper::toDTO);
     }
 
+    @Override
+    public List<ClientDTO> getTop5ClientsWithMostReservations() {
+        return clientRepository.findTop5ClientsWithMostReservations().stream().map(clientMapper::toDTO).toList();
+    }
+
 }

@@ -22,4 +22,5 @@ public interface PlanDetailService extends GenericService<PlanDetailDTO, Long> {
 
     public Page<PlanDetailDTO> findByFilter(String name, Integer daysUpper, Integer daysLower, Integer nightsUpper, Integer nightsLower, Double valueUpper, Double valueLower, String status, Pageable pageable);
 
+    public PlanDetailDTO getMostReservedPlanDetail();
 }

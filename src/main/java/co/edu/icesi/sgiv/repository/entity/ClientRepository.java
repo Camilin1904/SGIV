@@ -35,6 +35,11 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
                    "(:status IS NULL OR C.status = :status)", nativeQuery = true)
     public Page<Client> findByFilter(@Param("idNum") String idNum, @Param("bDateLower") Date bDateLower, @Param("bDateUpper") Date bDateUpper, @Param("status") String status,  Pageable pageable);
 
-
+    @Query("SELECT p.client, COUNT(p) as reservationCount " +
+            "FROM Plan p " +
+            "GROUP BY p.client " +
+            "ORDER BY reservationCount DESC " +
+            "LIMIT 5")
+    List<Client> findTop5ClientsWithMostReservations();
 
 }
