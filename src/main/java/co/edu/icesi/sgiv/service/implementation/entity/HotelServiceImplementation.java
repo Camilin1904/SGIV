@@ -1,6 +1,7 @@
 package co.edu.icesi.sgiv.service.implementation.entity;
 
 import co.edu.icesi.sgiv.domain.entity.Accommodation;
+import co.edu.icesi.sgiv.domain.entity.Destination;
 import co.edu.icesi.sgiv.domain.entity.Hotel;
 import co.edu.icesi.sgiv.domain.resources.DestinationImage;
 import co.edu.icesi.sgiv.domain.resources.HotelImage;
@@ -10,6 +11,7 @@ import co.edu.icesi.sgiv.dto.resources.HotelImageDTO;
 import co.edu.icesi.sgiv.mapper.entity.HotelMapper;
 import co.edu.icesi.sgiv.mapper.resources.HotelImageMapper;
 import co.edu.icesi.sgiv.repository.entity.AccommodationRepository;
+import co.edu.icesi.sgiv.repository.entity.DestinationRepository;
 import co.edu.icesi.sgiv.repository.entity.HotelRepository;
 import co.edu.icesi.sgiv.service.abstraction.entity.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ public class HotelServiceImplementation implements HotelService {
 
     @Autowired
     private HotelRepository hotelRepository;
+    @Autowired
+    private DestinationRepository destinationRepository;
 
     private final HotelMapper hotelMapper = HotelMapper.INSTANCE;
     private final HotelImageMapper hotelImageMapper = HotelImageMapper.INSTANCE;
@@ -42,8 +46,8 @@ public class HotelServiceImplementation implements HotelService {
     }
 
     @Override
-    public Page<HotelDTO> findByFilter(Pageable pageable, String name, String address, String status) {
-        return hotelRepository.findByFilter(pageable, name, address, status).map(hotelMapper::toDTO);
+    public Page<HotelDTO> findByFilter(Pageable pageable, String name, String address, String status, Long dID) {
+        return hotelRepository.findByFilter(pageable, name, address, status, dID).map(hotelMapper::toDTO);
     }
 
     @Override

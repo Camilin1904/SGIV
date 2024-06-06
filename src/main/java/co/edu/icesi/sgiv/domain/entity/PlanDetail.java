@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -30,10 +31,9 @@ public class        PlanDetail {
     @JoinColumn(name = "meals_id", nullable = false)
     private Meals meals;
 
-    @OneToMany(mappedBy = "planDetail", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    @Column(name = "accommodation", nullable = false, length = 100)
-    private List<Accommodation> accommodation;
+    @OneToOne
+    @JoinColumn(name = "accommodation")
+    private Accommodation accommodation;
 
     @ManyToOne
     @JoinColumn(name = "transportation_id", nullable = false)
@@ -49,7 +49,7 @@ public class        PlanDetail {
     private Integer numberOfDays;
 
     @Column(name = "creation_date", nullable = false)
-    private Date creationDate;
+    private LocalDateTime creationDate;
 
     @ManyToOne
     @JoinColumn(name = "creator_user_id", nullable = false)

@@ -23,7 +23,6 @@ public class TestPlanDetailMapper {
         planDetail.setNumberOfNights(5);
         planDetail.setNumberOfDays(7);
         Date currentDate = new Date(System.currentTimeMillis());
-        planDetail.setCreationDate(currentDate);
         User user = new User(); // You may need to initialize User properly
         planDetail.setUser(user);
         planDetail.setStatus("Active");

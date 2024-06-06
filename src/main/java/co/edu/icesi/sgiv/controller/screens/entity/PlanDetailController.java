@@ -1,7 +1,10 @@
 package co.edu.icesi.sgiv.controller.screens.entity;
 
+import co.edu.icesi.sgiv.dto.entity.AccommodationDTO;
+import co.edu.icesi.sgiv.dto.entity.HotelDTO;
 import co.edu.icesi.sgiv.request.PlanDetailRequest;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
+import co.edu.icesi.sgiv.service.abstraction.entity.AccommodationService;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -20,6 +24,8 @@ import java.util.List;
 public class PlanDetailController {
     @Autowired
     private final PlanDetailService planDetailService;
+    @Autowired
+    private final AccommodationService accommodationService;
 
     @GetMapping(value = "/get_all")
     public List<PlanDetailDTO> getAll() {
@@ -45,5 +51,31 @@ public class PlanDetailController {
         return planDetailService.count();
     }
 
+    @RequestMapping(value = "/create", consumes = "application/json")
+    public ResponseEntity<?> createPD(@RequestBody PlanDetailDTO planDetailDTO) {
+        planDetailDTO.setCreationDate(LocalDateTime.now());
+        System.out.println(planDetailDTO);
+        try{
+            planDetailService.save(planDetailDTO);
+            return ResponseEntity.ok(null);
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+
+    @RequestMapping(value = "/create_acc", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<?> createAcc(@RequestBody AccommodationDTO accommodationDTO) {
+        try{
+
+            return ResponseEntity.ok(accommodationService.save(accommodationDTO));
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
 
 }

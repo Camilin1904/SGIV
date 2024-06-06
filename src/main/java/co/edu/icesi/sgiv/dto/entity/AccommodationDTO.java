@@ -15,9 +15,7 @@ public class AccommodationDTO {
 
     private Integer amountOfPeople;
 
-    private PlanDetail planDetail;
-
-    private Hotel hotel;
+    private HotelDTO hotel;
 
     private String status;
 }
