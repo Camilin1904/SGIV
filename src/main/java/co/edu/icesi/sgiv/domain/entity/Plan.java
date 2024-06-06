@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -28,7 +29,6 @@ public class Plan {
 
     @Column(name = "number_of_people", nullable = false)
     private Integer numberOfPeople;
-
 
     @Column(name = "start_date", nullable = false)
     private Date startDate;
@@ -53,13 +53,17 @@ public class Plan {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<PlanModification> modifications;
+    private List<PlanModification> modifications = new ArrayList<>();
 
-    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<PlanToPlanDetail> planDetail;
+    private List<PlanToPlanDetail> planDetail = new ArrayList<>();
 
-
+    public void addPlanToPlanDetail(PlanToPlanDetail planToPlanDetail) {
+        planDetail.add(planToPlanDetail);
+        planToPlanDetail.setPlan(this);
+    }
 }
+

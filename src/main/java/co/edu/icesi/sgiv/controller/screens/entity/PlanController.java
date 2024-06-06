@@ -1,12 +1,15 @@
 package co.edu.icesi.sgiv.controller.screens.entity;
 
 
+import co.edu.icesi.sgiv.dto.entity.PlanDTO;
+import co.edu.icesi.sgiv.request.CreatePlanRequest;
 import co.edu.icesi.sgiv.request.PlanRequest;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +35,11 @@ public class PlanController {
     @GetMapping(value = "/count", produces = "application/json")
     public ResponseEntity<Long> count() {
         return ResponseEntity.ok(planService.count());
+    }
+
+    @PostMapping(value = "/create",consumes = "application/json")
+    public ResponseEntity<PlanDTO> createPlan(@RequestBody CreatePlanRequest createPlanRequest) {
+        PlanDTO savedPlan = planService.createPlan(createPlanRequest);
+        return new ResponseEntity<>(savedPlan, HttpStatus.CREATED);
     }
 }

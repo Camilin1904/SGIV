@@ -12,7 +12,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="plan_to_plan_detail")
+@Table(name = "plan_to_plan_detail")
 public class PlanToPlanDetail {
     @Getter
     @Id
@@ -35,6 +35,5 @@ public class PlanToPlanDetail {
 
     @Column(name = "status", nullable = false)
     private String status;
-
-
 }
+

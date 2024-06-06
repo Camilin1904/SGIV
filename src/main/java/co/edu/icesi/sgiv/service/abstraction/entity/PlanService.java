@@ -7,6 +7,7 @@ import co.edu.icesi.sgiv.dto.entity.ClientDTO;
 import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDTO;
 import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
+import co.edu.icesi.sgiv.request.CreatePlanRequest;
 import co.edu.icesi.sgiv.service.abstraction.GenericService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,5 +48,7 @@ public interface PlanService extends GenericService<PlanDTO, Long> {
 
 
     public List<Object[]> getPlansCountByDateLast30Days();
+
+    public PlanDTO createPlan(CreatePlanRequest createPlanRequest);
 
 }
