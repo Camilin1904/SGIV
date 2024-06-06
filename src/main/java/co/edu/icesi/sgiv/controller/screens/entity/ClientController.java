@@ -2,6 +2,7 @@ package co.edu.icesi.sgiv.controller.screens.entity;
 
 
 import co.edu.icesi.sgiv.domain.entity.Client;
+import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
 import co.edu.icesi.sgiv.dto.type.IdentificationTypeDTO;
 import co.edu.icesi.sgiv.repository.entity.ClientRepository;
 import co.edu.icesi.sgiv.request.ClientRequest;
@@ -31,6 +32,11 @@ public class ClientController {
 
     @Autowired
     private final IdentificationTypeService identificationTypeService;
+
+    @GetMapping(value = "/get_all")
+    public List<ClientDTO> getAll() {
+        return clientService.findAll();
+    }
 
     @PostMapping(value = "/page_client", consumes = "application/json", produces = "application/json")
     public ResponseEntity<List<ClientDTO>> pageClient(@RequestBody ClientRequest request) {

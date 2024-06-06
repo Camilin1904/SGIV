@@ -1,18 +1,13 @@
 package co.edu.icesi.sgiv.service.implementation.entity;
 
-import co.edu.icesi.sgiv.domain.entity.Client;
-import co.edu.icesi.sgiv.domain.entity.Destination;
-import co.edu.icesi.sgiv.domain.entity.Plan;
-import co.edu.icesi.sgiv.domain.entity.PlanDetail;
-import co.edu.icesi.sgiv.dto.entity.ClientDTO;
-import co.edu.icesi.sgiv.dto.entity.DestinationDTO;
-import co.edu.icesi.sgiv.dto.entity.PlanDTO;
-import co.edu.icesi.sgiv.dto.entity.PlanDetailDTO;
-import co.edu.icesi.sgiv.mapper.entity.DestinationMapper;
-import co.edu.icesi.sgiv.mapper.entity.PlanMapper;
+import co.edu.icesi.sgiv.domain.entity.*;
+import co.edu.icesi.sgiv.dto.entity.*;
+import co.edu.icesi.sgiv.mapper.entity.*;
 import co.edu.icesi.sgiv.repository.entity.ClientRepository;
 import co.edu.icesi.sgiv.repository.entity.PlanDetailRepository;
 import co.edu.icesi.sgiv.repository.entity.PlanRepository;
+import co.edu.icesi.sgiv.repository.entity.UserRepository;
+import co.edu.icesi.sgiv.request.CreatePlanRequest;
 import co.edu.icesi.sgiv.service.abstraction.entity.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,9 +30,13 @@ public class PlanServiceImplementation implements PlanService {
     @Autowired
     ClientRepository clientRepository;
     @Autowired
+    UserRepository userRepository;
+    @Autowired
     PlanDetailRepository planDetailRepository;
 
     DestinationMapper destinationMapper = DestinationMapper.INSTANCE;
+    ClientMapper clientMapper = ClientMapper.INSTANCE;
+    UserMapper userMapper = UserMapper.INSTANCE;
 
     @Override
     public Optional<PlanDTO> findByID(Long aLong) {
@@ -164,6 +164,61 @@ public class PlanServiceImplementation implements PlanService {
         LocalDate startDate = endDate.minusDays(30);
         return planRepository.findPlansCountByDateBetween(startDate, endDate);
     }
+
+    public PlanDTO createPlan(CreatePlanRequest createPlanRequest) {
+        Long userId = createPlanRequest.getUser().getId();
+        Long clientId = createPlanRequest.getClient().getId();
+
+        System.out.println(createPlanRequest);
+        System.out.println(userId);
+        System.out.println(clientId);
+
+        Optional<User> oUser = userRepository.findById(userId);
+        Optional<Client> oClient = clientRepository.findById(clientId);
+
+        if(oUser.isPresent() && oClient.isPresent()){
+            User user = oUser.get();
+            Client client = oClient.get();
+
+            Plan plan = new Plan();
+            plan.setCode(createPlanRequest.getCode());
+            plan.setNumberOfPeople(createPlanRequest.getNumberOfPeople());
+            plan.setCreationDate(new Date(System.currentTimeMillis()));
+            plan.setUser(user);
+            plan.setClient(client);
+            plan.setStatus("Activo");
+            plan.setTotalValue(0.0);
+
+            List<PlanToPlanDetail> planToPlanDetails = new ArrayList<>();
+
+            for (PlanToPlanDetailDTO detailDTO : createPlanRequest.getPlanDetails()) {
+                PlanDetail planDetail = planDetailRepository.findById(detailDTO.getPlanDetail().getId()).orElseThrow();
+                PlanToPlanDetail planToPlanDetail = new PlanToPlanDetail();
+                planToPlanDetail.setPlan(plan);
+                planToPlanDetail.setPlanDetail(planDetail);
+                planToPlanDetail.setStartDate(detailDTO.getStartDate());
+                planToPlanDetail.setEndDate(detailDTO.getEndDate());
+                planToPlanDetail.setStatus("Activo");
+
+                plan.setTotalValue(plan.getTotalValue() + planToPlanDetail.getPlanDetail().getValue()*plan.getNumberOfPeople());
+                planToPlanDetails.add(planToPlanDetail);
+            }
+
+            plan.setPlanDetail(planToPlanDetails);
+
+            Date startDate = planToPlanDetails.stream().map(PlanToPlanDetail::getStartDate).min(Date::compareTo).orElse(null);
+            Date endDate = planToPlanDetails.stream().map(PlanToPlanDetail::getEndDate).max(Date::compareTo).orElse(null);
+            plan.setStartDate(startDate);
+            plan.setEndDate(endDate);
+
+            planRepository.save(plan);
+
+            return planMapper.toDTO(plan);
+        }
+
+        return null;
+    }
+
 
 
 }

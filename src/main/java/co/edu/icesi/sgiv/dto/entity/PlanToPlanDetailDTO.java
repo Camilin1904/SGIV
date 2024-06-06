@@ -19,7 +19,7 @@ public class PlanToPlanDetailDTO {
 
     private PlanDetailDTO planDetail;
 
-    private PlanDTO plan;
-
     private String status;
+
 }
+
